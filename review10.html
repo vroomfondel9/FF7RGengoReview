@@ -70,8 +70,9 @@ function create ()
     platforms.create(750, 220, 'ground');
 
     // The player and its settings
-	playerGroup = this.physics.add.group();
-    playerGroup.add.sprite(100, 450, 'cloud-idle');
+	//playerGroup = this.physics.add.group();
+    //playerGroup.add.sprite(100, 450, 'cloud-idle');
+	playerGroup = this.physics.add.sprite(100, 450, 'cloud-idle');
 
     //  Player physics properties. Give the little guy a slight bounce.
     playerGroup.setBounce(0.2);
