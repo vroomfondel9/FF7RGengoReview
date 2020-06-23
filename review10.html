@@ -71,7 +71,7 @@ function create ()
 
     // The player and its settings
 	playerGroup = this.physics.add.group();
-    player = this.physics.add.sprite(100, 450, 'cloud-idle');
+    playerGroup.add.sprite(100, 450, 'cloud-idle');
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.2);
