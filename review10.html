@@ -49,7 +49,7 @@ function preload ()
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('cloud', 'assets/images/sprites/cloud-cgw.png', { frameWidth: 96, frameHeight: 109}); //28 frames per row
+    this.load.spritesheet('cloud-idle', 'assets/images/sprites/cloud-cgw.png', { frameWidth: 96, frameHeight: 109}); //28 frames per row
 }
 
 function create ()
@@ -78,8 +78,8 @@ function create ()
 
     //  Our player animations, turning, walking left and walking right.
     this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('cloud', { start: 0, end: 16 }),
+        key: 'idle',
+        frames: this.anims.generateFrameNumbers('cloud-idle', { start: 0, end: 16 }),
         frameRate: 10,
         repeat: -1
     });
