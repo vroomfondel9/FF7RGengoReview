@@ -132,7 +132,7 @@ function createEnemies(game) {
 	numLines = enemy.getWrappedText(text).length;
 	
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2);
-	var textbottom = enemy.getBounds().y + (enemy.getBounds().height / 2);
+	var textbottom = enemy.getBounds().y;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
 	var graphics = game.add.graphics({ lineStyle: { width: 2, color: 0xaa0000 }, fillStyle: { color: 0x0000aa } });
