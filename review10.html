@@ -34,6 +34,7 @@ var config = {
 
 var player;
 var ground;
+var foreground;
 var cursors;
 var score = 0;
 var gameOver = false;
@@ -90,7 +91,7 @@ function createEnvironment(game) {
     ground = game.physics.add.staticGroup();
 
 	game.add.image(400, 329, 'groundback').setScale(2);
-    ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
+    foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
 }
 
 function createPlayer(game) {
@@ -131,7 +132,7 @@ function createEnemies(game) {
 	//alert(bounds.y);
 	//alert(bounds.width);
 	//alert(bounds.height);
-	alert(ground.y);
+	alert(foreground.getBounds().y);
 }
 
 </script>
