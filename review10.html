@@ -141,7 +141,7 @@ function createEnemies(game) {
 	
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
-	var graphics = this.add.graphics({ lineStyle: { width: 2, color: 0xaa0000 }, fillStyle: { color: 0x0000aa } });
+	var graphics = game.add.graphics({ lineStyle: { width: 2, color: 0xaa0000 }, fillStyle: { color: 0x0000aa } });
 	var rect = new Phaser.Geom.Rectangle();
 	graphics.clear();
 	
