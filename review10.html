@@ -78,6 +78,10 @@ function update ()
 
         player.anims.play('player-run', true);
     }
+	else if (cursors.down.isDown)
+    {
+        enemy.anim.play();
+    }
 
     if (cursors.up.isDown && player.body.touching.down)
     {
@@ -142,9 +146,9 @@ function createEnemies(game) {
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
-	game.tweens.add({
+	enemies.anim = game.tweens.add({
         targets: enemy,
-        x: 600,
+        x: enemy.getBounds().x + 100,
         duration: 3000,
         ease: 'Elastic',
         easeParams: [ 1.5, 0.5 ],
