@@ -125,14 +125,14 @@ function createPlayer(game) {
 }
 
 function createEnemies(game) {
-	text = 'うかつ！足が挟まって';
+	text = 'うかつ！足が挟まって (WWWWWWWWWWWWWWWW)';
 
 	enemy = game.add.text(50, 275, text, {fontSize: '36px', fill: '#FFF',  wordWrap: {width: 500, useAdvancedWrap: true}});
 	enemy.setStroke('#1f039c', 8);
 	numLines = enemy.getWrappedText(text).length;
 	
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2);
-	var textbottom = enemy.getBounds().y;
+	var textbottom = enemy.getBounds().y + (numLines - 1) * 32;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
 	var graphics = game.add.graphics({ lineStyle: { width: 2, color: 0xaa0000 }, fillStyle: { color: 0x0000aa } });
