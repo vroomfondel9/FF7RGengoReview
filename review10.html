@@ -146,7 +146,7 @@ function createEnemies(game) {
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
-	enemies.anim = game.tweens.add({
+	enemy.anim = game.tweens.add({
         targets: enemy,
         x: enemy.getBounds().x + 100,
         duration: 3000,
