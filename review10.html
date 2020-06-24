@@ -46,7 +46,8 @@ var game = new Phaser.Game(config);
 function preload ()
 {
     this.load.image('sky', 'assets/sky.png');
-    this.load.image('ground', 'assets/images/backgrounds/ground/groundfore-1.png');
+    this.load.image('groundfore', 'assets/images/backgrounds/ground/groundfore-1.png');
+	this.load.image('groundback', 'assets/images/backgrounds/ground/groundback-1.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('player-idle', 'assets/images/sprites/player/player-idle.png', { frameWidth: 96, frameHeight: 97});
@@ -63,12 +64,8 @@ function create ()
 
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-
-    //  Now let's create some ledges
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+	this.add.image(400, 468, 'groundback').setScale(2);
+    platforms.create(400, 568, 'groundfore').setScale(2).refreshBody();
 
     // The player and its settings
 	player = this.physics.add.sprite(100, 450, 'player-idle');
