@@ -49,7 +49,7 @@ function preload ()
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
     this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('cloud-idle', 'assets/images/sprites/cloud-cgw.png', { frameWidth: 96, frameHeight: 109, spacing: 26}); //28 frames per row
+    this.load.spritesheet('player-idle', 'assets/images/sprites/player/player-idle.png', { frameWidth: 96, frameHeight: 109}); //28 frames per row
 }
 
 function create ()
@@ -70,9 +70,7 @@ function create ()
     platforms.create(750, 220, 'ground');
 
     // The player and its settings
-	//playerGroup = this.physics.add.group();
-    //playerGroup.add.sprite(100, 450, 'cloud-idle');
-	player = this.physics.add.sprite(100, 450, 'cloud-idle');
+	player = this.physics.add.sprite(100, 450, 'player-idle');
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.2);
@@ -80,8 +78,8 @@ function create ()
 
     //  Our player animations, turning, walking left and walking right.
     this.anims.create({
-        key: 'cloud-idle',
-        frames: this.anims.generateFrameNumbers('cloud-idle', { start: 0, end: 9 }),
+        key: 'player-idle',
+        frames: this.anims.generateFrameNumbers('player-idle', { start: 0, end: 9 }),
         frameRate: 10,
         repeat: -1
     });
@@ -118,7 +116,7 @@ function create ()
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 	
-    player.anims.play('cloud-idle');
+    player.anims.play('player-idle');
 }
 
 function update ()
