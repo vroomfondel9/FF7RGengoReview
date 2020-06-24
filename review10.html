@@ -91,9 +91,9 @@ function create ()
 
     bombs = this.physics.add.group();
 
-    enemy = this.add.text(446, 258, 'うかつ！足が挟まって　（はさまって）', { fontSize: '36px', fill: '#FFF', align: 'right' });
-	enemy.setStroke('#de77ae', 16);
-	enemy.setShadow(2, 2, '#333333', 2, true, false);
+    enemy = this.add.text(150, 268, 'うかつ！足が挟まって　（はさまって）', { fontSize: '36px', fill: '#FFF' });
+	enemy.setStroke('#1f039c', 8);
+	//enemy.setShadow(2, 2, '#333333', 2, true, false);
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
