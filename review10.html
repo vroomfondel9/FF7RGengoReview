@@ -95,7 +95,9 @@ function createEnvironment(game) {
 }
 
 function createPlayer(game) {
-	player = game.physics.add.sprite(700, 292, 'player-idle');
+	var surfaceHeight = foreground.getBounds().y - (foreground.getBounds().height / 2)
+
+	player = game.physics.add.sprite(700, surfaceHeight - 1, 'player-idle');
 	player.setDepth(100);
 	player.flipX = true;
 
@@ -123,16 +125,14 @@ function createPlayer(game) {
 }
 
 function createEnemies(game) {
+	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 50;
+
 	enemy = game.add.text(50, 275, 'うかつ！足が挟まって (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW)', 
 		{fontSize: '36px', fill: '#FFF', boundsAlignV: 'bottom',  wordWrap: {width: 500, useAdvancedWrap: true}});
 	enemy.setStroke('#1f039c', 8);
-	var bounds = enemy.getBounds();
 	
-	//alert(bounds.x);
-	//alert(bounds.y);
-	//alert(bounds.width);
-	//alert(bounds.height);
-	alert(foreground.getBounds().y - (foreground.getBounds().height / 2));
+	var textbottom = enemy.getBounds().y + enemy.getBounds().height;
+	enemy.setY(enemy.getY() - (textbottom - floatHeight));
 }
 
 </script>
