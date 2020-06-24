@@ -54,9 +54,9 @@ function preload ()
 
 function create ()
 {
-	createEnvironment();
-	createPlayer();
-	createEnemies();
+	createEnvironment(this);
+	createPlayer(this);
+	createEnemies(this);
 }
 
 function update ()
@@ -85,49 +85,49 @@ function update ()
     }
 }
 
-function createPlayer() {
-	player = this.physics.add.sprite(700, 292, 'player-idle');
+function createEnvironment(game) {
+    game.add.image(400, 200, 'background');
+	
+    ground = game.physics.add.staticGroup();
+
+	game.add.image(400, 329, 'groundback').setScale(2);
+    ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
+}
+
+function createPlayer(game) {
+	player = game.physics.add.sprite(700, 292, 'player-idle');
 	player.setDepth(100);
 	player.flipX = true;
 
     //  Physics
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
-	this.physics.add.collider(player, ground);
+	game.physics.add.collider(player, ground);
 
     //  Animations
-    this.anims.create({
+    game.anims.create({
         key: 'player-idle',
-        frames: this.anims.generateFrameNumbers('player-idle', { start: 0, end: 6 }),
+        frames: game.anims.generateFrameNumbers('player-idle', { start: 0, end: 6 }),
         frameRate: 10,
         repeat: -1
     });
-	this.anims.create({
+	game.anims.create({
         key: 'player-run',
-        frames: this.anims.generateFrameNumbers('player-run', { start: 0, end: 9 }),
+        frames: game.anims.generateFrameNumbers('player-run', { start: 0, end: 9 }),
         frameRate: 10,
         repeat: -1
     });
 
     //  Input Events
-    cursors = this.input.keyboard.createCursorKeys();
+    cursors = game.input.keyboard.createCursorKeys();
 }
 
-function createEnvironment() {
-    this.add.image(400, 200, 'background');
-	
-    ground = this.physics.add.staticGroup();
-
-	this.add.image(400, 329, 'groundback').setScale(2);
-    ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
-}
-
-function createEnemies() {
+function createEnemies(game) {
 	enemies = [];
 	
 	for (var i = 0; i < 10; i++)
 	{
-		enemies[i] = this.add.text(50, 275, 'うかつ！足が挟まって (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW)', 
+		enemies[i] = game.add.text(50, 275, 'うかつ！足が挟まって (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW)', 
 			{fontSize: '36px', fill: '#FFF', boundsAlignV: 'bottom',  wordWrap: {width: 500, useAdvancedWrap: true}});
 		enemies[i].setStroke('#1f039c', 8);
 	}
