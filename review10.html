@@ -141,7 +141,6 @@ function createEnemies(game) {
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2);
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
-	enemy.setOrigin(0.5);
 	
 	game.tweens.add({
         targets: enemy,
