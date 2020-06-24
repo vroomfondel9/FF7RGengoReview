@@ -141,19 +141,6 @@ function createEnemies(game) {
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2);
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
-	
-	var graphics = game.add.graphics({ lineStyle: { width: 2, color: 0xaa0000 }, fillStyle: { color: 0x0000aa } });
-	var rect = new Phaser.Geom.Rectangle();
-	graphics.clear();
-	
-	rect.x = foreground.getBounds().x;
-	rect.y = foreground.getBounds().y;
-	rect.width = foreground.getBounds().width;
-	rect.height = foreground.getBounds().height;
-	
-	graphics.fillRectShape(rect);
-	
-	alert(foreground.y - (foreground.height / 2));
 }
 
 </script>
