@@ -125,12 +125,12 @@ function createEnemies(game) {
 	enemy = game.add.text(50, 275, 'うかつ！足が挟まって (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW)', 
 		{fontSize: '36px', fill: '#FFF', boundsAlignV: 'bottom',  wordWrap: {width: 500, useAdvancedWrap: true}});
 	enemy.setStroke('#1f039c', 8);
-	var bounds = enemy.getTextBounds(true);
+	var bounds = enemy.getBounds();
 	
-	alert(bounds.global.x);
-	alert(bounds.global.y);
-	alert(bounds.global.width);
-	alert(bounds.global.height);
+	alert(bounds.x);
+	alert(bounds.y);
+	alert(bounds.width);
+	alert(bounds.height);
 }
 
 </script>
