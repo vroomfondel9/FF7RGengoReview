@@ -125,9 +125,11 @@ function createPlayer(game) {
 }
 
 function createEnemies(game) {
-	enemy = game.add.text(50, 275, 'うかつ！足が挟まって (WWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWW) (WWWWWWWWWWWWWW)', 
-		{fontSize: '36px', fill: '#FFF',  wordWrap: {width: 500, useAdvancedWrap: true}});
+	text = 'うかつ！足が挟まって (WWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWW) (WWWWWWWWWWWWWW)';
+
+	enemy = game.add.text(50, 275, text, {fontSize: '36px', fill: '#FFF',  wordWrap: {width: 500, useAdvancedWrap: true}});
 	enemy.setStroke('#1f039c', 8);
+	alert(enemy.getWrappedText(text));
 	
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2);
 	var textbottom = enemy.getBounds().y + (enemy.getBounds().height / 2);
