@@ -145,10 +145,10 @@ function createEnemies(game) {
 	var rect = new Phaser.Geom.Rectangle();
 	graphics.clear();
 	
-	rect.x = ground.getBounds().x;
-	rect.y = ground.getBounds().y;
-	rect.width = ground.getBounds().width;
-	rect.height = ground.getBounds().height;
+	rect.x = foreground.getBounds().x;
+	rect.y = foreground.getBounds().y;
+	rect.width = foreground.getBounds().width;
+	rect.height = foreground.getBounds().height;
 	
 	graphics.fillRectShape(rect);
 }
