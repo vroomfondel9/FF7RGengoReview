@@ -68,6 +68,7 @@ function create ()
     // The player and its settings
 	player = this.physics.add.sprite(100, 292, 'player-idle');
 	player.setDepth(100);
+	player.flipX = true;
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.2);
