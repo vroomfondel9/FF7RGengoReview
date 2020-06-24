@@ -82,8 +82,7 @@ function create ()
     this.anims.create({
         key: 'cloud-idle',
         frames: this.anims.generateFrameNumbers('cloud-idle', { start: 0, end: 16 }),
-        frameRate: 10,
-        repeat: -1
+        frameRate: 10
     });
 
     //  Input Events
@@ -117,6 +116,8 @@ function create ()
     this.physics.add.overlap(player, stars, collectStar, null, this);
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
+	
+    player.anims.play('cloud-idle');
 }
 
 function update ()
@@ -125,10 +126,6 @@ function update ()
     {
         return;
     }
-
-    //if (cursors.left.isDown)
-	player.setVelocityX(0);
-    player.anims.play('cloud-idle');
 
     if (cursors.up.isDown && player.body.touching.down)
     {
