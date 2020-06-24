@@ -125,7 +125,7 @@ function createPlayer(game) {
 }
 
 function createEnemies(game) {
-	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 50;
+	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 20;
 
 	enemy = game.add.text(50, 275, 'うかつ！足が挟まって (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW) (WWWWWWWWWWWWWWWWWWWWW)', 
 		{fontSize: '36px', fill: '#FFF', boundsAlignV: 'bottom',  wordWrap: {width: 500, useAdvancedWrap: true}});
