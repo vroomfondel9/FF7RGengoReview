@@ -133,6 +133,9 @@ function createEnemies(game) {
 	
 	var textbottom = enemy.getBounds().y + (enemy.getBounds().height / 2);
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
+	
+	alert(enemy.getBounds().y  - (textbottom - floatHeight));
+	alert(foreground.getBounds().y);
 }
 
 </script>
