@@ -63,7 +63,7 @@ function create ()
     //  Here we create the ground.
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
 	this.add.image(400, 329, 'groundback').setScale(2);
-    platforms.create(400, 379, 'groundfore').setScale(2).refreshBody();
+    platforms.create(400, 389, 'groundfore').setScale(2).refreshBody();
 
     // The player and its settings
 	player = this.physics.add.sprite(100, 240, 'player-idle');
