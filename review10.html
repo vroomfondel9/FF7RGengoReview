@@ -140,6 +140,8 @@ function createEnemies(game) {
 	alert((textbottom - floatHeight));
 	
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
+	
+	this.add.rectangle(enemy.getBounds().x, enemy.getBounds().y, enemy.getBounds().width, enemy.getBounds().height, 0x9966ff);
 }
 
 </script>
