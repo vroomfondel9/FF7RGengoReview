@@ -66,7 +66,7 @@ function create ()
     platforms.create(400, 394, 'groundfore').setScale(2).refreshBody();
 
     // The player and its settings
-	player = this.physics.add.sprite(100, 293, 'player-idle');
+	player = this.physics.add.sprite(100, 292, 'player-idle');
 
     //  Player physics properties. Give the little guy a slight bounce.
     player.setBounce(0.2);
@@ -91,9 +91,9 @@ function create ()
 
     bombs = this.physics.add.group();
 
-    enemy = this.add.text(446, 258, 'うかつ！足が挟まって　（はさまって）', { fontSize: '55px', fill: '#FFF', align: 'center' });
+    enemy = this.add.text(446, 258, 'うかつ！足が挟まって　（はさまって）', { fontSize: '36px', fill: '#FFF', align: 'right' });
 	enemy.setStroke('#de77ae', 16);
-	text1.setShadow(2, 2, '#333333', 2, true, false);
+	enemy.setShadow(2, 2, '#333333', 2, true, false);
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
