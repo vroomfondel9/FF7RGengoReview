@@ -32,7 +32,7 @@ var config = {
     }
 };
 
-var playerGroup;
+var player;
 var stars;
 var bombs;
 var platforms;
@@ -72,11 +72,11 @@ function create ()
     // The player and its settings
 	//playerGroup = this.physics.add.group();
     //playerGroup.add.sprite(100, 450, 'cloud-idle');
-	playerGroup = this.physics.add.sprite(100, 450, 'cloud-idle');
+	player = this.physics.add.sprite(100, 450, 'cloud-idle');
 
     //  Player physics properties. Give the little guy a slight bounce.
-    playerGroup.setBounce(0.2);
-    playerGroup.setCollideWorldBounds(true);
+    player.setBounce(0.2);
+    player.setCollideWorldBounds(true);
 
     //  Our player animations, turning, walking left and walking right.
     this.anims.create({
