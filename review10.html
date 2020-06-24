@@ -132,6 +132,19 @@ function update ()
     {
         return;
     }
+	
+	if (cursors.left.isDown)
+    {
+        player.setVelocityX(0);
+
+        player.anims.play('player-idle', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+
+        player.anims.play('player-run', true);
+    }
 
     if (cursors.up.isDown && player.body.touching.down)
     {
