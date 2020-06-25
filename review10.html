@@ -128,6 +128,8 @@ function createPlayer(game) {
 
     //  Input Events
     cursors = game.input.keyboard.createCursorKeys();
+	
+	player.anims.play('player-idle', true);
 }
 
 function createEnemies(game) {
