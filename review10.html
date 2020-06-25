@@ -101,7 +101,8 @@ function createEnvironment(game) {
 function createPlayer(game) {
 	var surfaceHeight = foreground.getBounds().y - (foreground.getBounds().height / 2)
 
-	player = game.physics.add.sprite(700, surfaceHeight - 1, 'player-idle').setScale(4);
+	player = game.physics.add.sprite(700, surfaceHeight - 1, 'player-idle');
+	player.setScale(3);
 	player.setDepth(100);
 	player.flipX = true;
 
