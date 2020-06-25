@@ -138,13 +138,13 @@ function createEnemies(game) {
 	const wrapWidth = 500;
 	const lineHeight = fontSize + strokeSize;
 
-	text = 'うかつ！足が挟まって (WWWWWWWWWWWWWWWW)';
+	text = 'うかつ！足が挟まって';
 
 	enemy = game.add.text(50, 275, text, {fontSize: fontSize + 'px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
 	enemy.setStroke(strokeBaseColor, strokeSize);
 	numLines = enemy.getWrappedText(text).length;
 	
-	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2);
+	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
