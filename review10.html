@@ -179,9 +179,9 @@ function createEnemies(game) {
 				duration: 3000,
 				delay: 3100,
 				ease: 'Elastic',
-				easeParams: [ 1.5, 0.5 ]
+				easeParams: [ 1.5, 0.5 ],
+				onComplete: function() {enemy.animating = false;}
 			});
-			enemy.animating = false;
 		}
 	};
 }
