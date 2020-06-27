@@ -208,9 +208,8 @@ function createEnemies(game) {
 				delay: 1000,
 				ease: 'Elastic',
 				easeParams: [ 1.5, 0.5 ],
-				onComplete: function() {enemy.animating = false;}
+				onComplete: function() {enemy.setStroke(strokeBaseColor, strokeSize); enemy.animating = false;}
 			});
-			enemy.setStroke(strokeBaseColor, strokeSize);
 		}
 	};
 }
