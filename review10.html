@@ -154,6 +154,7 @@ function createEnemies(game) {
 	
 	// Animation definitions
 	enemy.anim_take_hit = function() {
+		console.log(enemy.animating);
 		if (!enemy.animating)
 		{
 			enemy.animating = true;
