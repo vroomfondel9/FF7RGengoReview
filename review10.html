@@ -153,12 +153,12 @@ function createEnemies(game) {
 	
 	// Animation definitions
 	enemy.anim_take_hit = function() {
-		var tiltX = enemy.getBounds().x - 5 - 5 * Math.random();
-		var tiltY = enemy.getBounds().y - 5 - 5 * Math.random();
+		var tiltX = - 5 - 5 * Math.random();
+		var tiltY = - 5 - 5 * Math.random();
 		game.tweens.add({
 			targets: enemy,
-			x: tiltX,
-			y: tiltY,
+			x: enemy.getBounds().x + tiltX,
+			y: enemy.getBounds().y + tiltY,
 			angle: -10 - 15 * Math.random(),
 			duration: 3000,
 			ease: 'Elastic',
@@ -166,8 +166,8 @@ function createEnemies(game) {
 		});
 		game.tweens.add({
 			targets: enemy,
-			x: -tiltX,
-			y: -tiltY,
+			x: enemy.getBounds().x - tiltX,
+			y: enemy.getBounds().y - tiltY,
 			angle: 0,
 			duration: 3000,
 			delay: 3100,
