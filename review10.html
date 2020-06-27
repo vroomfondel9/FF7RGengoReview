@@ -161,6 +161,15 @@ function createEnemies(game) {
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
+		game.tweens.add({
+			targets: enemy,
+			x: originalPosition.x,
+			y: originalPosition.y,
+			duration: 3000,
+			delay: 3000,
+			ease: 'Elastic',
+			easeParams: [ 1.5, 0.5 ]
+		});
 	};
 }
 
