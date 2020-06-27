@@ -142,7 +142,7 @@ function createEnemies(game) {
 
 	text = 'うかつ！足が挟まって';
 
-	enemy = game.add.text(50, 275, text, {fontSize: fontSize + 'px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
+	enemy = game.add.text(300, 275, text, {fontSize: fontSize + 'px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
 	enemy.setStroke(strokeBaseColor, strokeSize);
 	numLines = enemy.getWrappedText(text).length;
 	enemy.setOrigin(0.5);
