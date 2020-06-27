@@ -153,29 +153,34 @@ function createEnemies(game) {
 	
 	// Animation definitions
 	enemy.anim_take_hit = function() {
-		var tiltX = 5 + 5 * Math.random();
-		var tiltY = 5 + 5 * Math.random();
-		console.log('-=' + tiltX);
-		game.tweens.add({
-			targets: enemy,
-			x: '-=' + tiltX,
-			y: '-=' + tiltY,
-			//angle: -10 - 15 * Math.random(),
-			duration: 3000,
-			ease: 'Elastic',
-			easeParams: [ 1.5, 0.5 ]
-		});
-		console.log('+=' + tiltX);
-		game.tweens.add({
-			targets: enemy,
-			x: '+=' + tiltX,
-			y: '+=' + tiltY,
-			//angle: 0,
-			duration: 3000,
-			delay: 3100,
-			ease: 'Elastic',
-			easeParams: [ 1.5, 0.5 ]
-		});
+		if (!enemy.animating)
+		{
+			enemy.animating = true;
+			var tiltX = 5 + 5 * Math.random();
+			var tiltY = 5 + 5 * Math.random();
+			console.log('-=' + tiltX);
+			game.tweens.add({
+				targets: enemy,
+				x: '-=' + tiltX,
+				y: '-=' + tiltY,
+				//angle: -10 - 15 * Math.random(),
+				duration: 3000,
+				ease: 'Elastic',
+				easeParams: [ 1.5, 0.5 ]
+			});
+			console.log('+=' + tiltX);
+			game.tweens.add({
+				targets: enemy,
+				x: '+=' + tiltX,
+				y: '+=' + tiltY,
+				//angle: 0,
+				duration: 3000,
+				delay: 3100,
+				ease: 'Elastic',
+				easeParams: [ 1.5, 0.5 ]
+			});
+			enemy.animating = false;
+		}
 	};
 }
 
