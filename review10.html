@@ -156,7 +156,6 @@ function createEnemies(game) {
 		game.tweens.add({
 			targets: enemy,
 			x: originalPosition.x - 50 - 50 * Math.random(),
-			y: originalPosition.y - 50 - 50 * Math.random(),
 			duration: 3000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
@@ -164,9 +163,7 @@ function createEnemies(game) {
 		game.tweens.add({
 			targets: enemy,
 			x: originalPosition.x,
-			y: originalPosition.y,
 			duration: 3000,
-			startDuration: 3000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
