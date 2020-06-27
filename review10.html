@@ -153,24 +153,24 @@ function createEnemies(game) {
 	
 	// Animation definitions
 	enemy.anim_take_hit = function() {
-		var originalPositionX = enemy.getBounds().x;
-		var originalPositionY = enemy.getBounds().y;
+		var tiltX = originalPositionX - 5 - 5 * Math.random();
+		var tiltY = originalPositionY - 5 - 5 * Math.random();
 		game.tweens.add({
 			targets: enemy,
-			x: originalPositionX - 5 - 5 * Math.random(),
-			y: originalPositionY - 5 - 5 * Math.random(),
+			x: tiltX,
+			y: tiltY,
 			angle: -10 - 15 * Math.random(),
-			duration: 2000,
+			duration: 3000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
 		game.tweens.add({
 			targets: enemy,
-			x: originalPositionX,
-			y: originalPositionY,
+			x: -tiltX,
+			y: -tiltY,
 			angle: 0,
-			duration: 2000,
-			delay: 2100,
+			duration: 3000,
+			delay: 3100,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
