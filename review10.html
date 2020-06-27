@@ -190,8 +190,8 @@ function createEnemies(game) {
 			var tiltY = 25 + 25 * Math.random();
 			game.tweens.add({
 				targets: enemy,
-				x: '-=' + tiltX,
-				y: '-=' + tiltY,
+				x: '+=' + tiltX,
+				y: '+=' + tiltY,
 				angle: +10 + 15 * Math.random(),
 				duration: 800,
 				ease: 'Elastic',
@@ -199,8 +199,8 @@ function createEnemies(game) {
 			});
 			game.tweens.add({
 				targets: enemy,
-				x: '+=' + tiltX,
-				y: '+=' + tiltY,
+				x: '-=' + tiltX,
+				y: '-=' + tiltY,
 				angle: 0,
 				duration: 800,
 				delay: 1000,
