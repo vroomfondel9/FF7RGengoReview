@@ -145,6 +145,7 @@ function createEnemies(game) {
 	enemy = game.add.text(50, 275, text, {fontSize: fontSize + 'px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
 	enemy.setStroke(strokeBaseColor, strokeSize);
 	numLines = enemy.getWrappedText(text).length;
+	enemy.setOrigin(0.5);
 	
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
