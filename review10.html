@@ -157,6 +157,7 @@ function createEnemies(game) {
 			targets: enemy,
 			x: originalPosition.x - 50 - 50 * Math.random(),
 			y: originalPosition.y - 50 - 50 * Math.random(),
+			angle: -90 * Math.random(),
 			duration: 3000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
@@ -165,6 +166,7 @@ function createEnemies(game) {
 			targets: enemy,
 			x: originalPosition.x,
 			y: originalPosition.y,
+			angle: 0,
 			duration: 3000,
 			delay: 3000,
 			ease: 'Elastic',
