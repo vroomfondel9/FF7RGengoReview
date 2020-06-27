@@ -158,15 +158,15 @@ function createEnemies(game) {
 		if (!enemy.animating)
 		{
 			enemy.animating = true;
-			var tiltX = 5 + 5 * Math.random();
-			var tiltY = 5 + 5 * Math.random();
+			var tiltX = 50 + 50 * Math.random();
+			var tiltY = 50 + 50 * Math.random();
 			console.log('-=' + tiltX);
 			game.tweens.add({
 				targets: enemy,
 				x: '-=' + tiltX,
 				y: '-=' + tiltY,
-				//angle: -10 - 15 * Math.random(),
-				duration: 3000,
+				angle: -10 - 15 * Math.random(),
+				duration: 800,
 				ease: 'Elastic',
 				easeParams: [ 1.5, 0.5 ]
 			});
@@ -175,9 +175,9 @@ function createEnemies(game) {
 				targets: enemy,
 				x: '+=' + tiltX,
 				y: '+=' + tiltY,
-				//angle: 0,
-				duration: 3000,
-				delay: 3100,
+				angle: 0,
+				duration: 800,
+				delay: 1000,
 				ease: 'Elastic',
 				easeParams: [ 1.5, 0.5 ],
 				onComplete: function() {enemy.animating = false;}
