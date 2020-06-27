@@ -151,15 +151,13 @@ function createEnemies(game) {
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
 	enemy.anim_take_hit = function() {
-		function(scene) {
-			scene.tweens.add({
-				targets: enemy,
-				x: enemy.getBounds().x + 100 * Math.random(),
-				duration: 3000,
-				ease: 'Elastic',
-				easeParams: [ 1.5, 0.5 ]
-			});
-		}(game);
+		game.tweens.add({
+			targets: enemy,
+			x: enemy.getBounds().x + 100 * Math.random(),
+			duration: 3000,
+			ease: 'Elastic',
+			easeParams: [ 1.5, 0.5 ]
+		});
 	};
 }
 
