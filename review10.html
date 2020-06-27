@@ -80,7 +80,7 @@ function update (game)
     }
 	else if (cursors.down.isDown)
     {
-        enemy.anim_take_hit(game);
+        enemy.anim_take_hit();
     }
 
     if (cursors.up.isDown && player.body.touching.down)
@@ -150,15 +150,15 @@ function createEnemies(game) {
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
-	enemy.anim_take_hit = function(game) {
-		game.tweens.add({
+	enemy.anim_take_hit = function(scene) {
+		scene.tweens.add({
 			targets: enemy,
 			x: enemy.getBounds().x + 100 * Math.random(),
 			duration: 3000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
-	};
+	}(game);
 }
 
 </script>
