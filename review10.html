@@ -170,6 +170,12 @@ function createEnemies(game) {
 				easeParams: [ 1.5, 0.5 ]
 			});
 			game.tweens.add({
+			  targets: enemy,
+			  alpha: 0,
+			  duration: 1000,
+			  ease: 'Power2'
+			});
+			game.tweens.add({
 				targets: enemy,
 				x: '+=' + tiltX,
 				y: '+=' + tiltY,
