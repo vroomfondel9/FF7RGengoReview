@@ -150,11 +150,23 @@ function createEnemies(game) {
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
+	// Animation definitions
 	enemy.anim_take_hit = function() {
+		var originalPosition = enemy.getBounds();
 		game.tweens.add({
 			targets: enemy,
-			x: enemy.getBounds().x + 100 * Math.random(),
+			x: originalPosition.x - 50 - 50 * Math.random(),
+			y: originalPosition.y - 50 - 50 * Math.random(),
 			duration: 3000,
+			ease: 'Elastic',
+			easeParams: [ 1.5, 0.5 ]
+		});
+		game.tweens.add({
+			targets: enemy,
+			x: originalPosition.x,
+			y: originalPosition.y,
+			duration: 3000,
+			startDuration: 3000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
