@@ -137,6 +137,7 @@ function createEnemies(game) {
 	const strokeSize = 8;
 	const fontColor = '#FFF';
 	const strokeBaseColor = '#1f039c';
+	const strokeHitColor = '#cc0007';
 	const wrapWidth = 500;
 	const lineHeight = fontSize + strokeSize;
 
@@ -197,6 +198,7 @@ function createEnemies(game) {
 				ease: 'Elastic',
 				easeParams: [ 1.5, 0.5 ]
 			});
+			enemy.setStroke(strokeHitColor, strokeSize);
 			game.tweens.add({
 				targets: enemy,
 				x: '+=' + tiltX,
@@ -208,6 +210,7 @@ function createEnemies(game) {
 				easeParams: [ 1.5, 0.5 ],
 				onComplete: function() {enemy.animating = false;}
 			});
+			enemy.setStroke(strokeBaseColor, strokeSize);
 		}
 	};
 }
