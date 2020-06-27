@@ -59,7 +59,7 @@ function create ()
 	createEnemies(this);
 }
 
-function update ()
+function update (game)
 {
     if (gameOver)
     {
@@ -80,7 +80,7 @@ function update ()
     }
 	else if (cursors.down.isDown)
     {
-        enemy.anim.play();
+        enemy.anim_take_hit(game);
     }
 
     if (cursors.up.isDown && player.body.touching.down)
@@ -150,13 +150,15 @@ function createEnemies(game) {
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
-	enemy.anim = game.tweens.add({
-        targets: enemy,
-        x: enemy.getBounds().x + 100 * Math.random(),
-        duration: 3000,
-        ease: 'Elastic',
-        easeParams: [ 1.5, 0.5 ]
-    });
+	enemy.anim_take_hit = function(game) {
+		game.tweens.add({
+			targets: enemy,
+			x: enemy.getBounds().x + 100 * Math.random(),
+			duration: 3000,
+			ease: 'Elastic',
+			easeParams: [ 1.5, 0.5 ]
+		});
+	};
 }
 
 </script>
