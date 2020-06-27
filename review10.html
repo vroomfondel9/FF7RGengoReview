@@ -186,8 +186,8 @@ function createEnemies(game) {
 		if (!enemy.animating)
 		{
 			enemy.animating = true;
-			var tiltX = 15 + 15 * Math.random();
-			var tiltY = 0 + 0 * Math.random();
+			var tiltX = 35 + 35 * Math.random();
+			var tiltY = 25 + 25 * Math.random();
 			game.tweens.add({
 				targets: enemy,
 				x: '-=' + tiltX,
