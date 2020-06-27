@@ -157,10 +157,10 @@ function createEnemies(game) {
 		var originalPositionY = enemy.getBounds().y;
 		game.tweens.add({
 			targets: enemy,
-			x: originalPositionX - 10 - 10 * Math.random(),
-			y: originalPositionY - 10 - 10 * Math.random(),
-			angle: -10 - 35 * Math.random(),
-			duration: 1500,
+			x: originalPositionX - 5 - 5 * Math.random(),
+			y: originalPositionY - 5 - 5 * Math.random(),
+			angle: -10 - 15 * Math.random(),
+			duration: 2000,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
@@ -169,8 +169,8 @@ function createEnemies(game) {
 			x: originalPositionX,
 			y: originalPositionY,
 			angle: 0,
-			duration: 1500,
-			delay: 1600,
+			duration: 2000,
+			delay: 2100,
 			ease: 'Elastic',
 			easeParams: [ 1.5, 0.5 ]
 		});
