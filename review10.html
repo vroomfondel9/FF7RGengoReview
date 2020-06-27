@@ -153,8 +153,8 @@ function createEnemies(game) {
 	
 	// Animation definitions
 	enemy.anim_take_hit = function() {
-		var tiltX = originalPositionX - 5 - 5 * Math.random();
-		var tiltY = originalPositionY - 5 - 5 * Math.random();
+		var tiltX = enemy.getBounds().x - 5 - 5 * Math.random();
+		var tiltY = enemy.getBounds().y - 5 - 5 * Math.random();
 		game.tweens.add({
 			targets: enemy,
 			x: tiltX,
