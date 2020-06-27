@@ -152,7 +152,7 @@ function createEnemies(game) {
 	
 	enemy.anim = game.tweens.add({
         targets: enemy,
-        x: enemy.getBounds().x + 100,
+        x: enemy.getBounds().x + 100 * Math.random(),
         duration: 3000,
         ease: 'Elastic',
         easeParams: [ 1.5, 0.5 ]
