@@ -213,8 +213,8 @@ function createEnemies(game) {
 				onUpdate: function(state) {
 					var curFillColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed);
 					var curStrokeColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed);
-					var curFillColorHex = Phaser.Display.Color.RGBToString(curFillColor.r, curFillColor.g, curFillColor.b, curFillColor.a);
-					var curStrokeColorHex = Phaser.Display.Color.RGBToString(curStrokeColor.r, curStrokeColor.g, curStrokeColor.b, curStrokeColor.a);
+					var curFillColorHex = Phaser.Display.Color.RGBToString(curFillColor.r, curFillColor.g, curFillColor.b, curFillColor.a).substring(0, 6);
+					var curStrokeColorHex = Phaser.Display.Color.RGBToString(curStrokeColor.r, curStrokeColor.g, curStrokeColor.b, curStrokeColor.a).substring(0, 6);
 					
 					console.log(curFillColorHex + '|' + curStrokeColorHex);
 					enemy.setColor(curFillColorHex);
