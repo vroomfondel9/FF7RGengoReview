@@ -211,6 +211,7 @@ function createEnemies(game) {
 				targets: enemy,
 				alpha: 0,
 				onUpdate: function(state) {
+					console.log(col_font_alive);
 					console.log(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed, 1));
 					enemy.setColor(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed, 1));
 					enemy.setStroke(Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed, 1), strokeSize);
