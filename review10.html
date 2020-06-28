@@ -211,9 +211,9 @@ function createEnemies(game) {
 				x: '+=' + tiltX - 800,
 				y: '-=' + tiltY,
 				angle: 0,
-				alpha: 0,
+				alpha: 1,
 				duration: 20,
-				delay: 1000,
+				delay: 5000,
 				ease: 'Linear',
 				onComplete: function() {enemy.setStroke(strokeBaseColor, strokeSize); enemy.animating = false;}
 			});
