@@ -142,10 +142,10 @@ function createEnemies(game) {
 	const wrapWidth = 500;
 	const lineHeight = fontSize + strokeSize;
 	
-	const col_font_alive = Phaser.Display.Color.HexStringToColor(fontColor).color;
-	const col_font_killed = Phaser.Display.Color.HexStringToColor(fontColorKilled).color;
-	const col_stroke_alive = Phaser.Display.Color.HexStringToColor(strokeBaseColor).color;
-	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor).color;
+	const col_font_alive = Phaser.Display.Color.HexStringToColor(fontColor);
+	const col_font_killed = Phaser.Display.Color.HexStringToColor(fontColorKilled);
+	const col_stroke_alive = Phaser.Display.Color.HexStringToColor(strokeBaseColor);
+	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
 
 	text = 'うかつ！足が挟まって';
 
@@ -211,6 +211,7 @@ function createEnemies(game) {
 				targets: enemy,
 				alpha: 0,
 				onUpdate: function(state) {
+					console.log('1');
 					console.log(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed));
 					enemy.setColor(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed, 1));
 					enemy.setStroke(Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed, 1), strokeSize);
