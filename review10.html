@@ -136,6 +136,7 @@ function createEnemies(game) {
 	const fontSize = 32;
 	const strokeSize = 8;
 	const fontColor = '#FFF';
+	const fontColorKilled = '#ff0008';
 	const strokeBaseColor = '#1f039c';
 	const strokeHitColor = '#990207';
 	const wrapWidth = 500;
@@ -186,6 +187,8 @@ function createEnemies(game) {
 	enemy.anim_get_hit_and_die = function() {
 		if (!enemy.animating)
 		{
+			const killDuration = 1000;
+		
 			enemy.animating = true;
 			var tiltX = 35 + 35 * Math.random();
 			var tiltY = 15 + 15 * Math.random();
@@ -202,7 +205,12 @@ function createEnemies(game) {
 			game.tweens.add({
 				targets: enemy,
 				alpha: 0,
-				duration: 2000,
+				.onUpdate((param1) => {
+					console.log(param1);
+					//enemy.setColor(Phaser.Color.interpolateColor(fontColor, fontColorKilled, 100, colorBlend.step, 1));
+					//enemy.setStroke(Phaser.Color.interpolateColor(strokeHitColor, fontColorKilled, 100, colorBlend.step, 1), strokeSize);
+				}),
+				duration: killDuration,
 				delay: 1000,
 				ease: 'Linear'
 			});
