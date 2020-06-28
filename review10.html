@@ -205,7 +205,7 @@ function createEnemies(game) {
 			game.tweens.add({
 				targets: enemy,
 				alpha: 0,
-				.onUpdate((param1) => {
+				onUpdate((param1) => {
 					console.log(param1);
 					//enemy.setColor(Phaser.Color.interpolateColor(fontColor, fontColorKilled, 100, colorBlend.step, 1));
 					//enemy.setStroke(Phaser.Color.interpolateColor(strokeHitColor, fontColorKilled, 100, colorBlend.step, 1), strokeSize);
