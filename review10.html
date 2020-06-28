@@ -89,11 +89,6 @@ function update (game)
     {
         enemy.anim_get_hit_and_die();
     }
-
-    if (cursors.up.isDown && player.body.touching.down)
-    {
-        player.setVelocityY(-330);
-    }
 }
 
 function createEnvironment(game) {
