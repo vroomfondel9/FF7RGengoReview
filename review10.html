@@ -211,10 +211,14 @@ function createEnemies(game) {
 				targets: enemy,
 				alpha: 0,
 				onUpdate: function(state) {
-					console.log('3');
-					console.log(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed));
-					enemy.setColor(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed));
-					//enemy.setStroke(Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed).color, strokeSize);
+					var curFillColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed);
+					var curStrokeColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed);
+					var curFillColorHex = Phaser.Display.Color.RGBToString(curFillColor.r, curFillColor.g, curFillColor.b, curFillColor.a);
+					var curStrokeColorHex = Phaser.Display.Color.RGBToString(curStrokeColor.r, curStrokeColor.g, curStrokeColor.b, curStrokeColor.a);
+					
+					console.log(curFillColorHex + '|' + curStrokeColorHex);
+					enemy.setColor(curFillColorHex);
+					enemy.setStroke(curStrokeColorHex, strokeSize);
 				},
 				duration: killDuration,
 				delay: 1000,
