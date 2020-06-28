@@ -50,7 +50,7 @@ function preload ()
     this.load.image('bomb', 'assets/bomb.png');
     this.load.spritesheet('player-idle', 'assets/images/sprites/player/player-idle.png', { frameWidth: 96, frameHeight: 97});
 	this.load.spritesheet('player-run', 'assets/images/sprites/player/player-run.png', { frameWidth: 79, frameHeight: 97});
-	this.load.spritesheet('player-attack', 'assets/images/sprites/player/player-attack.png', { frameWidth: 90, frameHeight: 96});
+	this.load.spritesheet('player-attack', 'assets/images/sprites/player/player-attack.png', { frameWidth: 100, frameHeight: 96});
 }
 
 function create ()
@@ -129,7 +129,7 @@ function createPlayer(game) {
     });
 	game.anims.create({
         key: 'player-attack',
-        frames: game.anims.generateFrameNumbers('player-attack', { start: 0, end: 7 }),
+        frames: game.anims.generateFrameNumbers('player-attack', { start: 0, end: 6 }),
         frameRate: 10,
         repeat: -1
     });
