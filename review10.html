@@ -44,13 +44,16 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
+	// Background
     this.load.image('background', 'assets/images/backgrounds/background1.png');
     this.load.image('groundfore', 'assets/images/backgrounds/ground/groundfore-1.png');
 	this.load.image('groundback', 'assets/images/backgrounds/ground/groundback-1.png');
-    this.load.image('bomb', 'assets/bomb.png');
+	
+	// Player
     this.load.spritesheet('player-idle', 'assets/images/sprites/player/player-idle.png', { frameWidth: 96, frameHeight: 97});
 	this.load.spritesheet('player-run', 'assets/images/sprites/player/player-run.png', { frameWidth: 79, frameHeight: 97});
 	this.load.spritesheet('player-attack', 'assets/images/sprites/player/player-attack.png', { frameWidth: 96, frameHeight: 96});
+	this.load.spritesheet('player-land', 'assets/images/sprites/player/player-land.png', { frameWidth: 96, frameHeight: 98});
 }
 
 function create ()
@@ -69,9 +72,9 @@ function update (game)
 	
 	if (cursors.right.isDown)
     {
-        player.setVelocityX(0);
+        player.setVelocityX(160);
 
-        player.anims.play('player-idle', true);
+        player.anims.play('player-land', true);
     }
     else if (cursors.left.isDown)
     {
@@ -87,7 +90,10 @@ function update (game)
     }
 	else if (cursors.down.isDown)
     {
-        enemy.anim_get_hit_and_die();
+        //enemy.anim_get_hit_and_die();
+		player.setVelocityX(0);
+
+        player.anims.play('player-idle', true);
     }
 }
 
@@ -130,6 +136,12 @@ function createPlayer(game) {
 	game.anims.create({
         key: 'player-attack',
         frames: game.anims.generateFrameNumbers('player-attack', { start: 0, end: 6 }),
+        frameRate: 10,
+        repeat: -1
+    });
+	game.anims.create({
+        key: 'player-land',
+        frames: game.anims.generateFrameNumbers('player-land', { start: 0, end: 3 }),
         frameRate: 10,
         repeat: -1
     });
