@@ -206,7 +206,7 @@ function createEnemies(game) {
 				ease: 'Elastic',
 				easeParams: [ 1.5, 0.5 ]
 			});
-			//enemy.setStroke(strokeHitColor, strokeSize);
+			
 			game.tweens.add({
 				targets: enemy,
 				alpha: 0,
@@ -216,7 +216,6 @@ function createEnemies(game) {
 					var curFillColorHex = Phaser.Display.Color.RGBToString(curFillColor.r, curFillColor.g, curFillColor.b, curFillColor.a).substring(0, 7);
 					var curStrokeColorHex = Phaser.Display.Color.RGBToString(curStrokeColor.r, curStrokeColor.g, curStrokeColor.b, curStrokeColor.a).substring(0, 7);
 					
-					console.log(curFillColorHex + '|' + curStrokeColorHex);
 					enemy.setColor(curFillColorHex);
 					enemy.setStroke(curStrokeColorHex, strokeSize);
 				},
@@ -233,7 +232,7 @@ function createEnemies(game) {
 				duration: 20,
 				delay: 5000,
 				ease: 'Linear',
-				onComplete: function() {enemy.setStroke(strokeBaseColor, strokeSize); enemy.animating = false;}
+				onComplete: function() {enemy.setColor(fontColor); enemy.setStroke(strokeBaseColor, strokeSize); enemy.animating = false;}
 			});
 		}
 	};
