@@ -72,7 +72,7 @@ function update (game)
 	
 	if (cursors.right.isDown)
     {
-        player.setVelocityX(160);
+        player.setVelocityX(0);
 
         player.anims.play('player-land', true);
     }
@@ -84,7 +84,8 @@ function update (game)
     }
 	else if (cursors.up.isDown)
     {
-        player.setVelocityX(0);
+        player.setVelocityX(160);
+		player.setVelocityY(-330);
 
         player.anims.play('player-attack', true);
     }
@@ -136,14 +137,12 @@ function createPlayer(game) {
 	game.anims.create({
         key: 'player-attack',
         frames: game.anims.generateFrameNumbers('player-attack', { start: 0, end: 6 }),
-        frameRate: 10,
-        repeat: -1
+        frameRate: 10
     });
 	game.anims.create({
         key: 'player-land',
         frames: game.anims.generateFrameNumbers('player-land', { start: 0, end: 2 }),
-        frameRate: 10,
-        repeat: -1
+        frameRate: 10
     });
 
     //  Input Events
