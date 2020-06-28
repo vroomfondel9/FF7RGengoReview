@@ -206,8 +206,8 @@ function createEnemies(game) {
 				targets: enemy,
 				alpha: 0,
 				onUpdate: function(state) {
-					enemy.setColor(Phaser.Color.interpolateColor(fontColor, fontColorKilled, state.duration, state.elapsed, 1));
-					enemy.setStroke(Phaser.Color.interpolateColor(strokeHitColor, fontColorKilled, state.duration, state.elapsed, 1), strokeSize);
+					enemy.setColor(Phaser.Display.Color.Interpolate.ColorWithColor(fontColor, fontColorKilled, state.duration, state.elapsed, 1));
+					enemy.setStroke(Phaser.Display.Color.Interpolate.ColorWithColor(strokeHitColor, fontColorKilled, state.duration, state.elapsed, 1), strokeSize);
 				},
 				duration: killDuration,
 				delay: 1000,
