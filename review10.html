@@ -213,8 +213,8 @@ function createEnemies(game) {
 				onUpdate: function(state) {
 					console.log('3');
 					console.log(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed));
-					enemy.setColor(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed).color);
-					enemy.setStroke(Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed).color, strokeSize);
+					enemy.setColor(Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed));
+					//enemy.setStroke(Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed).color, strokeSize);
 				},
 				duration: killDuration,
 				delay: 1000,
