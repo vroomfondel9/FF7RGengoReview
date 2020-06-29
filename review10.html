@@ -143,7 +143,7 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened5');
+			console.log('happened6');
 			player.animating = true;
 			
 			game.tweens.timeline({
@@ -151,7 +151,7 @@ function createPlayer(game) {
 					{
 						targets: player,
 						x: "+=0",
-						duration: 0,
+						duration: 1,
 						onComplete: function() {
 							console.log('run');
 							player.setVelocityX(-320);
@@ -182,7 +182,7 @@ function createPlayer(game) {
 					{
 						targets: player,
 						x: "+=0",
-						duration: 0,
+						duration: 1,
 						onComplete: function() {
 							console.log('idle');
 							player.body.setAllowDrag(false);
