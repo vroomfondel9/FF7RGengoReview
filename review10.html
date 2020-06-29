@@ -103,6 +103,7 @@ function createEnvironment(game) {
 
 	game.add.image(400, 329, 'groundback').setScale(2);
     foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
+	foreground.setDragX(100);
 }
 
 function createPlayer(game) {
@@ -116,7 +117,6 @@ function createPlayer(game) {
 
     //  Physics
     player.setBounce(0.2);
-	player.setDragX(10);
 	game.physics.add.collider(player, ground);
 
     //  Animations
