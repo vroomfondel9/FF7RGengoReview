@@ -103,7 +103,7 @@ function createEnvironment(game) {
 
 	game.add.image(400, 329, 'groundback').setScale(2);
     foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
-	foreground.setDragX(100);
+	foreground.setFrictionX(1);
 }
 
 function createPlayer(game) {
