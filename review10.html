@@ -143,14 +143,14 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened7');
+			console.log('happened8');
 			player.animating = true;
 			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: player,
-						x: "+=0",
+						alpha: "+=0",
 						duration: 1000,
 						onComplete: function() {
 							console.log('run');
@@ -160,7 +160,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
-						x: "+=0",
+						alpha: "+=0",
 						duration: 2000,
 						onComplete: function() {
 							console.log('attack');
@@ -171,7 +171,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
-						x: "+=0",
+						alpha: "+=0",
 						duration: 1000,
 						onComplete: function() {
 							console.log('land');
@@ -181,7 +181,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
-						x: "+=0",
+						alpha: "+=0",
 						duration: 1000,
 						onComplete: function() {
 							console.log('idle');
