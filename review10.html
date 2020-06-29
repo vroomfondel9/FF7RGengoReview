@@ -150,6 +150,7 @@ function createPlayer(game) {
 				tweens: [
 					{
 						targets: player,
+						x: "+=0",
 						duration: 0,
 						onComplete: function() {
 							console.log('run');
@@ -159,6 +160,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
+						x: "+=0",
 						duration: 2000,
 						onComplete: function() {
 							console.log('attack');
@@ -169,6 +171,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
+						x: "+=0",
 						duration: 1000,
 						onComplete: function() {
 							console.log('land');
@@ -178,6 +181,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
+						x: "+=0",
 						duration: 0,
 						onComplete: function() {
 							console.log('idle');
