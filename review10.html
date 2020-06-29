@@ -143,7 +143,7 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened16');
+			console.log('happened17');
 			player.animating = true;
 			
 			game.tweens.timeline({
@@ -154,14 +154,14 @@ function createPlayer(game) {
 						duration: 1,
 						onComplete: function() {
 							console.log('run');
-							player.setVelocityX(-320);
+							player.setVelocityX(-420);
 							player.anims.play('player-run', true);
 						}
 					},
 					{
 						targets: player,
 						alpha: "+=0",
-						duration: 1100,
+						duration: 1000,
 						onComplete: function() {
 							console.log('attack');
 							player.setVelocityX(360);
@@ -182,7 +182,7 @@ function createPlayer(game) {
 					{
 						targets: player,
 						alpha: "+=0",
-						duration: 600,
+						duration: 400,
 						onComplete: function() {
 							console.log('idle');
 							player.body.setAllowDrag(false);
