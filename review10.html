@@ -112,7 +112,7 @@ function createPlayer(game) {
     //  Physics
     player.setBounce(0.2);
 	game.physics.add.collider(player, ground);
-	player.setDrag(640, 0);
+	player.setDrag(1000, 0);
 	player.body.setAllowDrag(false);
 
     //  Animations
@@ -143,7 +143,7 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened11');
+			console.log('happened12');
 			player.animating = true;
 			
 			game.tweens.timeline({
@@ -161,7 +161,7 @@ function createPlayer(game) {
 					{
 						targets: player,
 						alpha: "+=0",
-						duration: 1200,
+						duration: 1100,
 						onComplete: function() {
 							console.log('attack');
 							player.setVelocityX(360);
