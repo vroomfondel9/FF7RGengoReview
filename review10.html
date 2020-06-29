@@ -143,7 +143,7 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened17');
+			console.log('happened18');
 			player.animating = true;
 			
 			game.tweens.timeline({
@@ -166,6 +166,7 @@ function createPlayer(game) {
 							console.log('attack');
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
+							enemy.anim_get_hit_and_die();
 							player.anims.play('player-attack', true);
 						}
 					},
