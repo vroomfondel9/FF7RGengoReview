@@ -259,7 +259,7 @@ function createEnemies(game) {
 	enemy.anim_get_hit_and_die = function() {
 		if (!enemy.animating)
 		{
-			console.log('3');
+			console.log('4');
 			const killDuration = 1000;
 		
 			enemy.animating = true;
@@ -283,8 +283,9 @@ function createEnemies(game) {
 						alpha: 0,
 						onUpdate: function(state) {
 							console.log(state.duration + '|' + state.elapsed);
-							var curFillColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, state.duration, state.elapsed);
-							var curStrokeColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, state.duration, state.elapsed);
+							var totalDuration = state.duration + 800 + 200;
+							var curFillColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, totalDuration, state.elapsed);
+							var curStrokeColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, totalDuration, state.elapsed);
 							var curFillColorHex = Phaser.Display.Color.RGBToString(curFillColor.r, curFillColor.g, curFillColor.b, curFillColor.a).substring(0, 7);
 							var curStrokeColorHex = Phaser.Display.Color.RGBToString(curStrokeColor.r, curStrokeColor.g, curStrokeColor.b, curStrokeColor.a).substring(0, 7);
 							
