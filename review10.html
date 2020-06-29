@@ -259,6 +259,7 @@ function createEnemies(game) {
 	enemy.anim_get_hit_and_die = function() {
 		if (!enemy.animating)
 		{
+			console.log('1');
 			const killDuration = 1000;
 		
 			enemy.animating = true;
@@ -273,7 +274,7 @@ function createEnemies(game) {
 						y: '+=' + tiltY,
 						angle: 3 + 5 * Math.random(),
 						duration: 800,
-						delay: 200,
+						delay: 100,
 						ease: 'Elastic',
 						easeParams: [ 1.5, 0.5 ]
 					},
