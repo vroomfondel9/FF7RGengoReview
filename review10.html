@@ -143,6 +143,7 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
+			console.log('happened');
 			player.animating = true;
 			player.setVelocityX(-320);
 			player.anims.play('player-run', true);
