@@ -149,7 +149,7 @@ function createPlayer(game) {
 			
 			game.tweens.add({
 				targets: player,
-				duration: 800,
+				duration: 3000,
 				onComplete: function() {
 					player.setVelocityX(360);
 					player.setVelocityY(-160);
@@ -159,7 +159,7 @@ function createPlayer(game) {
 			
 			game.tweens.add({
 				targets: player,
-				duration: 1800,
+				duration: 6000,
 				onComplete: function() {
 					player.body.setAllowDrag(true);
 					player.anims.play('player-land', true);
@@ -168,7 +168,7 @@ function createPlayer(game) {
 			
 			game.tweens.add({
 				targets: player,
-				duration: 2500,
+				duration: 8000,
 				onComplete: function() {
 					player.body.setAllowDrag(false);
 					player.anims.play('player-idle', true);
