@@ -163,7 +163,8 @@ function createPlayer(game) {
 						onComplete: function() {
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
-							enemy.anim_dodge();
+							//enemy.anim_dodge();
+							enemy.anim_get_hit_and_die();
 							player.anims.play('player-attack', true);
 						}
 					},
