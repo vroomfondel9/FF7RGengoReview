@@ -145,36 +145,45 @@ function createPlayer(game) {
 		{
 			console.log('happened');
 			player.animating = true;
-			player.setVelocityX(-320);
-			player.anims.play('player-run', true);
 			
-			game.tweens.add({
-				targets: player,
-				duration: 3000,
-				onComplete: function() {
-					player.setVelocityX(360);
-					player.setVelocityY(-160);
-					player.anims.play('player-attack', true);
-				}
-			});
-			
-			game.tweens.add({
-				targets: player,
-				duration: 6000,
-				onComplete: function() {
-					player.body.setAllowDrag(true);
-					player.anims.play('player-land', true);
-				}
-			});
-			
-			game.tweens.add({
-				targets: player,
-				duration: 8000,
-				onComplete: function() {
-					player.body.setAllowDrag(false);
-					player.anims.play('player-idle', true);
-					player.animating = false;
-				}
+			game.tweens.timeline({
+				tweens: [
+					{
+						targets: player,
+						duration: 1000,
+						onComplete: function() {
+							player.setVelocityX(-320);
+							player.anims.play('player-run', true);
+						}
+					},
+					{
+						targets: player,
+						duration: 1000,
+						onComplete: function() {
+							player.setVelocityX(360);
+							player.setVelocityY(-160);
+							player.anims.play('player-attack', true);
+						}
+					},
+					{
+						targets: player,
+						duration: 1000,
+						onComplete: function() {
+							player.body.setAllowDrag(true);
+							player.anims.play('player-land', true);
+						}
+					},
+					{
+						targets: player,
+						duration: 1000,
+						onComplete: function() {
+							player.body.setAllowDrag(false);
+							player.anims.play('player-idle', true);
+							player.animating = false;
+						}
+					}
+				]
+
 			});
 		}
 	};
