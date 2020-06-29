@@ -143,14 +143,14 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened3');
+			console.log('happened4');
 			player.animating = true;
 			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: player,
-						duration: 1000,
+						duration: 0,
 						onComplete: function() {
 							player.setVelocityX(-320);
 							player.anims.play('player-run', true);
@@ -158,7 +158,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
-						duration: 1000,
+						duration: 2000,
 						onComplete: function() {
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
@@ -175,7 +175,7 @@ function createPlayer(game) {
 					},
 					{
 						targets: player,
-						duration: 1000,
+						duration: 0,
 						onComplete: function() {
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
