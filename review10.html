@@ -164,7 +164,7 @@ function createPlayer(game) {
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
 							//enemy.anim_dodge();
-							enemy.anim_get_hit_and_die();
+							enemy.anim_dodge();
 							player.anims.play('player-attack', true);
 						}
 					},
@@ -233,25 +233,30 @@ function createEnemies(game) {
 			enemy.animating = true;
 			var tiltX = 50 + 50 * Math.random();
 			var tiltY = 50 + 50 * Math.random();
-			game.tweens.add({
-				targets: enemy,
-				x: '-=' + tiltX,
-				y: '-=' + tiltY,
-				angle: -10 - 15 * Math.random(),
-				duration: 800,
-				ease: 'Elastic',
-				easeParams: [ 1.5, 0.5 ]
-			});
-			game.tweens.add({
-				targets: enemy,
-				x: '+=' + tiltX,
-				y: '+=' + tiltY,
-				angle: 0,
-				duration: 800,
-				delay: 1000,
-				ease: 'Elastic',
-				easeParams: [ 1.5, 0.5 ],
-				onComplete: function() {enemy.animating = false;}
+			
+			game.tweens.timeline({
+				tweens: [
+					{
+						targets: enemy,
+						x: '-=' + tiltX,
+						y: '-=' + tiltY,
+						angle: -10 - 15 * Math.random(),
+						duration: 800,
+						ease: 'Elastic',
+						easeParams: [ 1.5, 0.5 ]
+					},
+					{
+						targets: enemy,
+						x: '+=' + tiltX,
+						y: '+=' + tiltY,
+						angle: 0,
+						duration: 800,
+						delay: 1000,
+						ease: 'Elastic',
+						easeParams: [ 1.5, 0.5 ],
+						onComplete: function() {enemy.animating = false;}
+					}
+				]
 			});
 		}
 	};
@@ -259,7 +264,6 @@ function createEnemies(game) {
 	enemy.anim_get_hit_and_die = function() {
 		if (!enemy.animating)
 		{
-			console.log('4');
 			const killDuration = 1000;
 		
 			enemy.animating = true;
@@ -282,7 +286,6 @@ function createEnemies(game) {
 						targets: enemy,
 						alpha: 0,
 						onUpdate: function(state) {
-							console.log(state.duration + '|' + state.elapsed);
 							var totalDuration = state.duration + 800 + 200;
 							var curFillColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_font_alive, col_font_killed, totalDuration, state.elapsed);
 							var curStrokeColor = Phaser.Display.Color.Interpolate.ColorWithColor(col_stroke_alive, col_stroke_killed, totalDuration, state.elapsed);
