@@ -143,7 +143,6 @@ function createPlayer(game) {
 	player.anim_attack = function() {
 		if (!player.animating)
 		{
-			console.log('happened18');
 			player.animating = true;
 			
 			game.tweens.timeline({
@@ -153,7 +152,6 @@ function createPlayer(game) {
 						alpha: "+=0",
 						duration: 1,
 						onComplete: function() {
-							console.log('run');
 							player.setVelocityX(-420);
 							player.anims.play('player-run', true);
 						}
@@ -163,10 +161,9 @@ function createPlayer(game) {
 						alpha: "+=0",
 						duration: 1000,
 						onComplete: function() {
-							console.log('attack');
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
-							enemy.anim_get_hit_and_die();
+							enemy.anim_dodge();
 							player.anims.play('player-attack', true);
 						}
 					},
@@ -175,7 +172,6 @@ function createPlayer(game) {
 						alpha: "+=0",
 						duration: 1000,
 						onComplete: function() {
-							console.log('land');
 							player.body.setAllowDrag(true);
 							player.anims.play('player-land', true);
 						}
@@ -185,7 +181,6 @@ function createPlayer(game) {
 						alpha: "+=0",
 						duration: 400,
 						onComplete: function() {
-							console.log('idle');
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
