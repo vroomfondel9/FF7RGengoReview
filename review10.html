@@ -152,6 +152,7 @@ function createPlayer(game) {
 						targets: player,
 						duration: 0,
 						onComplete: function() {
+							console.log('run');
 							player.setVelocityX(-320);
 							player.anims.play('player-run', true);
 						}
@@ -160,6 +161,7 @@ function createPlayer(game) {
 						targets: player,
 						duration: 2000,
 						onComplete: function() {
+							console.log('attack');
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
 							player.anims.play('player-attack', true);
@@ -169,6 +171,7 @@ function createPlayer(game) {
 						targets: player,
 						duration: 1000,
 						onComplete: function() {
+							console.log('land');
 							player.body.setAllowDrag(true);
 							player.anims.play('player-land', true);
 						}
@@ -177,6 +180,7 @@ function createPlayer(game) {
 						targets: player,
 						duration: 0,
 						onComplete: function() {
+							console.log('idle');
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
