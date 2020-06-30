@@ -54,6 +54,9 @@ function preload ()
 	this.load.spritesheet('player-run', 'assets/images/sprites/player/player-run.png', { frameWidth: 79, frameHeight: 97});
 	this.load.spritesheet('player-attack', 'assets/images/sprites/player/player-attack.png', { frameWidth: 96, frameHeight: 96});
 	this.load.spritesheet('player-land', 'assets/images/sprites/player/player-land3.png', { frameWidth: 96, frameHeight: 104});
+	
+	// UI
+	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground.png');
 }
 
 function create ()
@@ -61,6 +64,7 @@ function create ()
 	createEnvironment(this);
 	createPlayer(this);
 	createEnemies(this);
+	createUI(this);
 }
 
 function update (game)
@@ -97,6 +101,12 @@ function createEnvironment(game) {
 
 	game.add.image(400, 329, 'groundback').setScale(2);
     foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
+}
+
+function createUI(game) {
+	// Foreground Overlay
+    var foregroundOverlay = game.add.image(0, 400, 'ui-bottom-foreground');
+	
 }
 
 function createPlayer(game) {
