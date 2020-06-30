@@ -57,6 +57,7 @@ function preload ()
 	
 	// UI
 	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground2.png');
+	this.load.image('ui-move-name', 'assets/images/ui/move-name-label.png');
 }
 
 function create ()
@@ -104,9 +105,11 @@ function createEnvironment(game) {
 }
 
 function createUI(game) {
+	// Move Name Label
+	var movenameLabel = game.add.image(400, 100, 'ui-move-name');
+
 	// Foreground Overlay
     var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
-	
 }
 
 function createPlayer(game) {
