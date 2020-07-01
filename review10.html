@@ -57,6 +57,7 @@ function preload ()
 	
 	// UI
 	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground2.png');
+	this.load.image('ui-command-menu', 'assets/images/ui/command-menu.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label.png');
 }
 
@@ -111,6 +112,7 @@ function createUI(game) {
 
 	// Foreground Overlay
     var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
+	var commandMenu = game.add.image(420, 120, 'ui-command-menu');
 }
 
 function createPlayer(game) {
