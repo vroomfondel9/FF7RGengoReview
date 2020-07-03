@@ -83,7 +83,11 @@ function update (game)
     }
     else if (cursors.left.isDown)
     {
-        player.anim_attack();
+		console.log("done");
+		acceptableAnswers = {"うかつ"};
+		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった";
+	
+        player.anim_attack(playerAnswer, acceptableAnswers);
     }
 	else if (cursors.up.isDown)
     {
@@ -158,7 +162,7 @@ function createPlayer(game) {
     });
 	
 	// Tweens
-	player.anim_attack = function() {
+	player.anim_attack = function(playerAnswer, acceptableAnswers) {
 		if (!player.animating)
 		{
 			player.animating = true;
@@ -181,7 +185,8 @@ function createPlayer(game) {
 						onComplete: function() {
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
-							if (Math.random() < 0.2)
+							
+							if (acceptableAnswers.indexOf(playerAnswer) != -1)
 							{
 								enemy.anim_get_hit_and_die();
 							}
@@ -189,6 +194,7 @@ function createPlayer(game) {
 							{
 								enemy.anim_dodge();
 							}
+							
 							player.anims.play('player-attack', true);
 						}
 					},
