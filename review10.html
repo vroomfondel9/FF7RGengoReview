@@ -84,7 +84,7 @@ function update (game)
     else if (cursors.left.isDown)
     {
 		console.log("done");
-		acceptableAnswers = {"うかつ"};
+		acceptableAnswers = ["うかつ"];
 		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった";
 	
         player.anim_attack(playerAnswer, acceptableAnswers);
