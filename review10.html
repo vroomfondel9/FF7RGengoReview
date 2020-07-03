@@ -33,12 +33,15 @@ var config = {
 };
 
 var player;
+
+var enemy;
+
+var movenameLabel;
+
 var ground;
 var foreground;
 var cursors;
-var score = 0;
 var gameOver = false;
-var enemy;
 
 var game = new Phaser.Game(config);
 
@@ -83,7 +86,6 @@ function update (game)
     }
     else if (cursors.left.isDown)
     {
-		console.log("done");
 		acceptableAnswers = ["うかつ"];
 		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった";
 	
@@ -112,8 +114,10 @@ function createEnvironment(game) {
 
 function createUI(game) {
 	// Move Name Label
-	var movenameLabel = game.add.image(400, 50, 'ui-move-name');
-	movenameLabel.setDepth(200);
+	var movenameLabelBackground = game.add.image(400, 50, 'ui-move-name');
+	movenameLabelBackground.setDepth(200);
+	var movenameLabel = game.add.text(400, 50, "Test String", {fontSize: '10px', fill: '#FFF'});
+	movenameLabel.setDepth(210);
 
 	// Foreground Overlay
     var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
