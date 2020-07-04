@@ -172,6 +172,7 @@ function createCommandMenu(game) {
 	ui.command.background = game.add.image(275, 520, 'ui-command-menu');
 	ui.command.background .setDepth(50);
 	
+	// Menu Options Text
 	const commandFontSize = 24;
 	ui.command.options = [];
 	for (var i = 0; i < ui.command.numOptions; i++) {
@@ -182,9 +183,10 @@ function createCommandMenu(game) {
 		ui.command.options[i].text.setDepth(52);
 	}
 	
-	
+	// Command Cursor
 	ui.command.cursor = game.add.image(ui.command.options[ui.command.current].text.x, ui.command.options[ui.command.current].text.y + commandFontSize / 2 - 3, 'ui-cursor');
-	ui.command.cursor.offsetY = commandFontSize / 2 - 3;
+	ui.command.cursor.startY = ui.command.cursor.y;
+	ui.command.cursor.offsetY = ui.command.options[ui.command.current + 1].text.y - ui.command.options[ui.command.current].text.y;
 	ui.command.cursor.setScale(0.10);
 	ui.command.cursor.setOrigin(1, 0.5);
 	ui.command.cursor.setDepth(54);
