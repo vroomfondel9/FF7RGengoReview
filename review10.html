@@ -36,7 +36,7 @@ var player;
 
 var enemy;
 
-var movenameLabel;
+var ui;
 
 var ground;
 var foreground;
@@ -113,12 +113,27 @@ function createEnvironment(game) {
 }
 
 function createUI(game) {
+	// Create UI parent container
+	ui = {};
+	ui.movename = {};
+
 	// Move Name Label
-	var movenameLabelBackground = game.add.image(400, 50, 'ui-move-name');
-	movenameLabelBackground.setDepth(200);
-	var movenameLabel = game.add.text(400, 50, "Test String", {fontSize: '20px', fill: '#FFF'});
-	movenameLabel.setOrigin(0.5);
-	movenameLabel.setDepth(210);
+	ui.movename.background = game.add.image(400, 50, 'ui-move-name');
+	ui.movename.background.setDepth(200);
+	ui.movename.label = game.add.text(400, 50, "Test String", {fontSize: '20px', fill: '#FFF'});
+	ui.movename.label.setOrigin(0.5);
+	ui.movename.label.setDepth(210);
+	
+	ui.movename.show = function(movename) {
+		ui.movename.label.setText(movename);
+		ui.movename.label.visible = true;
+		ui.movename.background.visible = true;
+	}
+	
+	ui.movename.hide = function() {
+		ui.movename.label.visible = false;
+		ui.movename.background.visible = false;
+	}
 
 	// Foreground Overlay
     var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
@@ -171,6 +186,7 @@ function createPlayer(game) {
 		if (!player.animating)
 		{
 			player.animating = true;
+			ui.movename.show(playerAnswer);
 			
 			game.tweens.timeline({
 				tweens: [
@@ -217,6 +233,7 @@ function createPlayer(game) {
 						alpha: "+=0",
 						duration: 400,
 						onComplete: function() {
+							ui.movename.hide();
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
