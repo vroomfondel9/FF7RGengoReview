@@ -166,7 +166,8 @@ function createCommandMenu(game) {
 	ui.command.options = [];
 	for (var i = 0; i < ui.command.numOptions; i++) {
 		ui.command.options[i] = {};
-		ui.command.options[i].text = game.add.text(155, 470 + (commandFontSize + 10) * i, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
+		ui.command.options[i].text = game.add.text(170, 455 + (commandFontSize + 10) * i, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
+		ui.command.options[i].text.setStroke('#FFF', 8);
 		ui.command.options[i].text.setOrigin(0);
 		ui.command.options[i].text.setDepth(52);
 	}
