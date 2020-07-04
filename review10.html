@@ -133,6 +133,7 @@ function createUIMoveName(game) {
 	ui.movename.background.visible = false;
 	
 	ui.movename.label = game.add.text(400, 50, "", {fontSize: '24px', fill: '#FFF'});
+	ui.movename.label.setStroke('#BBB', 2);
 	ui.movename.label.setOrigin(0.5);
 	ui.movename.label.setDepth(210);
 	ui.movename.label.visible = false;
@@ -167,7 +168,7 @@ function createCommandMenu(game) {
 	ui.command.options = [];
 	for (var i = 0; i < ui.command.numOptions; i++) {
 		ui.command.options[i] = {};
-		ui.command.options[i].text = game.add.text(170, 455 + (commandFontSize + 10) * i, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
+		ui.command.options[i].text = game.add.text(200, 458 + (commandFontSize + 10) * i, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
 		ui.command.options[i].text.setStroke('#BBB', 2);
 		ui.command.options[i].text.setOrigin(0);
 		ui.command.options[i].text.setDepth(52);
