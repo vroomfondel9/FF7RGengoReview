@@ -279,10 +279,10 @@ function createEnemies(game) {
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
 	// Animations
-	createEnemyAnimations(game, fontColor, strokeBaseColor);
+	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
 }
 
-function createEnemyAnimations(game, fontColor, strokeBaseColor) {
+function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	// Animation-Specific Colors
 	const fontColorKilled = '#ff0008';
 	const strokeHitColor = '#990207';
