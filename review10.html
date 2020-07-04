@@ -115,17 +115,29 @@ function createEnvironment(game) {
 function createUI(game) {
 	// Create UI parent container
 	ui = {};
+	
+	createUIMoveName(game);
+	createCommandMenu(game);
+
+	// Foreground Overlay
+    var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
+	//var commandSubMenu = game.add.image(175, 530, 'ui-command-sub-menu');
+}
+
+function createUIMoveName(game) {
 	ui.movename = {};
 
 	// Move Name Label
 	ui.movename.background = game.add.image(400, 50, 'ui-move-name');
 	ui.movename.background.setDepth(200);
 	ui.movename.background.visible = false;
+	
 	ui.movename.label = game.add.text(400, 50, "", {fontSize: '24px', fill: '#FFF'});
 	ui.movename.label.setOrigin(0.5);
 	ui.movename.label.setDepth(210);
 	ui.movename.label.visible = false;
-
+	
+	// Behaviors
 	ui.movename.show = function(movename) {
 		ui.movename.label.setText(movename);
 		ui.movename.label.visible = true;
@@ -136,11 +148,25 @@ function createUI(game) {
 		ui.movename.label.visible = false;
 		ui.movename.background.visible = false;
 	}
+}
 
-	// Foreground Overlay
-    var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
-	var commandMenu = game.add.image(245, 520, 'ui-command-menu');
-	//var commandSubMenu = game.add.image(175, 530, 'ui-command-sub-menu');
+function createCommandMenu(game) {
+	ui.command = {};
+	
+	ui.command.options = ["Answer", "Sense"];
+	ui.command.current = null;
+	ui.command.selected = false;
+
+	ui.command.background = game.add.image(245, 520, 'ui-command-menu');
+	ui.command.background .setDepth(50);
+	
+	const commandFontSize = 18;
+	for (var i = 0; i < ui.command.options.length; i++) {
+		ui.command.options[i].text = game.add.text(245 + commandFontSize * i + 10, 50, "", {fontSize: commandFontSize + 'px', fill: '#FFF'});
+		ui.command.options[i].text.setOrigin(0.5);
+		ui.command.options[i].text.setDepth(52);
+	}
+	
 }
 
 function createPlayer(game) {
