@@ -44,6 +44,7 @@ var ui;
 var ground;
 var foreground;
 var cursors;
+var controls;
 var gameOver = false;
 
 var game = new Phaser.Game(config);
@@ -75,14 +76,11 @@ function create ()
 	createPlayer(this);
 	createEnemies(this);
 	createUI(this);
+	createControls(this);
 }
 
 function update (game)
 {
-	// Keys to listen to
-	var up = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-	var down = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-	
     if (gameOver)
     {
         return;
@@ -100,11 +98,11 @@ function update (game)
         player.anim_attack(playerAnswer, acceptableAnswers);
     }
 	
-	if (Phaser.Input.Keyboard.JustDown(up))
+	if (Phaser.Input.Keyboard.JustDown(controls.UP))
 	{
 		ui.command.cursor.prev();
 	}
-	else if (Phaser.Input.Keyboard.JustDown(down))
+	else if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
 	{
 		ui.command.cursor.next();
 	}
@@ -225,9 +223,6 @@ function createPlayer(game) {
 
     //  Animations
     createPlayerAnimations(game);
-
-    //  Input Events
-    cursors = game.input.keyboard.createCursorKeys();
 	
 	player.anims.play('player-idle', true);
 }
@@ -443,6 +438,14 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			});
 		}
 	};
+}
+
+function createControls(game) {
+	controls = {};
+	
+	// Keys to listen to
+	controls.UP = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+	controls.DOWN = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 }
 
 </script>
