@@ -197,8 +197,8 @@ function createCommandMenu(game) {
 		ui.command.cursor.y = ui.command.options[ui.command.current].text.y + cursorYOffset;
 	};
 	
-	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1)};
-	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1)};
+	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1);};
+	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1);};
 	
 }
 
