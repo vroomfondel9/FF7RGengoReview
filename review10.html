@@ -86,17 +86,13 @@ function update (game)
         return;
     }
 	
-	if (cursors.right.isDown)
-    {
-		
-    }
-    else if (cursors.left.isDown)
-    {
+	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
+	{
 		acceptableAnswers = ["うかつ"];
 		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった! 足が挟まっている！何よ。上が切り抜けるか？";
 	
         player.anim_attack(playerAnswer, acceptableAnswers);
-    }
+	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.UP))
 	{
@@ -163,9 +159,9 @@ function createCommandMenu(game) {
 	
 	const optionsRaw = [
 		content["command-options-answer"][lang], 
-		//content["command-options-magic"][lang], 
+		content["command-options-magic"][lang], 
 		content["command-options-sense"][lang],  
-		//content["command-options-item"][lang], 
+		content["command-options-item"][lang], 
 	];
 	
 	ui.command.numOptions = optionsRaw.length;
@@ -446,6 +442,7 @@ function createControls(game) {
 	// Keys to listen to
 	controls.UP = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
 	controls.DOWN = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+	controls.LEFT = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
 }
 
 </script>
