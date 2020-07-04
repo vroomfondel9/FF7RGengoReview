@@ -3,4 +3,4 @@ var content = [
 	"command-options-magic" : ["Magic", "まほう"],
 	"command-options-sense" : ["Sense", "みやぶる"],
 	"command-options-item" : ["Item", "アイテム"],
-]
+];
