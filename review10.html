@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<script src="/assets/text/content.js" type="text/javascript" />
 <script type="text/javascript">
 
 var config = {
@@ -31,6 +32,8 @@ var config = {
         update: update
     }
 };
+
+var lang = 0;
 
 var player;
 
@@ -154,8 +157,12 @@ function createUIMoveName(game) {
 function createCommandMenu(game) {
 	ui.command = {};
 	
-	const optionsRaw = ["Answer", "Magic", "Sense", "Item"];
-	//const optionsRaw = ["こたえる", "まほう", "みやぶる", "アイテム"];
+	const optionsRaw = [
+		content["command-options-answer"][lang], 
+		content["command-options-magic"][lang], 
+		content["command-options-sense"][lang],  
+		content["command-options-item"][lang], 
+	];
 	
 	ui.command.numOptions = optionsRaw.length;
 	ui.command.current = 0;
