@@ -154,17 +154,19 @@ function createCommandMenu(game) {
 	ui.command = {};
 	
 	const optionsRaw = ["Answer", "Sense"];
+	
+	ui.command.numOptions = optionsRaw.length;
 	ui.command.current = 0;
 	ui.command.selected = false;
 
 	ui.command.background = game.add.image(245, 520, 'ui-command-menu');
 	ui.command.background .setDepth(50);
 	
-	const commandFontSize = 18;
+	const commandFontSize = 24;
 	ui.command.options = [];
-	for (var i = 0; i < optionsRaw.length; i++) {
+	for (var i = 0; i < ui.command.numOptions; i++) {
 		ui.command.options[i] = {};
-		ui.command.options[i].text = game.add.text(245 + commandFontSize * i + 10, 50, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
+		ui.command.options[i].text = game.add.text(245, 520 + (commandFontSize + 10) * i, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
 		ui.command.options[i].text.setOrigin(0.5);
 		ui.command.options[i].text.setDepth(52);
 	}
