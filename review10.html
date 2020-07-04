@@ -153,7 +153,7 @@ function createUIMoveName(game) {
 function createCommandMenu(game) {
 	ui.command = {};
 	
-	ui.command.options = ["Answer", "Sense"];
+	const optionsRaw = ["Answer", "Sense"];
 	ui.command.current = 0;
 	ui.command.selected = false;
 
@@ -161,11 +161,12 @@ function createCommandMenu(game) {
 	ui.command.background .setDepth(50);
 	
 	const commandFontSize = 18;
-	ui.command.optionsText = [];
-	for (var i = 0; i < ui.command.options.length; i++) {
-		ui.command.optionsText[i].text = game.add.text(245 + commandFontSize * i + 10, 50, "", {fontSize: commandFontSize + 'px', fill: '#FFF'});
-		ui.command.optionsText[i].text.setOrigin(0.5);
-		ui.command.optionsText[i].text.setDepth(52);
+	ui.command.options = [];
+	for (var i = 0; i < optionsRaw.length; i++) {
+		ui.command.options[i] = {};
+		ui.command.options[i].text = game.add.text(245 + commandFontSize * i + 10, 50, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
+		ui.command.options[i].text.setOrigin(0.5);
+		ui.command.options[i].text.setDepth(52);
 	}
 	
 }
