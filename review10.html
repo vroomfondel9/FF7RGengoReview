@@ -66,6 +66,7 @@ function preload ()
 	this.load.image('ui-command-menu', 'assets/images/ui/command-menu4.png');
 	this.load.image('ui-command-sub-menu', 'assets/images/ui/command-sub-menu3.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
+	this.load.image('ui-cursor', 'assets/images/ui/cursor.png');
 }
 
 function create ()
@@ -180,6 +181,9 @@ function createCommandMenu(game) {
 		ui.command.options[i].text.setOrigin(0);
 		ui.command.options[i].text.setDepth(52);
 	}
+	
+	ui.command.cursor = game.add.image(ui.command.options[ui.command.current].text.x, ui.command.options[ui.command.current].text.x, 'ui-cursor');
+	ui.command.cursor.setDepth(54);
 	
 }
 
