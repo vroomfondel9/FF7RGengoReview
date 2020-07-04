@@ -160,7 +160,17 @@ function createPlayer(game) {
 	player.body.setAllowDrag(false);
 
     //  Animations
-    game.anims.create({
+    createPlayerAnimations(game);
+
+    //  Input Events
+    cursors = game.input.keyboard.createCursorKeys();
+	
+	player.anims.play('player-idle', true);
+}
+
+function createPlayerAnimations(game) {
+	// Tweens Definitions
+	game.anims.create({
         key: 'player-idle',
         frames: game.anims.generateFrameNumbers('player-idle', { start: 0, end: 6 }),
         frameRate: 10,
@@ -183,7 +193,7 @@ function createPlayer(game) {
         frameRate: 10
     });
 	
-	// Tweens
+	// Full Animations
 	player.anim_attack = function(playerAnswer, acceptableAnswers) {
 		if (!player.animating)
 		{
@@ -246,11 +256,6 @@ function createPlayer(game) {
 			});
 		}
 	};
-
-    //  Input Events
-    cursors = game.input.keyboard.createCursorKeys();
-	
-	player.anims.play('player-idle', true);
 }
 
 function createEnemies(game) {
@@ -280,7 +285,11 @@ function createEnemies(game) {
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
-	// Tweens
+	// Animations
+	createEnemyAnimations(game);
+}
+
+function createEnemyAnimations(game) {
 	enemy.anim_dodge = function() {
 		if (!enemy.animating)
 		{
