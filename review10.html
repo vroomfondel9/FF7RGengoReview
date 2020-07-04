@@ -87,7 +87,7 @@ function update (game)
     else if (cursors.left.isDown)
     {
 		acceptableAnswers = ["うかつ"];
-		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった! 足が挟まっている！";
+		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった! 足が挟まっている！何よ。上が切り抜けるか？";
 	
         player.anim_attack(playerAnswer, acceptableAnswers);
     }
