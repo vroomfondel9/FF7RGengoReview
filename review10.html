@@ -97,11 +97,11 @@ function update (game)
     }
 	else if (cursors.up.isDown)
     {
-        
+        ui.command.cursor.prev();
     }
 	else if (cursors.down.isDown)
     {
-        enemy.anim_get_hit_and_die();
+        ui.command.cursor.next();
     }
 }
 
@@ -184,12 +184,21 @@ function createCommandMenu(game) {
 	}
 	
 	// Command Cursor
-	ui.command.cursor = game.add.image(ui.command.options[ui.command.current].text.x, ui.command.options[ui.command.current].text.y + commandFontSize / 2 - 3, 'ui-cursor');
-	ui.command.cursor.startY = ui.command.cursor.y;
-	ui.command.cursor.offsetY = ui.command.options[ui.command.current + 1].text.y - ui.command.options[ui.command.current].text.y;
+	const cursorYOffset = commandFontSize / 2 - 3;
+	ui.command.cursor = game.add.image(ui.command.options[ui.command.current].text.x, ui.command.options[ui.command.current].text.y + cursorYOffset, 'ui-cursor');
 	ui.command.cursor.setScale(0.10);
 	ui.command.cursor.setOrigin(1, 0.5);
 	ui.command.cursor.setDepth(54);
+	
+	// Command Cursor Behaviors
+	ui.command.cursor.advance = function(index) {
+		ui.command.current = (index >= ui.command.numOptions) ? 0 : ((index < 0) ? ui.command.numOptions - 1 : index);
+		ui.command.cursor.x = ui.command.options[index].text.x;
+		ui.command.cursor.y = ui.command.options[index].text.y + cursorYOffset;
+	};
+	
+	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1)};
+	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1)};
 	
 }
 
