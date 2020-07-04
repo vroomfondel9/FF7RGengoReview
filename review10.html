@@ -159,9 +159,9 @@ function createCommandMenu(game) {
 	
 	const optionsRaw = [
 		content["command-options-answer"][lang], 
-		content["command-options-magic"][lang], 
+		//content["command-options-magic"][lang], 
 		content["command-options-sense"][lang],  
-		content["command-options-item"][lang], 
+		//content["command-options-item"][lang], 
 	];
 	
 	ui.command.numOptions = optionsRaw.length;
@@ -176,10 +176,18 @@ function createCommandMenu(game) {
 	ui.command.options = [];
 	for (var i = 0; i < ui.command.numOptions; i++) {
 		ui.command.options[i] = {};
+		
 		ui.command.options[i].text = game.add.text(230, 458 + (commandFontSize + 10) * i, optionsRaw[i], {fontSize: commandFontSize + 'px', fill: '#FFF'});
 		ui.command.options[i].text.setStroke('#BBB', 2);
 		ui.command.options[i].text.setOrigin(0);
 		ui.command.options[i].text.setDepth(52);
+		
+		ui.command.options[i].hasSubMenu = optionsRaw[i] != content["command-options-sense"][lang];
+		ui.command.options[i].freeEntrySubmenu = optionsRaw[i] == content["command-options-answer"][lang];
+		ui.command.options[i].alliesSelectableDefault = false;
+		ui.command.options[i].enemiesSelectableDefault = true;
+		
+		ui.command.sub = createCommandSubMenu(game, optionsRaw[i]);
 	}
 	
 	// Command Cursor
@@ -199,6 +207,10 @@ function createCommandMenu(game) {
 	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1);};
 	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1);};
 	
+}
+
+function createCommandSubMenu(game, parentMenuName) {
+	// TODO fill in submenu, behaviors, etc
 }
 
 function createPlayer(game) {
