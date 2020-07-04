@@ -193,8 +193,8 @@ function createCommandMenu(game) {
 	// Command Cursor Behaviors
 	ui.command.cursor.advance = function(index) {
 		ui.command.current = (index >= ui.command.numOptions) ? 0 : ((index < 0) ? ui.command.numOptions - 1 : index);
-		ui.command.cursor.x = ui.command.options[index].text.x;
-		ui.command.cursor.y = ui.command.options[index].text.y + cursorYOffset;
+		ui.command.cursor.x = ui.command.options[ui.command.current].text.x;
+		ui.command.cursor.y = ui.command.options[ui.command.current].text.y + cursorYOffset;
 	};
 	
 	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1)};
