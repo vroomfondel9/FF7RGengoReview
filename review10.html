@@ -64,6 +64,7 @@ function preload ()
 	
 	// UI
 	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground5.png');
+	this.load.image('ui-bottom-background', 'assets/images/ui/menu-bottom-background1.png');
 	this.load.image('ui-command-menu', 'assets/images/ui/command-menu4.png');
 	this.load.image('ui-command-sub-menu', 'assets/images/ui/command-sub-menu3.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
@@ -119,11 +120,10 @@ function createUI(game) {
 	// Create UI parent container
 	ui = {};
 	
+	createUIStatusDisplay(game);
 	createUIMoveName(game);
 	//createCommandMenu(game);
 
-	// Foreground Overlay
-    var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
 	//var commandSubMenu = game.add.image(175, 530, 'ui-command-sub-menu');
 }
 
@@ -152,6 +152,11 @@ function createUIMoveName(game) {
 		ui.movename.label.visible = false;
 		ui.movename.background.visible = false;
 	}
+}
+
+function createUIStatusDisplay(game) {
+	var backgroundOverlay = game.add.image(400, 520, 'ui-bottom-background');
+	var foregroundOverlay = game.add.image(400, 520, 'ui-bottom-foreground');
 }
 
 function createCommandMenu(game) {
