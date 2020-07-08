@@ -238,15 +238,14 @@ function createCommandMenu(game) {
 	ui.command.cursor.anim_select = function() {
 		console.log('called select');
 		ui.command.cursor.selected = true;
-		ui.command.cursor.tween_select.play();
+		ui.command.cursor.tween_select.loop = -1;
 		ui.command.cursor.tween_select.play();
 	};
 	
 	ui.command.cursor.anim_deselect = function() {
 		console.log('called deselect');
 		ui.command.cursor.selected = false;
-		ui.command.cursor.tween_select.pause();
-		ui.command.cursor.alpha = 1;
+		ui.command.cursor.tween_select.loop = 1;
 	};
 	
 	// Command Cursor Behaviors
