@@ -215,28 +215,32 @@ function createCommandMenu(game) {
 	ui.command.cursor.setOrigin(1, 0.5);
 	ui.command.cursor.setDepth(54);
 	
+	// Cursor Tweens
+	ui.command.cursor.tween_select = game.tweens.timeline({
+		tweens: [
+			{
+				targets: ui.command.cursor,
+				alpha: "-=1",
+				duration: 0.5
+			},
+			{
+				targets: ui.command.cursor,
+				alpha: "+=1",
+				duration: 0.5
+			},
+		],
+		loop: -1
+	});
+	
 	// Cursor Animations
 	ui.command.cursor.anim_select = function() {
 		ui.command.cursor.selected = true;
-		game.tweens.timeline({
-			tweens: [
-				{
-					targets: ui.command.cursor,
-					alpha: "-=1",
-					duration: 0.5
-				},
-				{
-					targets: ui.command.cursor,
-					alpha: "+=1",
-					duration: 0.5
-				},
-			],
-			loop: -1
-		});
+		ui.command.cursor.tween_select.play();
 	};
 	
 	ui.command.cursor.anim_deselect = function() {
-		ui.command.cursor.selected = true;
+		ui.command.cursor.selected = false;
+		ui.command.cursor.tween_select.stop();
 		ui.command.cursor.alpha = 1;
 	};
 	
