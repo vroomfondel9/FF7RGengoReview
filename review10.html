@@ -269,8 +269,16 @@ function createAnswerSubCommandMenu(game) {
 	}
 	ui.sub.answer = {};
 
+	// Sub Menu Background
 	ui.sub.answer.background = game.add.image(175, 530, 'ui-command-sub-menu');
 	ui.sub.answer.background.setDepth(70);
+	
+	// Input Label
+	const labelFontSize = 24;
+	ui.sub.answer.label = game.add.text(175, 530 + (labelFontSize + 10), content["sub-answer-recall-label"][lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
+	ui.sub.answer.label.setStroke('#BBB', 2);
+	ui.sub.answer.label.setOrigin(0);
+	ui.sub.answer.label.setDepth(72);
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
