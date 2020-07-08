@@ -130,9 +130,10 @@ function createUI(game) {
 	
 	createUIStatusDisplay(game);
 	createUIMoveName(game);
+	
+	createAnswerSubCommandMenu(game);
+	
 	createCommandMenu(game);
-
-	//var commandSubMenu = game.add.image(175, 530, 'ui-command-sub-menu');
 }
 
 function createUIMoveName(game) {
@@ -208,6 +209,10 @@ function createCommandMenu(game) {
 		ui.command.sub = createCommandSubMenu(game, ui.command.options[i], optionsRaw[i]);
 	}
 	
+	createCommandCursor(game);
+}
+
+function createCommandCursor(game) {
 	// Command Cursor
 	const cursorYOffset = commandFontSize / 2 - 3;
 	ui.command.cursor = game.add.image(ui.command.options[ui.command.current].text.x, ui.command.options[ui.command.current].text.y + cursorYOffset, 'ui-cursor');
@@ -256,7 +261,10 @@ function createCommandMenu(game) {
 	
 	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1);};
 	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1);};
-	
+}
+
+function createAnswerSubCommandMenu(game) {
+	ui.sub.answer.background = game.add.image(175, 530, 'ui-command-sub-menu');
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
