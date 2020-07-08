@@ -214,6 +214,7 @@ function createCommandMenu(game) {
 	ui.command.cursor.setScale(0.10);
 	ui.command.cursor.setOrigin(1, 0.5);
 	ui.command.cursor.setDepth(54);
+	ui.command.cursor.selected = false;
 	
 	// Cursor Tweens
 	ui.command.cursor.tween_select = game.tweens.timeline({
@@ -231,6 +232,7 @@ function createCommandMenu(game) {
 		],
 		loop: -1
 	});
+	ui.command.cursor.tween_select.stop();
 	
 	// Cursor Animations
 	ui.command.cursor.anim_select = function() {
