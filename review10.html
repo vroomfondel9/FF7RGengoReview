@@ -283,8 +283,9 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.label.setDepth(72);
 	
 	// Input Box
-	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('answerform');
-	ui.sub.answer.input.setDepth(72);
+	// TODO can't use text box because not supported by version 11 of phaser. Can't upgrade phaser because Cloud's collision gets screwed up. Halp!
+	//ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('answerform');
+	//ui.sub.answer.input.setDepth(72);
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
