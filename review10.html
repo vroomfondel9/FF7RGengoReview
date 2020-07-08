@@ -232,7 +232,7 @@ function createCommandMenu(game) {
 		],
 		loop: -1
 	});
-	ui.command.cursor.tween_select.stop();
+	ui.command.cursor.tween_select.pause();
 	
 	// Cursor Animations
 	ui.command.cursor.anim_select = function() {
@@ -242,7 +242,7 @@ function createCommandMenu(game) {
 	
 	ui.command.cursor.anim_deselect = function() {
 		ui.command.cursor.selected = false;
-		ui.command.cursor.tween_select.stop();
+		ui.command.cursor.tween_select.pause();
 		ui.command.cursor.alpha = 1;
 	};
 	
