@@ -216,9 +216,14 @@ function createCommandMenu(game) {
 	ui.command.cursor.setDepth(54);
 	ui.command.cursor.selected = false;
 	
-	// Cursor Tweens
-	ui.command.cursor.get_tween_select = function() {
-		return game.tweens.timeline({
+	// Cursor Animations
+	ui.command.cursor.anim_select = function() {
+		console.log('called select');
+		ui.command.cursor.selected = true;
+		if (ui.command.cursor.tween_select) {
+			ui.command.cursor.tween_select.stop();
+		}
+		ui.command.cursor.tween_select = game.tweens.timeline({
 			tweens: [
 				{
 					targets: ui.command.cursor,
@@ -233,17 +238,6 @@ function createCommandMenu(game) {
 			],
 			loop: -1
 		});
-	}
-	
-	// Cursor Animations
-	ui.command.cursor.anim_select = function() {
-		console.log('called select');
-		ui.command.cursor.selected = true;
-		if (ui.command.cursor.tween_select) {
-			ui.command.cursor.tween_select.stop();
-		}
-		ui.command.cursor.tween_select = ui.command.cursor.get_tween_select();
-		ui.command.cursor.tween_select.play();
 	};
 	
 	ui.command.cursor.anim_deselect = function() {
