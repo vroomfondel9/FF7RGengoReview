@@ -264,6 +264,11 @@ function createCommandCursor(game) {
 }
 
 function createAnswerSubCommandMenu(game) {
+	if (!ui.sub) {
+		ui.sub = {};
+	}
+	ui.sub.answer = {};
+
 	ui.sub.answer.background = game.add.image(175, 530, 'ui-command-sub-menu');
 }
 
