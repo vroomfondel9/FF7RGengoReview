@@ -270,6 +270,7 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer = {};
 
 	ui.sub.answer.background = game.add.image(175, 530, 'ui-command-sub-menu');
+	ui.sub.answer.background.setDepth(70);
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
