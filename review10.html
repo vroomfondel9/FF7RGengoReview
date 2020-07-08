@@ -277,6 +277,7 @@ function createAnswerSubCommandMenu(game) {
 	const labelFontSize = 24;
 	ui.sub.answer.label = game.add.text(175, 530 + (labelFontSize + 10), content["sub-answer-recall-label"][lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
 	ui.sub.answer.label.setStroke('#BBB', 2);
+	.setUnderline('#FFF', 2, -1);
 	ui.sub.answer.label.setDepth(72);
 }
 
