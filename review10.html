@@ -103,6 +103,10 @@ function update (game)
 	{
 		ui.command.cursor.next();
 	}
+	else if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
+	{
+		ui.command.cursor.anim_deselect();
+	}
 	else if (Phaser.Input.Keyboard.JustDown(controls.ENTER))
 	{
 		ui.command.cursor.anim_select();
@@ -213,6 +217,7 @@ function createCommandMenu(game) {
 	
 	// Cursor Animations
 	ui.command.cursor.anim_select = function() {
+		ui.command.cursor.selected = true;
 		game.tweens.timeline({
 			tweens: [
 				{
@@ -228,6 +233,11 @@ function createCommandMenu(game) {
 			],
 			loop: -1
 		});
+	};
+	
+	ui.command.cursor.anim_deselect = function() {
+		ui.command.cursor.selected = true;
+		ui.command.cursor.alpha = 1;
 	};
 	
 	// Command Cursor Behaviors
