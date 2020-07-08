@@ -209,10 +209,10 @@ function createCommandMenu(game) {
 		ui.command.sub = createCommandSubMenu(game, ui.command.options[i], optionsRaw[i]);
 	}
 	
-	createCommandCursor(game);
+	createCommandCursor(game, commandFontSize);
 }
 
-function createCommandCursor(game) {
+function createCommandCursor(game, commandFontSize) {
 	// Command Cursor
 	const cursorYOffset = commandFontSize / 2 - 3;
 	ui.command.cursor = game.add.image(ui.command.options[ui.command.current].text.x, ui.command.options[ui.command.current].text.y + cursorYOffset, 'ui-cursor');
