@@ -103,6 +103,10 @@ function update (game)
 	{
 		ui.command.cursor.next();
 	}
+	else if (Phaser.Input.Keyboard.JustDown(controls.ENTER))
+	{
+		ui.command.cursor.anim_select();
+	}
 }
 
 function createEnvironment(game) {
@@ -206,6 +210,24 @@ function createCommandMenu(game) {
 	ui.command.cursor.setScale(0.10);
 	ui.command.cursor.setOrigin(1, 0.5);
 	ui.command.cursor.setDepth(54);
+	
+	// Cursor Animations
+	ui.command.cursor.anim_select = function() {
+		game.tweens.timeline({
+			tweens: [
+				{
+					targets: ui.command.cursor,
+					alpha: "-=1",
+					duration: 0.5
+				},
+				{
+					targets: ui.command.cursor,
+					alpha: "+=1",
+					duration: 0.5
+				},
+			]
+		});
+	};
 	
 	// Command Cursor Behaviors
 	ui.command.cursor.advance = function(index) {
@@ -465,6 +487,7 @@ function createControls(game) {
 	controls.UP = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
 	controls.DOWN = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 	controls.LEFT = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+	controls.ENTER = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 }
 
 </script>
