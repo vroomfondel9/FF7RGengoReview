@@ -205,7 +205,7 @@ function createCommandMenu(game) {
 		ui.command.options[i].alliesSelectableDefault = false;
 		ui.command.options[i].enemiesSelectableDefault = true;
 		
-		ui.command.sub = createCommandSubMenu(game, optionsRaw[i]);
+		ui.command.sub = createCommandSubMenu(game, ui.command.options[i], optionsRaw[i]);
 	}
 	
 	// Command Cursor
@@ -216,7 +216,7 @@ function createCommandMenu(game) {
 	ui.command.cursor.setDepth(54);
 	ui.command.cursor.selected = false;
 	
-	// Cursor Animations
+	// Cursor Animations & Behaviors
 	ui.command.cursor.anim_select = function() {
 		console.log('called select');
 		ui.command.cursor.selected = true;
@@ -238,6 +238,7 @@ function createCommandMenu(game) {
 			],
 			loop: -1
 		});
+		ui.command.options[ui.command.current].selectCallback();
 	};
 	
 	ui.command.cursor.anim_deselect = function() {
@@ -249,7 +250,6 @@ function createCommandMenu(game) {
 		ui.command.cursor.alpha = 1;
 	};
 	
-	// Command Cursor Behaviors
 	ui.command.cursor.advance = function(index) {
 		ui.command.current = (index >= ui.command.numOptions) ? 0 : ((index < 0) ? ui.command.numOptions - 1 : index);
 		ui.command.cursor.x = ui.command.options[ui.command.current].text.x;
@@ -261,8 +261,9 @@ function createCommandMenu(game) {
 	
 }
 
-function createCommandSubMenu(game, parentMenuName) {
+function createCommandSubMenu(game, curOption, parentMenuName) {
 	// TODO fill in submenu, behaviors, etc
+	curOption.selectCallback = function() {console.log('selected ' + parentMenuName);};
 }
 
 function createPlayer(game) {
