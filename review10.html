@@ -69,6 +69,7 @@ function preload ()
 	this.load.image('ui-command-sub-menu', 'assets/images/ui/command-sub-menu3.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
 	this.load.image('ui-cursor', 'assets/images/ui/cursor.png');
+	this.load.html('answerform', 'assets/text/answerform.html');
 }
 
 function create ()
@@ -275,9 +276,14 @@ function createAnswerSubCommandMenu(game) {
 	
 	// Input Label
 	const labelFontSize = 24;
-	ui.sub.answer.label = game.add.text(175, 530 - (ui.sub.answer.background.height / 2) + (labelFontSize + 10), content["sub-answer-recall-label"][lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
+	const labelY = 530 - (ui.sub.answer.background.height / 2) + (labelFontSize + 10);
+	ui.sub.answer.label = game.add.text(175, labelY, content["sub-answer-recall-label"][lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
 	ui.sub.answer.label.setStroke('#BBB', 2);
 	ui.sub.answer.label.setOrigin(0.5);
+	ui.sub.answer.label.setDepth(72);
+	
+	// Input Box
+	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('answerform');
 	ui.sub.answer.label.setDepth(72);
 }
 
