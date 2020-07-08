@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8" />
     <title>Making your first Phaser 3 Game - Part 10</title>
-    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.23.0/dist/phaser.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -284,7 +284,7 @@ function createAnswerSubCommandMenu(game) {
 	
 	// Input Box
 	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('answerform');
-	ui.sub.answer.label.setDepth(72);
+	ui.sub.answer.input.setDepth(72);
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
