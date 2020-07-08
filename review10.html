@@ -218,7 +218,6 @@ function createCommandMenu(game) {
 	
 	// Cursor Animations & Behaviors
 	ui.command.cursor.anim_select = function() {
-		console.log('called select');
 		ui.command.cursor.selected = true;
 		if (ui.command.cursor.tween_select) {
 			ui.command.cursor.tween_select.stop();
@@ -242,7 +241,6 @@ function createCommandMenu(game) {
 	};
 	
 	ui.command.cursor.anim_deselect = function() {
-		console.log('called deselect');
 		ui.command.cursor.selected = false;
 		if (ui.command.cursor.tween_select) {
 			ui.command.cursor.tween_select.stop();
@@ -262,8 +260,12 @@ function createCommandMenu(game) {
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
-	// TODO fill in submenu, behaviors, etc
-	curOption.selectCallback = function() {console.log('selected ' + parentMenuName);};
+	if (content["command-options-answer"][lang] == parentMenuName) {
+		curOption.selectCallback = function() {console.log('TODO Answer Functionality Placeholder');};
+	}
+	else if (content["command-options-sense"][lang] == parentMenuName) {
+		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder');};
+	}
 }
 
 function createPlayer(game) {
