@@ -311,11 +311,11 @@ function createPlayer(game) {
     createPlayerAnimations(game);
 	
 	//  Physics
-    //player.setBounce(0.2);
-	//player.setDrag(1000, 0);
+    player.setBounce(0.2);
+	player.setDrag(1000, 0);
 	//player.body.setAllowDrag(false);
 	game.physics.add.collider(player, ground);
-	console.log('physics 4');
+	console.log('physics 5');
 	
 	player.anims.play('player-idle', true);
 }
