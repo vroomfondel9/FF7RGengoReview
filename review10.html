@@ -309,9 +309,9 @@ function createPlayer(game) {
 
     //  Physics
     player.setBounce(0.2);
-	game.physics.add.collider(player, ground);
 	player.setDrag(1000, 0);
 	player.body.setAllowDrag(false);
+	game.physics.add.collider(player, ground);
 
     //  Animations
     createPlayerAnimations(game);
