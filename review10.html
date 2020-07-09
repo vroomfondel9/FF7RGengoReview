@@ -12,11 +12,14 @@
 </head>
 <body>
 
+<div id="game-container"></div>
+
 <script src="assets/text/content.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 var config = {
     type: Phaser.AUTO,
+	parent: 'game-container',
     width: 800,
     height: 600,
 	dom: {
