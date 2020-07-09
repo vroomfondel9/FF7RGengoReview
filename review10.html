@@ -72,7 +72,7 @@ function preload ()
 	this.load.image('ui-command-sub-menu', 'assets/images/ui/command-sub-menu3.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
 	this.load.image('ui-cursor', 'assets/images/ui/cursor.png');
-	this.load.html('answerform', 'assets/text/answerform.html');
+	this.load.html('ui-answerform', 'assets/text/answerform.html');
 }
 
 function create ()
@@ -286,12 +286,12 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.label.setDepth(72);
 	
 	// Input Box
-	//ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('answerform');
+	//ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
 	//ui.sub.answer.input.setDepth(72);
-	ui.sub.answer.input = game.add.dom(100, 500).createFromCache('answerform');
+	ui.sub.answer.input = game.add.dom(100, 500).createFromCache('ui-answerform');
 	ui.sub.answer.input.setDepth(500);
 	
-	console.log('input box 3');
+	console.log('input box 4');
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
