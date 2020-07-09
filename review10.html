@@ -282,17 +282,15 @@ function createAnswerSubCommandMenu(game) {
 	
 	// Input Label
 	const labelFontSize = 24;
-	const labelY = 530 - (ui.sub.answer.background.height / 2) + (labelFontSize + 10);
+	const labelY = 530 - (ui.sub.answer.background.height / 2) + (labelFontSize + 0);
 	ui.sub.answer.label = game.add.text(175, labelY, content["sub-answer-recall-label"][lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
 	ui.sub.answer.label.setStroke('#BBB', 2);
 	ui.sub.answer.label.setOrigin(0.5);
 	ui.sub.answer.label.setDepth(72);
 	
 	// Input Box
-	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
+	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 20).createFromCache('ui-answerform');
 	ui.sub.answer.input.setDepth(72);
-	
-	console.log('input box 5');
 }
 
 function createCommandSubMenu(game, curOption, parentMenuName) {
