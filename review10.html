@@ -306,6 +306,7 @@ function createPlayer(game) {
 	player.flipX = true;
 	player.setY(surfaceHeight - (player.height / 2) - 50);
 	player.animating = false;
+	player.body.setImmovable();  
 
     //  Animations
     createPlayerAnimations(game);
@@ -315,7 +316,7 @@ function createPlayer(game) {
 	player.setDrag(1000, 0);
 	player.body.setAllowDrag(false);
 	game.physics.add.collider(player, ground);
-	console.log('physics 1');
+	console.log('physics 2');
 	
 	player.anims.play('player-idle', true);
 }
