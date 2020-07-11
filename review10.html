@@ -118,6 +118,10 @@ function update (game)
 	{
 		ui.command.cursor.anim_select();
 	}
+	else if (Phaser.Input.Keyboard.JustDown(controls.ESCAPE))
+	{
+		ui.sub.answer.cancel();
+	}
 }
 
 function createEnvironment(game) {
@@ -213,7 +217,7 @@ function createCommandMenu(game) {
 		ui.command.options[i].alliesSelectableDefault = false;
 		ui.command.options[i].enemiesSelectableDefault = true;
 		
-		ui.command.sub = createCommandSubMenu(game, ui.command.options[i], optionsRaw[i]);
+		ui.command.sub = createCommandBehaviors(game, ui.command.options[i], optionsRaw[i]);
 	}
 	
 	createCommandCursor(game, commandFontSize);
@@ -291,11 +295,24 @@ function createAnswerSubCommandMenu(game) {
 	// Input Box
 	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
 	ui.sub.answer.input.setDepth(72);
+	
+	// Behaviors
+	ui.sub.answer.showOrHide = function(show) {
+		ui.sub.answer.background.setVisible(show);
+		ui.sub.answer.label.setVisible(show);
+		ui.sub.answer.input.setVisible(show);
+		return ui.sub.answer.input.value;
+	};
+	
+	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
+	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true);};
+	ui.sub.answer.confirm = function() {return ui.sub.answer.showOrHide(true);};
 }
 
-function createCommandSubMenu(game, curOption, parentMenuName) {
+function createCommandBehaviors(game, curOption, parentMenuName) {
 	if (content["command-options-answer"][lang] == parentMenuName) {
 		curOption.selectCallback = function() {console.log('TODO Answer Functionality Placeholder');};
+		curOption.selectCallback = ui.sub.answer.show();
 	}
 	else if (content["command-options-sense"][lang] == parentMenuName) {
 		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder');};
@@ -546,6 +563,7 @@ function createControls(game) {
 	controls.LEFT = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
 	controls.RIGHT = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
 	controls.ENTER = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+	controls.ESCAPE = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESCAPE);
 }
 
 </script>
