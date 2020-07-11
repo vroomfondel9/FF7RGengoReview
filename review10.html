@@ -346,7 +346,7 @@ function createAnswerSubCommandMenu(game) {
 		
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
-		player.anim_attack(playerAnswer, acceptableAnswers);
+		player.anim_attack(providedAnswer, acceptableAnswers);
 	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.next = function () {};
