@@ -118,7 +118,7 @@ function update (game)
 	// TODO only for test purposes
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
-		
+		ui.status.time.setScale(0.5);
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -181,14 +181,15 @@ function createUIMoveName(game) {
 
 function createUIStatusDisplay(game) {
 	ui.status = {};
-	var graphics = game.add.graphics({ fillStyle: { color: 0x0000ff } });
+	var graphics = game.add.graphics({ fillStyle: { color: '#4FA071' } });
 	graphics.setDepth(14);
 
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
 	
 	var rect = new Phaser.Geom.Rectangle(200, 300, 84, 25);
-	var omg = graphics.fillRectShape(rect);
+	ui.status.time = graphics.fillRectShape(rect);
+	ui.status.time.setOrigin(0);
 	
 	game.add.graphics();
 	
