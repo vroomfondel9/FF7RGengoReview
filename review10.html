@@ -120,7 +120,6 @@ function update (game)
 	}
 	else if (Phaser.Input.Keyboard.JustDown(controls.ESCAPE))
 	{
-		console.log('called escape');
 		ui.sub.answer.cancel();
 	}
 }
@@ -284,6 +283,7 @@ function createAnswerSubCommandMenu(game) {
 	// Sub Menu Background
 	ui.sub.answer.background = game.add.image(175, 530, 'ui-command-sub-menu');
 	ui.sub.answer.background.setDepth(70);
+	ui.sub.answer.background.setVisible(false);
 	
 	// Input Label
 	const labelFontSize = 24;
@@ -292,23 +292,32 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.label.setStroke('#BBB', 2);
 	ui.sub.answer.label.setOrigin(0.5);
 	ui.sub.answer.label.setDepth(72);
+	ui.sub.answer.label.setVisible(false);
 	
 	// Input Box
 	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
 	ui.sub.answer.input.setDepth(72);
+	ui.sub.answer.input.setVisible(false);
 	
 	// Behaviors
 	ui.sub.answer.showOrHide = function(show) {
-		console.log('show or hide called');
 		ui.sub.answer.background.setVisible(show);
 		ui.sub.answer.label.setVisible(show);
 		ui.sub.answer.input.setVisible(show);
-		return ui.sub.answer.input.value;
+		
+		if (!show) {
+			ui.command.cursor.anim_deselect();
+		}
+		
+		var value = ui.sub.answer.input.value;
+		ui.sub.answer.input.value = '';
+		
+		return value;
 	};
 	
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true);};
-	ui.sub.answer.confirm = function() {return ui.sub.answer.showOrHide(true);};
+	ui.sub.answer.confirm = function() {return ui.sub.answer.showOrHide(false);};
 }
 
 function createCommandBehaviors(game, curOption, parentMenuName) {
