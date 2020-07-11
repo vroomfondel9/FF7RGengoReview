@@ -71,6 +71,7 @@ function preload ()
 	// UI
 	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground6.png');
 	this.load.image('ui-bottom-background', 'assets/images/ui/menu-bottom-background1.png');
+	this.load.image('ui-bottom-gauge-shine-single', 'assets/images/ui/menu-bottom-single-gauge-shine-middle.png');
 	this.load.image('ui-command-menu', 'assets/images/ui/command-menu4.png');
 	this.load.image('ui-command-sub-menu', 'assets/images/ui/command-sub-menu3.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
@@ -180,9 +181,14 @@ function createUIMoveName(game) {
 
 function createUIStatusDisplay(game) {
 	ui.status = {};
+	var graphics = game.add.graphics();
 
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
+	
+	var rect = new Phaser.Geom.Rectangle(200, 300, 25, 84);
+	graphics.fillStyle('#FF0000', 0);   // color: 0xRRGGBB
+	graphics.fillRectShape(rect);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
