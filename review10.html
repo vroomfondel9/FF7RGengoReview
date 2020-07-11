@@ -94,33 +94,38 @@ function update (game)
         return;
     }
 	
+	
+	if (ui.controlledobject != null) {
+		if (Phaser.Input.Keyboard.JustDown(controls.UP))
+		{
+			ui.controlledobject.previous();
+		}
+		if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
+		{
+			ui.controlledobject.previous();
+		}
+		if (Phaser.Input.Keyboard.JustDown(controls.ENTER))
+		{
+			ui.controlledobject.select();
+		}
+		if (Phaser.Input.Keyboard.JustDown(controls.ESCAPE))
+		{
+			ui.controlledobject.cancel();
+		}
+	}
+	
+	// TODO only for test purposes
+	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
+	{
+		
+	}
+	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		acceptableAnswers = ["うかつ"];
 		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった! 足が挟まっている！何よ。上が切り抜けるか？";
 	
-        player.anim_attack(playerAnswer, acceptableAnswers);
-	}
-	
-	if (Phaser.Input.Keyboard.JustDown(controls.UP))
-	{
-		ui.command.cursor.prev();
-	}
-	else if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
-	{
-		ui.command.cursor.next();
-	}
-	else if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
-	{
-		ui.command.cursor.anim_deselect();
-	}
-	else if (Phaser.Input.Keyboard.JustDown(controls.ENTER))
-	{
-		ui.command.cursor.anim_select();
-	}
-	else if (Phaser.Input.Keyboard.JustDown(controls.ESCAPE))
-	{
-		ui.sub.answer.cancel();
+		player.anim_attack(playerAnswer, acceptableAnswers);
 	}
 }
 
@@ -145,6 +150,8 @@ function createUI(game) {
 	createAnswerSubCommandMenu(game);
 	
 	createCommandMenu(game);
+	
+	ui.controlledobject = ui.command;
 }
 
 function createUIMoveName(game) {
@@ -221,6 +228,12 @@ function createCommandMenu(game) {
 	}
 	
 	createCommandCursor(game, commandFontSize);
+	
+	// Standard Behaviors
+	ui.command.confirm = function () {ui.command.cursor.anim_select();};
+	ui.command.cancel = function () {ui.command.cursor.anim_deselect();};
+	ui.command.next = function () {ui.command.cursor.next();};
+	ui.command.previous = function () {ui.command.cursor.prev();};
 }
 
 function createCommandCursor(game, commandFontSize) {
