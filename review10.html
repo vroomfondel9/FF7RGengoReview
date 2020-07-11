@@ -96,11 +96,11 @@ function update (game)
 	
 	
 	if (ui.controlledobject != null) {
-		if (Phaser.Input.Keyboard.JustDown(controls.UP) || ((ui.controlledobject != ui.sub.answer) && (Phaser.Input.Keyboard.JustDown(controls.W))))
+		if (Phaser.Input.Keyboard.JustDown(controls.UP))
 		{
 			ui.controlledobject.previous();
 		}
-		if (Phaser.Input.Keyboard.JustDown(controls.DOWN) || Phaser.Input.Keyboard.JustDown(controls.S))
+		if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
 		{
 			ui.controlledobject.previous();
 		}
@@ -115,12 +115,12 @@ function update (game)
 	}
 	
 	// TODO only for test purposes
-	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT) || Phaser.Input.Keyboard.JustDown(controls.D))
+	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		
 	}
 	
-	if (Phaser.Input.Keyboard.JustDown(controls.LEFT) || Phaser.Input.Keyboard.JustDown(controls.A))
+	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		
 	}
@@ -609,11 +609,6 @@ function createControls(game) {
 	controls.DOWN = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 	controls.LEFT = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
 	controls.RIGHT = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-	
-	controls.W = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-	controls.A = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-	controls.S = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-	controls.D = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 	
 	controls.ENTER = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 	controls.ESCAPE = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
