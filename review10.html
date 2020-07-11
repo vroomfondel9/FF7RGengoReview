@@ -96,7 +96,7 @@ function update (game)
 	
 	
 	if (ui.controlledobject != null) {
-		if (Phaser.Input.Keyboard.JustDown(controls.UP) || Phaser.Input.Keyboard.JustDown(controls.W))
+		if (Phaser.Input.Keyboard.JustDown(controls.UP) || ((ui.controlledobject != ui.sub.answer) && (Phaser.Input.Keyboard.JustDown(controls.W))))
 		{
 			ui.controlledobject.previous();
 		}
