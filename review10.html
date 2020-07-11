@@ -312,14 +312,13 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.htmlcontainer.setDepth(72);
 	ui.sub.answer.htmlcontainer.setVisible(false);
 	ui.sub.answer.input = ui.sub.answer.htmlcontainer.getChildByName('answerField');
-	
-	// Behaviors
+
+	// Custom Behaviors
 	ui.sub.answer.showOrHide = function(show) {
 		ui.sub.answer.background.setVisible(show);
 		ui.sub.answer.label.setVisible(show);
 		ui.sub.answer.htmlcontainer.setVisible(show);
 		
-		console.log(ui.sub.answer.input.value);
 		var value = ui.sub.answer.input.value;
 		ui.sub.answer.input.value = '';
 		
@@ -341,8 +340,6 @@ function createAnswerSubCommandMenu(game) {
 		
 		return value;
 	};
-	
-	// Custom Behaviors
 	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true);};
 	
 	// Standard Behaviors
@@ -354,11 +351,10 @@ function createAnswerSubCommandMenu(game) {
 
 function createCommandBehaviors(game, curOption, parentMenuName) {
 	if (content["command-options-answer"][lang] == parentMenuName) {
-		curOption.selectCallback = function() {console.log('TODO Answer Functionality Placeholder');};
 		curOption.selectCallback = function() {ui.sub.answer.show();};
 	}
 	else if (content["command-options-sense"][lang] == parentMenuName) {
-		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder');};
+		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder'); ui.command.cursor.anim_deselect();};
 	}
 }
 
