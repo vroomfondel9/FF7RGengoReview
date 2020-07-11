@@ -325,19 +325,31 @@ function createAnswerSubCommandMenu(game) {
 		
 		if (!show) {
 			ui.command.cursor.anim_deselect();
-			ui.sub.answer.input.blur();
+			window.setTimeout(function ()
+			{
+				ui.sub.answer.input.blur();
+			}, 0);
+			ui.controlledobject = ui.command;
 		}
 		else {
-			console.log('focus');
-			ui.sub.answer.input.focus();
+			window.setTimeout(function ()
+			{
+				ui.sub.answer.input.focus();
+			}, 0);
+			ui.controlledobject = ui.sub.answer;
 		}
 		
 		return value;
 	};
 	
-	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
+	// Custom Behaviors
 	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true);};
+	
+	// Standard Behaviors
+	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.confirm = function() {return ui.sub.answer.showOrHide(false);};
+	ui.sub.answer.next = function () {};
+	ui.sub.answer.previous = function () {};
 }
 
 function createCommandBehaviors(game, curOption, parentMenuName) {
