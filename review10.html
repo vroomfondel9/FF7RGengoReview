@@ -306,13 +306,17 @@ function createAnswerSubCommandMenu(game) {
 		ui.sub.answer.label.setVisible(show);
 		ui.sub.answer.htmlcontainer.setVisible(show);
 		
-		if (!show) {
-			ui.command.cursor.anim_deselect();
-		}
-		
 		console.log(ui.sub.answer.input.value);
 		var value = ui.sub.answer.input.value;
 		ui.sub.answer.input.value = '';
+		
+		if (!show) {
+			ui.command.cursor.anim_deselect();
+			ui.sub.answer.input.blur();
+		}
+		else {
+			ui.sub.answer.input.focus();
+		}
 		
 		return value;
 	};
