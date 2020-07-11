@@ -295,15 +295,16 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.label.setVisible(false);
 	
 	// Input Box
-	ui.sub.answer.input = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
-	ui.sub.answer.input.setDepth(72);
-	ui.sub.answer.input.setVisible(false);
+	ui.sub.answer.htmlcontainer = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
+	ui.sub.answer.htmlcontainer.setDepth(72);
+	ui.sub.answer.htmlcontainer.setVisible(false);
+	ui.sub.answer.input = ui.sub.answer.htmlcontainer.getChildByName('answerField');
 	
 	// Behaviors
 	ui.sub.answer.showOrHide = function(show) {
 		ui.sub.answer.background.setVisible(show);
 		ui.sub.answer.label.setVisible(show);
-		ui.sub.answer.input.setVisible(show);
+		ui.sub.answer.htmlcontainer.setVisible(show);
 		
 		if (!show) {
 			ui.command.cursor.anim_deselect();
