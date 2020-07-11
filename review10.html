@@ -182,6 +182,8 @@ function createUIMoveName(game) {
 function createUIStatusDisplay(game) {
 	ui.status = {};
 	var graphics = game.add.graphics();
+	graphics.setDepth(14);
+	console.log('omg');
 
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
@@ -189,6 +191,8 @@ function createUIStatusDisplay(game) {
 	var rect = new Phaser.Geom.Rectangle(200, 300, 25, 84);
 	graphics.fillStyle('#FF0000', 0);   // color: 0xRRGGBB
 	graphics.fillRectShape(rect);
+	
+	game.add.graphics();
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
