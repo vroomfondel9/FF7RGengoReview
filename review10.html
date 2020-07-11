@@ -181,14 +181,14 @@ function createUIMoveName(game) {
 
 function createUIStatusDisplay(game) {
 	ui.status = {};
-	var graphics = game.add.graphics({ fillStyle: { color: '0x4FA071' } });
-	graphics.setDepth(14);
 
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
 	
-	var rect = new Phaser.Geom.Rectangle(200, 300, 84, 25);
-	ui.status.time = graphics.fillRectShape(rect);
+	var timeGraphics = game.add.graphics({ fillStyle: { color: '0x4FA071' } });
+	timeGraphics.setDepth(14);
+	timeGraphics.setOrigin(0);
+	ui.status.time = timeGraphics.fillRectShape(new Phaser.Geom.Rectangle(200, 300, 84, 25));
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
