@@ -122,10 +122,7 @@ function update (game)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		acceptableAnswers = ["うかつ"];
-		playerAnswer = (Math.random() < 0.2) ? "うかつ" : "しまった! 足が挟まっている！何よ。上が切り抜けるか？";
-	
-		player.anim_attack(playerAnswer, acceptableAnswers);
+		
 	}
 }
 
@@ -343,8 +340,15 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true);};
 	
 	// Standard Behaviors
+	ui.sub.answer.confirm = function() {
+		// TODO placeholder
+		acceptableAnswers = ["うかつ"];
+		
+		var providedAnswer = ui.sub.answer.showOrHide(false);
+		
+		player.anim_attack(playerAnswer, acceptableAnswers);
+	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
-	ui.sub.answer.confirm = function() {return ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.next = function () {};
 	ui.sub.answer.previous = function () {};
 }
