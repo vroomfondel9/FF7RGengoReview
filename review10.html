@@ -231,6 +231,12 @@ function createCommandMenu(game) {
 	
 	createCommandCursor(game, commandFontSize);
 	
+	// TODO hide
+	ui.command.background.setVisible(false);
+	for (var i = 0; i < ui.command.numOptions; i++) {
+		ui.command.options[i].text.setVisible(false);
+	}
+	
 	// Standard Behaviors
 	ui.command.confirm = function () {ui.command.cursor.anim_select();};
 	ui.command.cancel = function () {ui.command.cursor.anim_deselect();};
