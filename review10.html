@@ -185,6 +185,7 @@ function createUIStatusDisplay(game) {
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
 	
+	// TODO next redrawing rectangle with graphics is too hard. Just use image.
 	ui.status.time = {};
 	var timeGraphics = game.add.graphics({ fillStyle: { color: '0x4FA071' } });
 	timeGraphics.setDepth(14);
