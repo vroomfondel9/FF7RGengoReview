@@ -123,7 +123,7 @@ function update (game)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.setScale(0.4);
+		ui.status.time.gaugebackground.setTo(200, 300, 5, 50);
 	}
 }
 
@@ -185,10 +185,11 @@ function createUIStatusDisplay(game) {
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
 	
+	ui.status.time = {};
 	var timeGraphics = game.add.graphics({ fillStyle: { color: '0x4FA071' } });
 	timeGraphics.setDepth(14);
-	timeGraphics.setOrigin(0);
-	ui.status.time = timeGraphics.fillRectShape(new Phaser.Geom.Rectangle(200, 300, 84, 25));
+	ui.status.time.bounds = new Phaser.Geom.Rectangle(200, 300, 84, 25);
+	ui.status.time.gaugebackground = timeGraphics.fillRectShape(ui.status.time.bounds);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
