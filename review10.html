@@ -284,6 +284,15 @@ function createCommandCursor(game, commandFontSize) {
 	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1);};
 }
 
+function createCommandBehaviors(game, curOption, parentMenuName) {
+	if (content["command-options-answer"][lang] == parentMenuName) {
+		curOption.selectCallback = function() {ui.sub.answer.show();};
+	}
+	else if (content["command-options-sense"][lang] == parentMenuName) {
+		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder'); ui.command.cursor.anim_deselect();};
+	}
+}
+
 function createAnswerSubCommandMenu(game) {
 	if (!ui.sub) {
 		ui.sub = {};
@@ -310,6 +319,10 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.htmlcontainer.setVisible(false);
 	ui.sub.answer.input = ui.sub.answer.htmlcontainer.getChildByName('answerField');
 
+	createAnswerSubMenuBehaviors(game);
+}
+
+function createAnswerSubMenuBehaviors(game) {
 	// Custom Behaviors
 	ui.sub.answer.showOrHide = function(show) {
 		ui.sub.answer.background.setVisible(show);
@@ -351,15 +364,6 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.next = function () {};
 	ui.sub.answer.previous = function () {};
-}
-
-function createCommandBehaviors(game, curOption, parentMenuName) {
-	if (content["command-options-answer"][lang] == parentMenuName) {
-		curOption.selectCallback = function() {ui.sub.answer.show();};
-	}
-	else if (content["command-options-sense"][lang] == parentMenuName) {
-		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder'); ui.command.cursor.anim_deselect();};
-	}
 }
 
 function createPlayer(game) {
