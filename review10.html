@@ -217,10 +217,10 @@ function createUIStatusDisplayBehavior(game) {
 				targets     : [ ui.status.time ],
 				scaleX: 1,
 				ease        : 'Linear',
-				duration    : turn_time,
+				duration    : ui.status.time.fillTime,
 				yoyo        : false,
 				repeat      : 0,
-				callbackScope   : ui.status.time.fillTime,
+				callbackScope   : ui.status.time,
 				onComplete: function() {
 					console.log('called time');
 					ui.status.time.setScale(0, 1);
