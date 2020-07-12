@@ -190,12 +190,10 @@ function createUIStatusDisplay(game) {
 	ui.status.limit = game.add.image(601, 474, 'ui-bottom-gauge-single-pink');
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
-	ui.status.limit.filledSize = ui.status.limit.width;
 	
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
-	ui.status.time.filledSize = ui.status.time.width;
 	ui.status.time.setScale(0, 1);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
@@ -213,12 +211,11 @@ function createUIStatusDisplayBehavior(game) {
 	ui.status.time.waitforturn = function() {
 		//TODO time for turn
 		const turn_time = 3000;
-		console.log(ui.status.time.filledSize);
 		game.tweens.timeline({
 			tweens: [
 				{
 					targets     : [ ui.status.time ],
-					scaleX: ui.status.time.filledSize,
+					scaleX: 1,
 					ease        : 'Linear',
 					duration    : turn_time,
 					yoyo        : false,
