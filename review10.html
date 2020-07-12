@@ -119,13 +119,12 @@ function update (game)
 	// TODO only for test purposes
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
-		ui.status.time.waitforturn.pause();
+		
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.waitforturn.stop();
-		ui.status.time.waitforturn.play();
+		ui.status.time.resume();
 	}
 }
 
@@ -212,24 +211,31 @@ function createUIStatusDisplay(game) {
 }
 
 function createUIStatusDisplayBehavior(game) {
-	ui.status.time.waitforturn = game.tweens.timeline({
-		tweens: [
-			{
-				targets     : [ ui.status.time ],
-				scaleX: 1,
-				ease        : 'Linear',
-				duration    : ui.status.time.fillTime,
-				yoyo        : false,
-				repeat      : 0,
-				callbackScope   : ui.status.time,
-				onComplete: function() {
-					console.log('called time');
-					ui.status.time.setScale(0, 1);
-				}
-			},
-		]
-	});
-	ui.status.time.waitforturn.stop();
+	ui.status.time.resume = function() {
+		ui.status.time.tween = game.tweens.timeline({
+			tweens: [
+				{
+					targets     : [ ui.status.time ],
+					scaleX: 1,
+					ease        : 'Linear',
+					duration    : ui.status.time.fillTime,
+					yoyo        : false,
+					repeat      : 0,
+					callbackScope   : ui.status.time,
+					onComplete: function() {
+						console.log('called time');
+						ui.status.time.setScale(0, 1);
+					}
+				},
+			]
+		});
+	};
+	
+	ui.status.time.pause = function() {
+		if (ui.status.time.tween != null) {
+			//TODO figure out how this works...
+		}
+	};
 	
 	ui.status.limit.enemydefeated = function() {
 		game.tweens.timeline({
