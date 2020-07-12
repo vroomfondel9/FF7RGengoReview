@@ -124,8 +124,8 @@ function update (game)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		//ui.status.time.waitforturn();
-		ui.status.time.setScale(0.5, 1);
+		ui.status.time.waitforturn();
+		//ui.status.time.setScale(0.5, 1);
 	}
 }
 
@@ -215,15 +215,9 @@ function createUIStatusDisplayBehavior(game) {
 		game.tweens.timeline({
 			tweens: [
 				{
-					targets: ui.status.time,
+					targets: ui.status.time.scale,
+					x: 1,
 					alpha: '+0',
-					onUpdate: function(state) {
-						var scale = (state.elapsed / turn_time);
-						scale = (scale > 1.0) ? 1.0 : scale;
-						
-						ui.status.time.setScale(0.5, 1);
-						console.log('scale ' + scale);
-					},
 					duration: turn_time
 				},
 			]
