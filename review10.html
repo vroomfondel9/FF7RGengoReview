@@ -216,8 +216,8 @@ function createUIStatusDisplayBehavior(game) {
 					targets: ui.status.time,
 					alpha: '+0',
 					onUpdate: function(state) {
-						console.log((state.elapsed / turn_time));
 						ui.status.time.setScale((state.elapsed / turn_time), 1);
+						console.log('scale ' + ui.status.time.scale);
 					},
 					duration: turn_time,
 					onComplete: function() {
