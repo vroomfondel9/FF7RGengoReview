@@ -215,10 +215,14 @@ function createUIStatusDisplayBehavior(game) {
 		game.tweens.timeline({
 			tweens: [
 				{
-					targets: ui.status.time.scale,
-					x: 1,
-					alpha: '+0',
-					duration: turn_time
+					targets     : [ ui.status.time ],
+					scaleX: 10,
+					scaleY: 10,
+					ease        : 'Linear',
+					duration    : duration,
+					yoyo        : false,
+					repeat      : 0,
+					callbackScope   : ui.status.time
 				},
 			]
 		});
