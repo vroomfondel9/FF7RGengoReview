@@ -208,6 +208,7 @@ function createUIStatusDisplay(game) {
 
 function createUIStatusDisplayBehavior(game) {
 	ui.status.time.waitforturn = function() {
+		console.log('ran');
 		//TODO time for turn
 		const turn_time = 3000;
 		game.tweens.timeline({
