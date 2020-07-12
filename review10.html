@@ -219,10 +219,10 @@ function createUIStatusDisplayBehavior(game) {
 					targets     : [ ui.status.time ],
 					scaleX: 1,
 					ease        : 'Linear',
-					duration    : ui.status.time.fillTime,
+					duration    : ui.status.time.fillTime - ui.status.time.elapsed,
 					yoyo        : false,
 					repeat      : 0,
-					callbackScope   : ui.status.time - ui.status.time.elapsed,
+					callbackScope   : ui.status.time,
 					onComplete: function() {
 						console.log('called time');
 						ui.status.time.setScale(0, 1);
@@ -235,7 +235,7 @@ function createUIStatusDisplayBehavior(game) {
 	
 	ui.status.time.pause = function() {
 		if (ui.status.time.tween != null) {
-			ui.status.time.elapsed += ui.status.time.tween.totalElapsed;
+			ui.status.time.elapsed += ui.status.time.tween.elapsed;
 			ui.status.time.tween.stop();
 			console.log(ui.status.time.elapsed);
 		}
