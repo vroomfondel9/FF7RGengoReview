@@ -71,7 +71,8 @@ function preload ()
 	// UI
 	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground6.png');
 	this.load.image('ui-bottom-background', 'assets/images/ui/menu-bottom-background1.png');
-	this.load.image('ui-bottom-gauge-shine-single', 'assets/images/ui/menu-bottom-single-gauge-shine-middle.png');
+	this.load.image('ui-bottom-gauge-single-green', 'assets/images/ui/single-gauge-green.png');
+	this.load.image('ui-bottom-gauge-single-pink', 'assets/images/ui/single-gauge-pink.png');
 	this.load.image('ui-command-menu', 'assets/images/ui/command-menu4.png');
 	this.load.image('ui-command-sub-menu', 'assets/images/ui/command-sub-menu3.png');
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
@@ -123,7 +124,7 @@ function update (game)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.bounds.setTo(200, 300, 5, 50);
+		ui.status.time.setScale(0.5);
 	}
 }
 
@@ -185,12 +186,13 @@ function createUIStatusDisplay(game) {
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
 	
-	// TODO next redrawing rectangle with graphics is too hard. Just use image.
-	ui.status.time = {};
-	var timeGraphics = game.add.graphics({ fillStyle: { color: '0x4FA071' } });
-	timeGraphics.setDepth(14);
-	ui.status.time.bounds = new Phaser.Geom.Rectangle(200, 300, 84, 25);
-	ui.status.time.gaugebackground = timeGraphics.fillRectShape(ui.status.time.bounds);
+	ui.status.time = game.add.image(200, 200, 'ui-bottom-gauge-single-green');
+	ui.status.time.setDepth(14);
+	ui.status.time.setOrigin(0);
+	
+	ui.status.limit = game.add.image(500, 200, 'ui-bottom-gauge-single-pink');
+	ui.status.limit.setDepth(14);
+	ui.status.limit.setOrigin(0);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
