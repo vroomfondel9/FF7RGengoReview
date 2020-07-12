@@ -186,13 +186,13 @@ function createUIStatusDisplay(game) {
 	ui.status.background = game.add.image(400, 520, 'ui-bottom-background');
 	ui.status.background.setDepth(10);
 	
-	ui.status.time = game.add.image(200, 200, 'ui-bottom-gauge-single-green');
-	ui.status.time.setDepth(14);
-	ui.status.time.setOrigin(0);
-	
-	ui.status.limit = game.add.image(500, 200, 'ui-bottom-gauge-single-pink');
+	ui.status.limit = game.add.image(600, 350, 'ui-bottom-gauge-single-pink');
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
+	
+	ui.status.time = game.add.image(800, 350, 'ui-bottom-gauge-single-green');
+	ui.status.time.setDepth(14);
+	ui.status.time.setOrigin(0);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
