@@ -193,6 +193,7 @@ function createUIStatusDisplay(game) {
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
+	ui.status.time.setScale(0, 1);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
@@ -201,6 +202,25 @@ function createUIStatusDisplay(game) {
 	ui.status.playername.setStroke('#BBB', 2);
 	ui.status.playername.setOrigin(0);
 	ui.status.playername.setDepth(22);
+	
+	createUIStatusDisplayBehavior(game);
+}
+
+function createUIStatusDisplayBehavior(game) {
+	ui.status.time.waitforturn = game.tweens.timeline({
+		tweens: [
+			{
+				targets: ui.status.time,
+				scaleX: 10,
+				ease: 'Linear',
+				duration: 3,
+				onComplete: function() {
+					ui.status.time.setScale(0, 1);
+				}
+			},
+		],
+		loop: -1
+	});
 }
 
 function createCommandMenu(game) {
