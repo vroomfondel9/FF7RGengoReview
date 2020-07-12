@@ -124,7 +124,8 @@ function update (game)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.waitforturn.restart();
+		ui.status.time.waitforturn.stop();
+		ui.status.time.waitforturn.play();
 	}
 }
 
