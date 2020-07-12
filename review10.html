@@ -243,7 +243,7 @@ function createUIStatusDisplayBehavior(game) {
 					repeat      : 0,
 					callbackScope   : ui.status.limit,
 					onComplete: function() {
-						console.log('called limit');
+						console.log('called limit. ' + ui.status.limit.scaleX);
 						if (ui.status.limit.scaleX >= 1) {
 							console.log('limit gauge full!');
 						}
