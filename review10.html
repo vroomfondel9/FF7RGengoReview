@@ -119,7 +119,7 @@ function update (game)
 	// TODO only for test purposes
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
-		
+		ui.status.time.pause();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -233,7 +233,7 @@ function createUIStatusDisplayBehavior(game) {
 	
 	ui.status.time.pause = function() {
 		if (ui.status.time.tween != null) {
-			//TODO figure out how this works...
+			ui.status.time.tween.stop();
 		}
 	};
 	
