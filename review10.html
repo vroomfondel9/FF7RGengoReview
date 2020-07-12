@@ -190,7 +190,8 @@ function createUIStatusDisplay(game) {
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
 	
-	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
+	//ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
+	ui.status.time = game.add.image(500, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
 	ui.status.time.setScale(0, 1);
@@ -208,19 +209,19 @@ function createUIStatusDisplay(game) {
 
 function createUIStatusDisplayBehavior(game) {
 	ui.status.time.waitforturn = function() {
-		var target = ui.status.time;
 		//TODO time for turn
 		const turn_time = 3000;
 		game.tweens.timeline({
 			tweens: [
 				{
-					targets: target,
+					targets: ui.status.time,
 					alpha: '+0',
 					onUpdate: function(state) {
 						var scale = (state.elapsed / turn_time);
 						scale = (scale > 1.0) ? 1.0 : scale;
 						
-						target.setScale(scale, 1);
+						ui.status.time.setScale(scale, 1);
+						ui.status.time.setDepth(14);
 						console.log('scale ' + scale);
 					},
 					duration: turn_time
