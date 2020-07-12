@@ -124,7 +124,7 @@ function update (game)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.waitforturn.play();
+		ui.status.time.waitforturn.restart();
 	}
 }
 
@@ -228,6 +228,7 @@ function createUIStatusDisplayBehavior(game) {
 			},
 		]
 	});
+	ui.status.time.waitforturn.stop();
 	
 	ui.status.limit.enemydefeated = function() {
 		game.tweens.timeline({
