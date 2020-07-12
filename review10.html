@@ -191,6 +191,7 @@ function createUIStatusDisplay(game) {
 	ui.status.limit.setOrigin(0);
 	//TODO base on # of enemies
 	ui.status.limit.incrementAmount = 0.1;
+	ui.status.time.setScale(0, 1);
 	
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
