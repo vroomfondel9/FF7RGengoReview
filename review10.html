@@ -191,8 +191,7 @@ function createUIStatusDisplay(game) {
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
 	
-	//ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
-	ui.status.time = game.add.image(700, 374, 'ui-bottom-gauge-single-green');
+	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
 	ui.status.time.setScale(0, 1);
@@ -221,7 +220,10 @@ function createUIStatusDisplayBehavior(game) {
 					duration    : turn_time,
 					yoyo        : false,
 					repeat      : 0,
-					callbackScope   : ui.status.time
+					callbackScope   : ui.status.time,
+					onComplete: function() {
+						console.log('called');
+					}
 				},
 			]
 		});
