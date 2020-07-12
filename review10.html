@@ -225,6 +225,7 @@ function createUIStatusDisplayBehavior(game) {
 					callbackScope   : ui.status.time,
 					onComplete: function() {
 						console.log('called time');
+						ui.status.time.setScale(0, 1);
 					}
 				},
 			]
@@ -243,10 +244,9 @@ function createUIStatusDisplayBehavior(game) {
 					repeat      : 0,
 					callbackScope   : ui.status.limit,
 					onComplete: function() {
-						//console.log('called limit. ' + ui.status.limit.scaleX);
-						//console.log(ui.status.limit.scaleX >= 0.999);
+						//floating point precision means cannot compare to 1.0
 						if (ui.status.limit.scaleX >= 0.999) {
-							console.log('limit gauge full!');
+							console.log('TODO limit gauge full PLACEHOLDER');
 						}
 					}
 				},
