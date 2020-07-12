@@ -195,7 +195,7 @@ function createUIStatusDisplay(game) {
 	ui.status.time = game.add.image(700, 374, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
-	//ui.status.time.setScale(0, 1);
+	ui.status.time.setScale(0, 1);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
@@ -217,7 +217,6 @@ function createUIStatusDisplayBehavior(game) {
 				{
 					targets     : [ ui.status.time ],
 					scaleX: 10,
-					scaleY: 10,
 					ease        : 'Linear',
 					duration    : turn_time,
 					yoyo        : false,
