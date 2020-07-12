@@ -222,10 +222,11 @@ function createUIStatusDisplayBehavior(game) {
 					duration    : ui.status.time.fillTime,
 					yoyo        : false,
 					repeat      : 0,
-					callbackScope   : ui.status.time,
+					callbackScope   : ui.status.time - ui.status.time.elapsed,
 					onComplete: function() {
 						console.log('called time');
 						ui.status.time.setScale(0, 1);
+						ui.status.time.elapsed = 0;
 					}
 				},
 			]
