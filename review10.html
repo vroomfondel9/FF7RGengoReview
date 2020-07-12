@@ -194,7 +194,6 @@ function createUIStatusDisplay(game) {
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
 	ui.status.time.setScale(0, 1);
-	ui.status.time.setScale(1, 1);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
@@ -216,11 +215,12 @@ function createUIStatusDisplayBehavior(game) {
 				{
 					targets: ui.status.time,
 					alpha: '+0',
+					scaleX: 10,
 					onUpdate: function(state) {
 						var scale = (state.elapsed / turn_time);
 						scale = (scale > 1.0) ? 1.0 : scale;
 						
-						ui.status.time.setScale(scale, 1);
+						//ui.status.time.setScale(scale, 1);
 						console.log('scale ' + scale);
 					},
 					duration: turn_time
