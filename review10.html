@@ -224,9 +224,9 @@ function createUIStatusDisplayBehavior(game) {
 					repeat      : 0,
 					callbackScope   : ui.status.time,
 					onComplete: function() {
-						console.log('called time');
 						ui.status.time.setScale(0, 1);
 						ui.status.time.elapsed = 0;
+						//TODO continue filled behavior
 					}
 				},
 			]
