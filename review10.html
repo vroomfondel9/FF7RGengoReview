@@ -119,13 +119,12 @@ function update (game)
 	// TODO only for test purposes
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
-		
+		ui.status.limit.enemydefeated();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		ui.status.time.waitforturn();
-		//ui.status.time.setScale(0.5, 1);
 	}
 }
 
@@ -190,6 +189,8 @@ function createUIStatusDisplay(game) {
 	ui.status.limit = game.add.image(601, 474, 'ui-bottom-gauge-single-pink');
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
+	//TODO base on # of enemies
+	ui.status.limit.incrementAmount = 0.1;
 	
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
@@ -210,7 +211,7 @@ function createUIStatusDisplay(game) {
 function createUIStatusDisplayBehavior(game) {
 	ui.status.time.waitforturn = function() {
 		//TODO time for turn
-		const turn_time = 3000;
+		const turn_time = 1000;
 		game.tweens.timeline({
 			tweens: [
 				{
@@ -222,7 +223,26 @@ function createUIStatusDisplayBehavior(game) {
 					repeat      : 0,
 					callbackScope   : ui.status.time,
 					onComplete: function() {
-						console.log('called');
+						console.log('called time');
+					}
+				},
+			]
+		});
+	}
+	
+	ui.status.limit.enemydefeated = function() {
+		game.tweens.timeline({
+			tweens: [
+				{
+					targets     : [ ui.status.limit ],
+					scaleX: '+' + ui.status.limit.incrementAmount,
+					ease        : 'Linear',
+					duration    : 300,
+					yoyo        : false,
+					repeat      : 0,
+					callbackScope   : ui.status.limit,
+					onComplete: function() {
+						console.log('called limit');
 					}
 				},
 			]
