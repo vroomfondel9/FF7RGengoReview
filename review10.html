@@ -119,12 +119,12 @@ function update (game)
 	// TODO only for test purposes
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
-		ui.status.limit.enemydefeated();
+		ui.status.time.waitforturn.pause();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.waitforturn();
+		ui.status.time.waitforturn.play();
 	}
 }
 
@@ -196,6 +196,7 @@ function createUIStatusDisplay(game) {
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
+	ui.status.time.fillTime = 1000;
 	ui.status.time.setScale(0, 1);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
@@ -210,27 +211,23 @@ function createUIStatusDisplay(game) {
 }
 
 function createUIStatusDisplayBehavior(game) {
-	ui.status.time.waitforturn = function() {
-		//TODO time for turn
-		const turn_time = 1000;
-		game.tweens.timeline({
-			tweens: [
-				{
-					targets     : [ ui.status.time ],
-					scaleX: 1,
-					ease        : 'Linear',
-					duration    : turn_time,
-					yoyo        : false,
-					repeat      : 0,
-					callbackScope   : ui.status.time,
-					onComplete: function() {
-						console.log('called time');
-						ui.status.time.setScale(0, 1);
-					}
-				},
-			]
-		});
-	}
+	ui.status.time.waitforturn = game.tweens.timeline({
+		tweens: [
+			{
+				targets     : [ ui.status.time ],
+				scaleX: 1,
+				ease        : 'Linear',
+				duration    : turn_time,
+				yoyo        : false,
+				repeat      : 0,
+				callbackScope   : ui.status.time.fillTime,
+				onComplete: function() {
+					console.log('called time');
+					ui.status.time.setScale(0, 1);
+				}
+			},
+		]
+	});
 	
 	ui.status.limit.enemydefeated = function() {
 		game.tweens.timeline({
