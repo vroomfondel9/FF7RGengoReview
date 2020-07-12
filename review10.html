@@ -208,14 +208,15 @@ function createUIStatusDisplay(game) {
 
 function createUIStatusDisplayBehavior(game) {
 	ui.status.time.waitforturn = function() {
-		console.log('ran');
 		//TODO time for turn
 		const turn_time = 3000;
 		game.tweens.timeline({
 			tweens: [
 				{
 					targets: ui.status.time,
+					alpha: '+0',
 					onUpdate: function(state) {
+						console.log((state.elapsed / turn_time));
 						ui.status.time.setScale((state.elapsed / turn_time), 1);
 					},
 					duration: turn_time,
