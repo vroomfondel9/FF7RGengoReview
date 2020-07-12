@@ -197,6 +197,7 @@ function createUIStatusDisplay(game) {
 	ui.status.time.setDepth(14);
 	ui.status.time.setOrigin(0);
 	ui.status.time.fillTime = 1000;
+	ui.status.time.elapsed = 0;
 	ui.status.time.setScale(0, 1);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
@@ -234,6 +235,8 @@ function createUIStatusDisplayBehavior(game) {
 	ui.status.time.pause = function() {
 		if (ui.status.time.tween != null) {
 			ui.status.time.tween.stop();
+			ui.status.time.elapsed += ui.status.time.tween.elapsed;
+			console.log(ui.status.time.elapsed);
 		}
 	};
 	
