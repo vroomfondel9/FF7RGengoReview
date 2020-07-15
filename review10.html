@@ -293,6 +293,7 @@ function createUIStatusDisplayBehavior(game) {
 	};
 	
 	ui.status.timefilled.hide = function() {
+		console.log('called');
 		ui.status.timefilled.setVisible(false);
 		if (ui.status.timefilled.tween) {
 			ui.status.timefilled.tween.stop();
