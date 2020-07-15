@@ -255,6 +255,8 @@ function createUIStatusDisplayBehavior(game) {
 	};
 	
 	ui.status.timefilled.show = function() {
+		ui.status.timefilled.setVisible(true);
+		
 		const flashduration = 300;
 		ui.status.timefilled.tween = game.tweens.timeline({
 			tweens: [
