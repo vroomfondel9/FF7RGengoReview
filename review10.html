@@ -267,7 +267,7 @@ function createUIStatusDisplayBehavior(game) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
 						var color = done > 1.0 ? 255 : (done < 0.0 ? 0 : 255 * done);
-						ui.status.timefilled.setTint('0x000000');
+						ui.status.timefilled.setTint('0x888888');
 					},
 					duration: flashduration,
 					delay: 0,
@@ -280,7 +280,7 @@ function createUIStatusDisplayBehavior(game) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
 						var color = done > 1.0 ? 0 : (done < 0.0 ? 255 : 255 * (1.0 - done));
-						ui.status.timefilled.setTint('0xFFFFF');
+						ui.status.timefilled.setTint('0xBBBBBB');
 					},
 					duration: flashduration,
 					delay: flashduration,
