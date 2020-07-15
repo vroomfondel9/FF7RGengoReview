@@ -209,11 +209,10 @@ function createUIStatusDisplay(game) {
 	ui.status.timefilled = game.add.image(700, 474, 'ui-bottom-gauge-single-yellow');
 	ui.status.timefilled.setDepth(15);
 	ui.status.timefilled.setOrigin(0);
-	ui.status.timefilled.setVisible(true);
+	ui.status.timefilled.setVisible(false);
 	
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
-	ui.status.foreground.setVisible(false);
 	
 	ui.status.playername = game.add.text(15, 475, content["status-player-name"][lang], {fontSize: '24px', fill: '#FFF'});
 	ui.status.playername.setStroke('#BBB', 2);
