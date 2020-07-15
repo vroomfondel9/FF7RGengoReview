@@ -257,7 +257,7 @@ function createUIStatusDisplayBehavior(game) {
 	ui.status.timefilled.show = function() {
 		ui.status.timefilled.setVisible(true);
 		
-		const flashduration = 300;
+		const flashduration = 1000;
 		ui.status.timefilled.tween = game.tweens.timeline({
 			tweens: [
 				{
@@ -267,7 +267,7 @@ function createUIStatusDisplayBehavior(game) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
 						var color = done > 1.0 ? 255 : (done < 0.0 ? 0 : 255 * done);
-						ui.status.timefilled.setTint('0x888888');
+						ui.status.timefilled.setTint(Phaser.Display.Color.GetColor(200, 200, 200));
 					},
 					duration: flashduration,
 					delay: 0,
@@ -280,7 +280,7 @@ function createUIStatusDisplayBehavior(game) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
 						var color = done > 1.0 ? 0 : (done < 0.0 ? 255 : 255 * (1.0 - done));
-						ui.status.timefilled.setTint('0xBBBBBB');
+						ui.status.timefilled.setTint(Phaser.Display.Color.GetColor(150, 150, 150));
 					},
 					duration: flashduration,
 					ease: 'Linear'
