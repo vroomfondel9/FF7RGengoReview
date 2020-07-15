@@ -471,6 +471,8 @@ function createAnswerSubMenuBehaviors(game) {
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
 		player.anim_attack(providedAnswer, acceptableAnswers);
+		// TODO only restart time after animation finishes
+		ui.status.time.resume();
 	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.next = function () {};
