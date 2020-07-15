@@ -279,7 +279,7 @@ function createCommandMenu(game) {
 	ui.command.selected = false;
 
 	ui.command.background = game.add.image(275, 520, 'ui-command-menu');
-	ui.command.background .setDepth(50);
+	ui.command.background.setDepth(50);
 	
 	// Menu Options Text
 	const commandFontSize = 24;
@@ -297,16 +297,11 @@ function createCommandMenu(game) {
 		ui.command.options[i].alliesSelectableDefault = false;
 		ui.command.options[i].enemiesSelectableDefault = true;
 		
-		ui.command.sub = createCommandBehaviors(game, ui.command.options[i], optionsRaw[i]);
+		ui.command.sub = createCommandSubBehaviors(game, ui.command.options[i], optionsRaw[i]);
 	}
 	
 	createCommandCursor(game, commandFontSize);
-	
-	// Standard Behaviors
-	ui.command.confirm = function () {ui.command.cursor.anim_select();};
-	ui.command.cancel = function () {ui.command.cursor.anim_deselect();};
-	ui.command.next = function () {ui.command.cursor.next();};
-	ui.command.previous = function () {ui.command.cursor.prev();};
+	createCommandBehaviors(game);
 }
 
 function createCommandCursor(game, commandFontSize) {
@@ -360,13 +355,37 @@ function createCommandCursor(game, commandFontSize) {
 	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1);};
 }
 
-function createCommandBehaviors(game, curOption, parentMenuName) {
+function createCommandSubBehaviors(game, curOption, parentMenuName) {
 	if (content["command-options-answer"][lang] == parentMenuName) {
 		curOption.selectCallback = function() {ui.sub.answer.show();};
 	}
 	else if (content["command-options-sense"][lang] == parentMenuName) {
 		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder'); ui.command.cursor.anim_deselect();};
 	}
+}
+
+function createCommandBehaviors(game) {
+	// Standard Behaviors
+	ui.command.confirm = function () {ui.command.cursor.anim_select();};
+	ui.command.cancel = function () {ui.command.cursor.anim_deselect();};
+	ui.command.next = function () {ui.command.cursor.next();};
+	ui.command.previous = function () {ui.command.cursor.prev();};
+	
+	// Menu Behaviors
+	ui.command.toggle = function (show) {
+		ui.command.current = 0;
+		ui.command.selected = false;
+		ui.command.cancel();
+		
+		ui.command.background.setVisible(show);
+		ui.command.cursor.setVisible(show);
+		
+		for (var i = 0; i < ui.command.numOptions; i++) {
+			ui.command.options[i].text.setVisible(show);
+		}
+	};
+	ui.command.hide = function () {ui.command.toggle(false);};
+	ui.command.show = function () {ui.command.toggle(true);};
 }
 
 function createAnswerSubCommandMenu(game) {
