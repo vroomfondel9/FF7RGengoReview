@@ -293,6 +293,13 @@ function createUIStatusDisplayBehavior(game) {
 		});
 	};
 	
+	ui.status.timefilled.hide = function() {
+		ui.status.timefilled.setVisible(false);
+		if (ui.status.timefilled.tween) {
+			ui.status.timefilled.tween.stop();
+		}
+	};
+	
 	ui.status.limit.enemydefeated = function() {
 		game.tweens.timeline({
 			tweens: [
@@ -516,6 +523,7 @@ function createAnswerSubMenuBehaviors(game) {
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
 		player.anim_attack(providedAnswer, acceptableAnswers);
+		ui.status.timefilled.hide();
 		ui.command.hide();
 	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
