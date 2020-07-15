@@ -262,7 +262,7 @@ function createUIStatusDisplayBehavior(game) {
 			tweens: [
 				{
 					targets: ui.status.timefilled,
-					alpha: '+1',
+					alpha: 1,
 					onUpdate: function(state) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
@@ -275,7 +275,7 @@ function createUIStatusDisplayBehavior(game) {
 				},
 				{
 					targets: ui.status.timefilled,
-					alpha: '+1',
+					alpha: 1,
 					onUpdate: function(state) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
