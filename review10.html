@@ -471,8 +471,7 @@ function createAnswerSubMenuBehaviors(game) {
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
 		player.anim_attack(providedAnswer, acceptableAnswers);
-		// TODO only restart time after animation finishes
-		ui.status.time.resume();
+		ui.command.hide();
 	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
 	ui.sub.answer.next = function () {};
@@ -582,6 +581,7 @@ function createPlayerAnimations(game) {
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
+							ui.status.time.resume();
 						}
 					}
 				]
