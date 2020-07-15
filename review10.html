@@ -265,6 +265,7 @@ function createUIStatusDisplayBehavior(game) {
 					alpha: "+0",
 					ease        : 'Linear',
 					onUpdate: function(state) {
+						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - state.elapsed) / flashduration;
 						console.log('done1: ' + done);
 						var color = done > 1.0 ? 255 : (done < 0.0 ? 0 : 255 * done);
@@ -279,6 +280,7 @@ function createUIStatusDisplayBehavior(game) {
 					alpha: "+0",
 					ease        : 'Linear',
 					onUpdate: function(state) {
+						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - state.elapsed) / flashduration;
 						console.log('done2: ' + (1.0 - done));
 						var color = done > 1.0 ? 0 : (done < 0.0 ? 255 : 255 * (1.0 - done));
