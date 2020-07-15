@@ -267,6 +267,7 @@ function createUIStatusDisplayBehavior(game) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
 						var color = done > 1.0 ? 255 : (done < 0.0 ? 0 : 255 * done);
+						console.log('higher');
 						ui.status.timefilled.setTint(Phaser.Display.Color.GetColor(200, 200, 200));
 					},
 					duration: flashduration,
@@ -280,6 +281,7 @@ function createUIStatusDisplayBehavior(game) {
 						var elapsed = state.elapsed % flashduration;
 						var done = (flashduration - elapsed) / flashduration;
 						var color = done > 1.0 ? 0 : (done < 0.0 ? 255 : 255 * (1.0 - done));
+						console.log('lower');
 						ui.status.timefilled.setTint(Phaser.Display.Color.GetColor(150, 150, 150));
 					},
 					duration: flashduration,
