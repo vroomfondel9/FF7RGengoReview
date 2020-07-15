@@ -237,7 +237,7 @@ function createUIStatusDisplayBehavior(game) {
 					onComplete: function() {
 						ui.status.time.setScale(0, 1);
 						ui.status.time.elapsed = 0;
-						//TODO continue filled behavior
+						ui.status.timefilled.show();
 						
 						ui.command.show();
 					}
@@ -252,6 +252,43 @@ function createUIStatusDisplayBehavior(game) {
 			ui.status.time.tween.stop();
 			console.log(ui.status.time.elapsed);
 		}
+	};
+	
+	ui.status.timefilled.show = function() {
+		const flashduration = 300;
+		ui.status.timefilled.tween = game.tweens.timeline({
+			tweens: [
+				{
+					targets     : [ ui.status.timefilled ],
+					alpha: "+0",
+					ease        : 'Linear',
+					onUpdate: function(state) {
+						var done = (flashduration - state.elapsed) / flashduration;
+						console.log('done1: ' + done);
+						var color = done > 1.0 ? 255 : (done < 0.0 ? 0 : 255 * done);
+						ui.status.timefilled.setTint(Phaser.Display.Color.GetColor(color, color, color));
+					},
+					duration    : flashduration,
+					yoyo        : false,
+					repeat      : 0
+				},
+				{
+					targets     : [ ui.status.timefilled ],
+					alpha: "+0",
+					ease        : 'Linear',
+					onUpdate: function(state) {
+						var done = (flashduration - state.elapsed) / flashduration;
+						console.log('done2: ' + (1.0 - done));
+						var color = done > 1.0 ? 0 : (done < 0.0 ? 255 : 255 * (1.0 - done));
+						ui.status.timefilled.setTint(Phaser.Display.Color.GetColor(color, color, color));
+					},
+					duration    : flashduration,
+					yoyo        : false,
+					repeat      : 0
+				},
+			],
+			loop: -1
+		});
 	};
 	
 	ui.status.limit.enemydefeated = function() {
