@@ -375,15 +375,20 @@ function createCommandBehaviors(game) {
 	
 	// Menu Behaviors
 	ui.command.toggle = function (show) {
-		ui.command.current = 0;
-		ui.command.selected = false;
 		ui.command.cancel();
+		ui.command.cursor.advance(0);
 		
 		ui.command.background.setVisible(show);
 		ui.command.cursor.setVisible(show);
 		
 		for (var i = 0; i < ui.command.numOptions; i++) {
 			ui.command.options[i].text.setVisible(show);
+		}
+		
+		if (ui.sub) {
+			for (var i = 0; i < ui.sub.types.length; i++) {
+				ui.sub.types[i].cancel();
+			}
 		}
 	};
 	ui.command.hide = function () {ui.command.toggle(false);};
@@ -393,8 +398,10 @@ function createCommandBehaviors(game) {
 function createAnswerSubCommandMenu(game) {
 	if (!ui.sub) {
 		ui.sub = {};
+		ui.sub.types = [];
 	}
 	ui.sub.answer = {};
+	ui.sub.types.push(ui.sub.answer);
 
 	// Sub Menu Background
 	ui.sub.answer.background = game.add.image(175, 530, 'ui-command-sub-menu');
