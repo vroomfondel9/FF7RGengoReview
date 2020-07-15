@@ -256,9 +256,41 @@ function createUIStatusDisplayBehavior(game) {
 	
 	ui.status.timefilled.show = function() {
 		ui.status.timefilled.setVisible(true);
-		ui.status.timefilled.setTint('0x000000');
 		
-
+		const flashduration = 300;
+		ui.status.timefilled.tween = game.tweens.timeline({
+			tweens: [
+				{
+					targets     : [ ui.status.timefilled ],
+					alpha: "+0",
+					ease        : 'Linear',
+					onUpdate: function(state) {
+						var elapsed = state.elapsed % flashduration;
+						var done = (flashduration - elapsed) / flashduration;
+						var color = done > 1.0 ? 255 : (done < 0.0 ? 0 : 255 * done);
+						ui.status.timefilled.setTint('0x000000');
+					},
+					duration    : flashduration,
+					yoyo        : false,
+					repeat      : 1
+				},
+				{
+					targets     : [ ui.status.timefilled ],
+					alpha: "+0",
+					ease        : 'Linear',
+					onUpdate: function(state) {
+						var elapsed = state.elapsed % flashduration;
+						var done = (flashduration - elapsed) / flashduration;
+						var color = done > 1.0 ? 0 : (done < 0.0 ? 255 : 255 * (1.0 - done));
+						ui.status.timefilled.setTint('0x000000');
+					},
+					duration    : flashduration,
+					yoyo        : false,
+					repeat      : 1
+				},
+			],
+			loop: -1
+		});
 	};
 	
 	ui.status.limit.enemydefeated = function() {
