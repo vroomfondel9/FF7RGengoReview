@@ -119,12 +119,14 @@ function update (game)
 	// TODO only for test purposes
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
-		ui.status.time.pause();
+		//ui.status.time.pause();
+		ui.command.hide();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		ui.status.time.resume();
+		//ui.status.time.resume();
+		ui.command.show();
 	}
 }
 
