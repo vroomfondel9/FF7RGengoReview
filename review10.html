@@ -687,7 +687,21 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setX(-1 * enemy.x);
 			enemy.setY(enemy.y - 50);
 			
-			enemy.animating = false;
+			console.log('1');
+			
+			game.tweens.timeline({
+				tweens: [
+					{
+						targets: enemy,
+						x: previousBounds.x,
+						y: previousBounds.y,
+						duration: 800,
+						ease: 'Elastic',
+						easeParams: [ 1.5, 0.5 ],
+						onComplete: function() {enemy.animating = false;}
+					}
+				]
+			});
 		}
 	};
 	
