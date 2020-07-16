@@ -124,7 +124,7 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		enemy.anim_appear();
+		enemy.anim_appear("なんか面倒くさいだけど。ありますか？異常使える？きまずいよむをきかてこ");
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -677,7 +677,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
 
 	// Full Animations
-	enemy.anim_appear = function() {
+	enemy.anim_appear = function(text) {
 		if (!enemy.animating)
 		{
 			enemy.animating = true;
@@ -688,7 +688,9 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setX(-7 * enemy.x);
 			enemy.setY(enemy.y - 200);
 			
-			console.log('8');
+			enemy.setText(text);
+			
+			console.log('9');
 			
 			game.tweens.timeline({
 				tweens: [
