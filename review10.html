@@ -682,9 +682,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		{
 			enemy.animating = true;
 			
-			var bounds = enemy.getBounds();
+			var previousBounds = enemy.getBounds();
 			
-			console.log(bounds);
+			enemy.setX(-1 * enemy.x);
+			enemy.setY(enemy.y - 50);
 			
 			enemy.animating = false;
 		}
