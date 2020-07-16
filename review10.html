@@ -687,13 +687,13 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setX(-1 * enemy.x);
 			enemy.setY(enemy.y - 50);
 			
-			console.log('1');
+			console.log('2');
 			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
-						x: previousBounds.x,
+						x: 2 * previousBounds.x,
 						y: previousBounds.y,
 						duration: 800,
 						ease: 'Elastic',
