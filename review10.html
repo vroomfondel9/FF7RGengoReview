@@ -688,7 +688,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setX(-1 * enemy.x);
 			enemy.setY(enemy.y - 50);
 			
-			console.log('3');
+			console.log('4');
 			
 			game.tweens.timeline({
 				tweens: [
@@ -698,7 +698,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						y: previousY,
 						duration: 1600,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ],
+						easeParams: [ 0.5, 0.2 ],
 						onComplete: function() {enemy.animating = false;}
 					}
 				]
