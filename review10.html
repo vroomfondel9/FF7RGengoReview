@@ -124,13 +124,12 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		ui.command.hide();
+		enemy.anim_appear();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
-		ui.command.show();
 	}
 }
 
@@ -678,6 +677,19 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
 
 	// Full Animations
+	enemy.anim_appear = function() {
+		if (!enemy.animating)
+		{
+			enemy.animating = true;
+			
+			var bounds = enemy.getBounds();
+			
+			console.log(bounds);
+			
+			enemy.animating = false;
+		}
+	};
+	
 	enemy.anim_dodge = function() {
 		if (!enemy.animating)
 		{
