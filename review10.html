@@ -686,7 +686,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			var previousY = enemy.y;
 			
 			enemy.setX(-7 * enemy.x);
-			enemy.setY(enemy.y - 50);
+			enemy.setY(enemy.y - 200);
 			
 			console.log('8');
 			
@@ -696,7 +696,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						targets: enemy,
 						x: previousX,
 						y: previousY,
-						duration: 1600,
+						duration: 1200,
 						ease: 'Quint',
 						onComplete: function() {enemy.animating = false;}
 					}
