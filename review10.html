@@ -719,41 +719,9 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 				tweens: [
 					{
 						targets: enemy,
-						x: enemy.baseX,
-						y: enemy.baseY,
-						angle: 0,
-						duration: 500,
-						ease: 'Linear'
-					},
-					{
-						targets: enemy,
-						x: enemy.baseX - 10,
-						y: enemy.baseY,
-						angle: 2,
-						duration: 500,
-						ease: 'Linear'
-					},
-					{
-						targets: enemy,
-						x: enemy.baseX,
-						y: enemy.baseY,
-						angle: 0,
-						duration: 500,
-						ease: 'Linear'
-					},
-					{
-						targets: enemy,
-						x: enemy.baseX + 10,
-						y: enemy.baseY,
-						angle: -2,
-						duration: 500,
-						ease: 'Linear'
-					},
-					{
-						targets: enemy,
-						x: enemy.baseX,
-						y: enemy.baseY,
-						angle: 0,
+						x: enemy.baseX + Math.random() * 20 - 10.0,
+						y: enemy.baseY + Math.random() * 20 - 10.0,
+						angle: 0 + Math.random() * 4 - 2.0,
 						duration: 500,
 						ease: 'Linear'
 					},
