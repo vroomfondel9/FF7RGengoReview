@@ -705,7 +705,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						y: enemy.baseY,
 						duration: 1200,
 						ease: 'Quint',
-						onComplete: function() {enemy.animating = false;}
+						onComplete: function() {
+							enemy.anim_idle();
+							enemy.animating = false;
+						}
 					}
 				]
 			});
@@ -763,7 +766,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						delay: 1000,
 						ease: 'Elastic',
 						easeParams: [ 1.5, 0.5 ],
-						onComplete: function() {enemy.animating = false;}
+						onComplete: function() {
+							enemy.animating = false;
+							enemy.anim_idle();
+						}
 					}
 				]
 			});
@@ -817,7 +823,12 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 1,
 						delay: 800,
 						ease: 'Linear',
-						onComplete: function() {enemy.setColor(fontColor); enemy.setStroke(strokeBaseColor, strokeSize); enemy.animating = false;}
+						onComplete: function() {
+							enemy.setColor(fontColor); 
+							enemy.setStroke(strokeBaseColor, strokeSize); 
+							enemy.animating = false;
+							enemy.anim_idle();
+						}
 					}
 				]
 			});
