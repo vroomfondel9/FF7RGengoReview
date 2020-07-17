@@ -661,7 +661,7 @@ function createEnemies(game) {
 	const lineHeight = fontSize + strokeSize;
 
 	// TODO placeholder text
-	text = 'うかつ！足が挟まって';
+	text = '';
 
 	enemy = game.add.text(300, 275, text, {fontSize: fontSize + 'px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
 	enemy.setStroke(strokeBaseColor, strokeSize);
@@ -678,7 +678,7 @@ function createEnemies(game) {
 	
 	// Animations
 	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
-	enemy.anim_appear();
+	enemy.anim_appear("うかつ！足が挟まって");
 }
 
 function preprocessEnemyText(text) {
