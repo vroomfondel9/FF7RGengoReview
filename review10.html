@@ -727,9 +727,9 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 					},
 					{
 						targets: enemy,
-						x: enemy.baseX - 30,
+						x: enemy.baseX - 10,
 						y: enemy.baseY,
-						angle: 8,
+						angle: 2,
 						duration: 500,
 						ease: 'Linear'
 					},
@@ -743,9 +743,17 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 					},
 					{
 						targets: enemy,
-						x: enemy.baseX + 30,
+						x: enemy.baseX + 10,
 						y: enemy.baseY,
-						angle: -8,
+						angle: -2,
+						duration: 500,
+						ease: 'Linear'
+					},
+					{
+						targets: enemy,
+						x: enemy.baseX,
+						y: enemy.baseY,
+						angle: 0,
 						duration: 500,
 						ease: 'Linear'
 					},
