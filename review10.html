@@ -705,7 +705,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setText(preprocessEnemyText(text));
 			enemy.setVisible(true);
 			
-			game.tweens.timeline({
+			enemy.tween_idle = game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
@@ -761,7 +761,12 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						angle: -10 - 15 * Math.random(),
 						duration: 800,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ]
+						easeParams: [ 1.5, 0.5 ],
+						onComplete: function() {
+							if (enemy.tween_idle) {
+								enemy.tween_idle.stop();
+							}
+						}
 					},
 					{
 						targets: enemy,
@@ -802,7 +807,12 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 800,
 						delay: 200,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ]
+						easeParams: [ 1.5, 0.5 ],
+						onComplete: function() {
+							if (enemy.tween_idle) {
+								enemy.tween_idle.stop();
+							}
+						}
 					},
 					{
 						targets: enemy,
