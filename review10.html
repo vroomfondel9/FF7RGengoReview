@@ -756,8 +756,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 				tweens: [
 					{
 						targets: enemy,
-						x: '-=' + 50 + 50 * Math.random(),
-						y: '-=' + 50 + 50 * Math.random(),
+						x: enemy.baseX + 50 + 50 * Math.random(),
+						y: enemy.baseY + 50 + 50 * Math.random(),
 						angle: -10 - 15 * Math.random(),
 						duration: 800,
 						ease: 'Elastic',
