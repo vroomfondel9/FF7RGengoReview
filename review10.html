@@ -239,6 +239,7 @@ function createUIStatusDisplayBehavior(game) {
 						ui.status.timefilled.show();
 						
 						ui.command.show();
+						ui.controlledobject = ui.command;
 					}
 				},
 			]
@@ -500,7 +501,7 @@ function createAnswerSubMenuBehaviors(game) {
 			{
 				ui.sub.answer.input.blur();
 			}, 0);
-			ui.controlledobject = ui.command;
+			ui.controlledobject = null;
 		}
 		else {
 			window.setTimeout(function ()
