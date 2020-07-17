@@ -715,19 +715,15 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	enemy.anim_idle = function() {
 		if (!enemy.animating)
 		{
-			var offsetX = Math.random() * 20 - 10.0;
-			var offsetY = Math.random() * 20 - 10.0;
-			var offsetTheta = 0 + Math.random() * 4 - 2.0;
-			
 			console.log('1');
 			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
-						x: enemy.baseX + offsetX,
-						y: enemy.baseY + offsetY,
-						angle: 0 + offsetTheta,
+						x: enemy.baseX + Math.random() * 20 - 10.0,
+						y: enemy.baseY + Math.random() * 20 - 10.0,
+						angle: 0 + Math.random() * 4 - 2.0,
 						duration: 500,
 						ease: 'Linear'
 					},
@@ -739,13 +735,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 500,
 						ease: 'Linear',
 						onComplete: function() {
-							offsetX = Math.random() * 20 - 10.0;
-							offsetY = Math.random() * 20 - 10.0;
-							offsetTheta = 0 + Math.random() * 4 - 2.0;
+							enemy.anim_idle();
 						}
 					},
-				],
-			loop: -1
+				]
 			});
 		}
 	};
