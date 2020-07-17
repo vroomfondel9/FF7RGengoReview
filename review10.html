@@ -660,12 +660,13 @@ function createEnemies(game) {
 	numLines = enemy.getWrappedText(text).length;
 	enemy.setOrigin(0.5);
 	enemy.animating = false;
-	enemy.baseX = enemy.x;
-	enemy.baseY = enemy.y;
 	
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
+	
+	enemy.baseX = enemy.x;
+	enemy.baseY = enemy.y;
 	
 	// Animations
 	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
