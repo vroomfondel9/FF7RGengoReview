@@ -693,8 +693,6 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	const col_font_killed = Phaser.Display.Color.HexStringToColor(fontColorKilled);
 	const col_stroke_alive = Phaser.Display.Color.HexStringToColor(strokeBaseColor);
 	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
-	
-	console.log('omg');
 
 	// Full Animations
 	enemy.anim_appear = function(text) {
@@ -721,8 +719,11 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 1200,
 						ease: 'Quint',
 						onComplete: function() {
-							enemy.anim_idle();
 							enemy.animating = false;
+							window.setTimeout(function ()
+							{
+								enemy.anim_idle();
+							}, 0);
 						}
 					}
 				]
@@ -785,7 +786,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						easeParams: [ 1.5, 0.5 ],
 						onComplete: function() {
 							enemy.animating = false;
-							enemy.anim_idle();
+							window.setTimeout(function ()
+							{
+								enemy.anim_idle();
+							}, 0);
 						}
 					}
 				]
