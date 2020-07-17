@@ -705,7 +705,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setText(preprocessEnemyText(text));
 			enemy.setVisible(true);
 			
-			enemy.tween_idle = game.tweens.timeline({
+			game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
@@ -726,7 +726,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	enemy.anim_idle = function() {
 		if (!enemy.animating)
 		{
-			game.tweens.timeline({
+			enemy.tween_idle = game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
