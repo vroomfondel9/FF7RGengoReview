@@ -735,7 +735,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 500,
 						ease: 'Linear',
 						onComplete: function() {
-							enemy.anim_idle();
+							window.setTimeout(function ()
+							{
+								enemy.anim_idle();
+							}, 0);
 						}
 					},
 				]
