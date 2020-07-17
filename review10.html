@@ -719,6 +719,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			var offsetY = Math.random() * 20 - 10.0;
 			var offsetTheta = 0 + Math.random() * 4 - 2.0;
 			
+			console.log('1');
+			
 			game.tweens.timeline({
 				tweens: [
 					{
@@ -737,9 +739,9 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 500,
 						ease: 'Linear',
 						onComplete: function() {
-							var offsetX = Math.random() * 20 - 10.0;
-							var offsetY = Math.random() * 20 - 10.0;
-							var offsetTheta = 0 + Math.random() * 4 - 2.0;
+							offsetX = Math.random() * 20 - 10.0;
+							offsetY = Math.random() * 20 - 10.0;
+							offsetTheta = 0 + Math.random() * 4 - 2.0;
 						}
 					},
 				],
