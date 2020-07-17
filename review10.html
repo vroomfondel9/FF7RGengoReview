@@ -501,7 +501,15 @@ function createAnswerSubMenuBehaviors(game) {
 			{
 				ui.sub.answer.input.blur();
 			}, 0);
-			ui.controlledobject = null;
+			
+			if (ui.command.background.visible)
+			{
+				ui.controlledobject = ui.command;
+			}
+			else
+			{
+				ui.controlledobject = null;
+			}
 		}
 		else {
 			window.setTimeout(function ()
@@ -759,8 +767,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 					},
 					{
 						targets: enemy,
-						x: '+=' + tiltX,
-						y: '+=' + tiltY,
+						x: enemy.baseX,
+						y: enemy.baseY,
 						angle: 0,
 						duration: 800,
 						delay: 1000,
