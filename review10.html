@@ -741,7 +741,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 								enemy.anim_idle();
 							}, 0);
 						}
-					},
+					}
 				]
 			});
 		}
@@ -764,7 +764,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						easeParams: [ 1.5, 0.5 ],
 						onComplete: function() {
 							if (enemy.idle_tween) {
-								enemy.idle_tween.stop();
+								//enemy.idle_tween.stop();
 							}
 						}
 					},
