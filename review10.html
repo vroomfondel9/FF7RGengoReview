@@ -699,6 +699,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		{
 			enemy.animating = true;
 			
+			if (enemy.idle_tween) {
+				enemy.idle_tween.stop();
+			}
+			
 			enemy.setX(-7 * enemy.baseX);
 			enemy.setY(enemy.baseY - 200);
 			
@@ -726,7 +730,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	enemy.anim_idle = function() {
 		if (!enemy.animating)
 		{
-			game.tweens.timeline({
+			enemy.idle_tween = game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
@@ -751,15 +755,17 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		if (!enemy.animating)
 		{
 			enemy.animating = true;
-			var tiltX = 50 + 50 * Math.random();
-			var tiltY = 50 + 50 * Math.random();
+			
+			if (enemy.idle_tween) {
+				enemy.idle_tween.stop();
+			}
 			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
-						x: '-=' + tiltX,
-						y: '-=' + tiltY,
+						x: '-=' + 50 + 50 * Math.random(),
+						y: '-=' + 50 + 50 * Math.random(),
 						angle: -10 - 15 * Math.random(),
 						duration: 800,
 						ease: 'Elastic',
@@ -790,6 +796,11 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			const killDuration = 1000;
 		
 			enemy.animating = true;
+			
+			if (enemy.idle_tween) {
+				enemy.idle_tween.stop();
+			}
+			
 			var tiltX = 35 + 35 * Math.random();
 			var tiltY = 15 + 15 * Math.random();
 			
