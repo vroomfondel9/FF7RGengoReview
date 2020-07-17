@@ -692,12 +692,18 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	const col_font_killed = Phaser.Display.Color.HexStringToColor(fontColorKilled);
 	const col_stroke_alive = Phaser.Display.Color.HexStringToColor(strokeBaseColor);
 	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
+	
+	console.log('omg');
 
 	// Full Animations
 	enemy.anim_appear = function(text) {
 		if (!enemy.animating)
 		{
 			enemy.animating = true;
+			
+			if (enemy.tween_idle) {
+				enemy.tween_idle.stop();
+			}
 			
 			enemy.setX(-7 * enemy.baseX);
 			enemy.setY(enemy.baseY - 200);
@@ -752,6 +758,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		{
 			enemy.animating = true;
 			
+			if (enemy.tween_idle) {
+				enemy.tween_idle.stop();
+			}
+			
 			game.tweens.timeline({
 				tweens: [
 					{
@@ -761,13 +771,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						angle: -10 - 15 * Math.random(),
 						duration: 800,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ],
-						onComplete: function() {
-							console.log(enemy.tween_idle);
-							if (enemy.tween_idle) {
-								enemy.tween_idle.stop();
-							}
-						}
+						easeParams: [ 1.5, 0.5 ]
 					},
 					{
 						targets: enemy,
@@ -795,6 +799,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		
 			enemy.animating = true;
 			
+			if (enemy.tween_idle) {
+				enemy.tween_idle.stop();
+			}
+			
 			var tiltX = 35 + 35 * Math.random();
 			var tiltY = 15 + 15 * Math.random();
 			
@@ -808,12 +816,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 800,
 						delay: 200,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ],
-						onComplete: function() {
-							if (enemy.tween_idle) {
-								enemy.tween_idle.stop();
-							}
-						}
+						easeParams: [ 1.5, 0.5 ]
 					},
 					{
 						targets: enemy,
