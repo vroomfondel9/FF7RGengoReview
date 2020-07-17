@@ -130,6 +130,7 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
+		enemy.enemy.anim_idle();
 	}
 }
 
@@ -293,7 +294,6 @@ function createUIStatusDisplayBehavior(game) {
 	};
 	
 	ui.status.timefilled.hide = function() {
-		console.log('called');
 		ui.status.timefilled.setVisible(false);
 		if (ui.status.timefilled.tween) {
 			ui.status.timefilled.tween.stop();
@@ -660,6 +660,8 @@ function createEnemies(game) {
 	numLines = enemy.getWrappedText(text).length;
 	enemy.setOrigin(0.5);
 	enemy.animating = false;
+	enemy.baseX = enemy.x;
+	enemy.baseY = enemy.y;
 	
 	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
@@ -688,26 +690,64 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		{
 			enemy.animating = true;
 			
-			var previousX = enemy.x;
-			var previousY = enemy.y;
-			
-			enemy.setX(-7 * enemy.x);
-			enemy.setY(enemy.y - 200);
+			enemy.setX(-7 * enemy.baseX);
+			enemy.setY(enemy.baseY - 200);
 			
 			enemy.setText(preprocessEnemyText(text));
-			
-			console.log('9');
+			enemy.setVisible(true);
 			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
-						x: previousX,
-						y: previousY,
+						x: enemy.baseX,
+						y: enemy.baseY,
 						duration: 1200,
 						ease: 'Quint',
 						onComplete: function() {enemy.animating = false;}
 					}
+				]
+			});
+		}
+	};
+	
+	enemy.anim_idle = function() {
+		if (!enemy.animating)
+		{
+			game.tweens.timeline({
+				tweens: [
+					{
+						targets: enemy,
+						x: enemy.baseX,
+						y: enemy.baseY,
+						angle: 0,
+						duration: 500,
+						ease: 'Linear'
+					},
+					{
+						targets: enemy,
+						x: enemy.baseX + 30,
+						y: enemy.baseY,
+						angle: 8,
+						duration: 500,
+						ease: 'Linear'
+					},
+					{
+						targets: enemy,
+						x: enemy.baseX,
+						y: enemy.baseY,
+						angle: 0,
+						duration: 500,
+						ease: 'Linear'
+					},
+					{
+						targets: enemy,
+						x: enemy.baseX - 30,
+						y: enemy.baseY,
+						angle: -8,
+						duration: 500,
+						ease: 'Linear'
+					},
 				]
 			});
 		}
