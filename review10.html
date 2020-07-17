@@ -715,15 +715,32 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	enemy.anim_idle = function() {
 		if (!enemy.animating)
 		{
+			var offsetX = Math.random() * 20 - 10.0;
+			var offsetY = Math.random() * 20 - 10.0;
+			var offsetTheta = 0 + Math.random() * 4 - 2.0;
+			
 			game.tweens.timeline({
 				tweens: [
 					{
 						targets: enemy,
-						x: enemy.baseX + Math.random() * 20 - 10.0,
-						y: enemy.baseY + Math.random() * 20 - 10.0,
-						angle: 0 + Math.random() * 4 - 2.0,
+						x: enemy.baseX + offsetX,
+						y: enemy.baseY + offsetY,
+						angle: 0 + offsetTheta,
 						duration: 500,
 						ease: 'Linear'
+					},
+					{
+						targets: enemy,
+						x: enemy.baseX,
+						y: enemy.baseY,
+						angle: 0,
+						duration: 500,
+						ease: 'Linear',
+						onComplete: function() {
+							var offsetX = Math.random() * 20 - 10.0;
+							var offsetY = Math.random() * 20 - 10.0;
+							var offsetTheta = 0 + Math.random() * 4 - 2.0;
+						}
 					},
 				],
 			loop: -1
