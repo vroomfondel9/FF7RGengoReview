@@ -666,25 +666,22 @@ function preprocessEnemyText(text) {
 	var obscuredText = text;
 	
 	var lineBroken = [];
-	var charsSinceLastSplit = 0;
+	var spaceDelimited = obscuredText.split(spaceDelimiter);
 	var totalChars = 0;
-	while (charsSinceLastSplit != -1) {
-		charsSinceLastSplit = obscuredText.indexOf(spaceDelimiter, totalChars + charsSinceLastSplit + 1);
-		charsSinceLastSplit -= totalChars;
-		if (charsSinceLastSplit >= 10) {
-			lineBroken.push(obscuredText.substring(totalChars, totalChars + charsSinceLastSplit));
-			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will split.');
-			totalChars = totalChars + charsSinceLastSplit;
-			totalChars++;
-			charsSinceLastSplit = 0;
+	for (var i = 0; i < spaceDelimited.length - 1; i++) {
+		lineBroken.append(spaceDelimited[i]);
+		totalChars = totalChars + spaceDelimited[i].length;
+		if (totalChars >= 10) {
+			lineBroken.append("\n");
+			totalChars = 0;
 		}
 		else {
-			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will not split.');
+			lineBroken.append(spaceDelimiter);
 		}
 	}
-	lineBroken.push(obscuredText.substring(totalChars, obscuredText.length));
+	lineBroken.append(spaceDelimited[spaceDelimited.length - 1]);
 	
-	return lineBroken.join("\n");
+	return lineBroken.join("");
 }
 
 function determineAcceptableAnswers(curVideoContent) {
