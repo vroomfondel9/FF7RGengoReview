@@ -21,7 +21,7 @@ var config = {
 };
 
 var lang = content.LANG_JAPANESE;
-var mode = content.MODE_KANA;
+var mode = content.MODE_KANJI;
 
 var env;
 var ui;
