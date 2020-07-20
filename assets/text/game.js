@@ -121,7 +121,7 @@ function createEnvironment(game) {
     env.ground = game.physics.add.staticGroup();
 
 	env.ground.background = game.add.image(400, 329, 'groundback').setScale(2);
-    env.ground.foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
+    env.ground.foreground = env.ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
 }
 
 function createUI(game) {
