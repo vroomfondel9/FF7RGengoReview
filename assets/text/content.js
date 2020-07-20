@@ -1,7 +1,12 @@
 var content = {};
 
-content.ENGLISH = 0;
-content.JAPANESE = 1;
+content.LANG_ENGLISH = 0;
+content.LANG_JAPANESE = 1;
+
+content.MODE_MULTIPLE_CHOICE = 0;
+content.MODE_KANJI = 1;
+content.MODE_KANA = 2;
+content.MODE_ROMAJI = 3;
 
 content["status-player-name"] = ["Cloud", "クラウド"];
 

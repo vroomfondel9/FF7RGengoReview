@@ -20,7 +20,8 @@ var config = {
     }
 };
 
-var lang = content.JAPANESE;
+var lang = content.LANG_JAPANESE;
+var mode = content.MODE_KANJI;
 
 var env;
 var ui;
@@ -503,12 +504,9 @@ function createAnswerSubMenuBehaviors(game) {
 	
 	// Standard Behaviors
 	ui.sub.answer.confirm = function() {
-		// TODO placeholder
-		acceptableAnswers = ["うかつ"];
-		
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
-		player.anim_attack(providedAnswer, acceptableAnswers);
+		player.anim_attack(providedAnswer, enemy.acceptableAnswers);
 		ui.status.timefilled.hide();
 		ui.command.hide();
 	};
@@ -663,6 +661,14 @@ function preprocessEnemyText(text) {
 	return text;
 }
 
+function determineAcceptableAnswers(curVideoContent) {
+	var acceptableAnswers = [].concat(curVideoContent.answers-kanji);
+	acceptableAnswers = (mode >= content.MODE_KANA) ? acceptableAnswers.concat(curVideoContent.answers-kana) : acceptableAnswers;
+	acceptableAnswers = (mode >= content.MODE_ROMAJI) ? acceptableAnswers.concat(curVideoContent.answers-romaji) : acceptableAnswers;
+	
+	return acceptableAnswers;
+}
+
 function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	// Animation-Specific Colors
 	const fontColorKilled = '#ff0008';
@@ -677,11 +683,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		if (!enemy.animating)
 		{
 			enemy.index++;
-			console.log(enemy.index);
-			console.log(videoContents);
-			console.log(videoContents[enemy.index]);
-			console.log(videoContents[enemy.index].sentence);
 			var text = videoContents[enemy.index].sentence;
+			enemy.acceptableAnswers = determineAcceptableAnswers(videoContents[enemy.index]);
 			
 			enemy.animating = true;
 			
