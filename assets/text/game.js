@@ -662,9 +662,9 @@ function preprocessEnemyText(text) {
 }
 
 function determineAcceptableAnswers(curVideoContent) {
-	var acceptableAnswers = [].concat(curVideoContent.answers-kanji);
-	acceptableAnswers = (mode >= content.MODE_KANA) ? acceptableAnswers.concat(curVideoContent.answers-kana) : acceptableAnswers;
-	acceptableAnswers = (mode >= content.MODE_ROMAJI) ? acceptableAnswers.concat(curVideoContent.answers-romaji) : acceptableAnswers;
+	var acceptableAnswers = [].concat(curVideoContent.answersKanji);
+	acceptableAnswers = (mode >= content.MODE_KANA) ? acceptableAnswers.concat(curVideoContent.answersKana) : acceptableAnswers;
+	acceptableAnswers = (mode >= content.MODE_ROMAJI) ? acceptableAnswers.concat(curVideoContent.answersRomaji) : acceptableAnswers;
 	
 	return acceptableAnswers;
 }
