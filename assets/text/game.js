@@ -681,6 +681,7 @@ function preprocessEnemyText(text) {
 		}
 	}
 	lineBroken.push(spaceDelimited[spaceDelimited.length - 1]);
+	console.log("Pre-reverse: " + lineBroken);
 	lineBroken = lineBroken.reverse();
 	
 	return lineBroken.join("");
