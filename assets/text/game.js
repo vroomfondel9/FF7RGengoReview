@@ -669,17 +669,17 @@ function preprocessEnemyText(text) {
 	var spaceDelimited = obscuredText.split(spaceDelimiter);
 	var totalChars = 0;
 	for (var i = 0; i < spaceDelimited.length - 1; i++) {
-		lineBroken.append(spaceDelimited[i]);
+		lineBroken.push(spaceDelimited[i]);
 		totalChars = totalChars + spaceDelimited[i].length;
 		if (totalChars >= 10) {
-			lineBroken.append("\n");
+			lineBroken.push("\n");
 			totalChars = 0;
 		}
 		else {
-			lineBroken.append(spaceDelimiter);
+			lineBroken.push(spaceDelimiter);
 		}
 	}
-	lineBroken.append(spaceDelimited[spaceDelimited.length - 1]);
+	lineBroken.push(spaceDelimited[spaceDelimited.length - 1]);
 	
 	return lineBroken.join("");
 }
