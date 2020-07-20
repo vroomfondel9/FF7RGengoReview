@@ -660,7 +660,7 @@ function createEnemies(game) {
 // Answers surrounded by asterisks should be obscured
 function preprocessEnemyText(text) {
 	const answerDelimiter = "\uFF0A";
-	const blocker = "\u2593";
+	const blocker = "\u2592";
 	
 	var delimited = text.split(answerDelimiter);
 	if (delimited.length != 3) {
@@ -704,7 +704,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			}
 			
 			enemy.rawSentence = videoContents[enemy.index].sentence;
-			enemy.plainSentence = enemy.rawSentence.replace("\uFF0A", "");
+			enemy.plainSentence = enemy.rawSentence.replaceAll("\uFF0A", "");
 			enemy.acceptableAnswers = determineAcceptableAnswers(videoContents[enemy.index]);
 			
 			enemy.animating = true;
