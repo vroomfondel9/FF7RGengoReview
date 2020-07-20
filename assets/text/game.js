@@ -668,9 +668,9 @@ function preprocessEnemyText(text) {
 	}
 	
 	var answerLength = delimited[1].length;
-	alert("Answer Length: " + answerLength);
+	delimited[1] = blocker.repeat(answerLength);
 	
-	return lineBroken.join("");
+	return delimited.join("");
 }
 
 function determineAcceptableAnswers(curVideoContent) {
