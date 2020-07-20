@@ -657,31 +657,18 @@ function createEnemies(game) {
 	enemy.anim_appear();
 }
 
-// Anything beyond 10 chars should be split on space
 // Answers surrounded by asterisks should be obscured
 function preprocessEnemyText(text) {
-	const answerDelimiter = '＊';
-	const spaceDelimiter = '　';
+	const answerDelimiter = "\uFF0A";
+	const blocker = "\u2589";
 	
-	var obscuredText = text;
-	
-	var spaceDelimited = obscuredText.split(spaceDelimiter);
-	var lineBroken = [];
-	var totalChars = 0;
-	for (var i = spaceDelimited.length - 1; i >= 0; i--) {
-		console.log(i + ": " + spaceDelimited[i]);
-		lineBroken.push(spaceDelimited[i]);
-		totalChars = totalChars + spaceDelimited[i].length;
-		if (totalChars >= 10) {
-			lineBroken.push("\n");
-			totalChars = 0;
-		}
-		else {
-			lineBroken.push(spaceDelimiter);
-		}
+	var delimited = text.split(answerDelimiter);
+	if (delimited.length != 3) {
+		alert("Forgot to put ＊ around the answer properly in '" + text + "'. Fix it!");
 	}
-	console.log("Pre-reverse: " + lineBroken);
-	lineBroken = lineBroken.reverse();
+	
+	var answerLength = delimited[1].length;
+	alert("Answer Length: " + answerLength);
 	
 	return lineBroken.join("");
 }
