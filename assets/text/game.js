@@ -175,7 +175,7 @@ function createUIStatusDisplay(game) {
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
 	//TODO base on # of enemies
-	ui.status.limit.incrementAmount = 0.1;
+	ui.status.limit.incrementAmount = 1.0 / (videoContents.length - 1);
 	ui.status.limit.setScale(0, 1);
 	
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
@@ -864,6 +864,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						onComplete: function() {
 							enemy.setColor(fontColor); 
 							enemy.setStroke(strokeBaseColor, strokeSize); 
+							ui.status.limit.enemydefeated();
 							enemy.animating = false;
 							enemy.anim_appear();
 						}
