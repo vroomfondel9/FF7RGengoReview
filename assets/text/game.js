@@ -677,7 +677,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		if (!enemy.animating)
 		{
 			enemy.index++;
-			var text = content[enemy.index];
+			var text = content[enemy.index].sentence;
 			
 			enemy.animating = true;
 			
