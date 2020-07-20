@@ -851,7 +851,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: killDuration,
 						delay: 200,
 						ease: 'Linear',
-						onComplete: function() {
+						onStart: function() {
 							ui.status.limit.enemydefeated();
 						}
 					},
