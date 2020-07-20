@@ -657,7 +657,32 @@ function createEnemies(game) {
 	enemy.anim_appear();
 }
 
+// Anything beyond 10 chars should be split on space
+// Answers surrounded by asterisks should be obscured
 function preprocessEnemyText(text) {
+	const answerDelimiter = '＊';
+	const spaceDelimiter = '　';
+	
+	var obscuredText = text;
+	
+	var lineBroken = [];
+	var charsSinceLastSplit = 0;
+	var totalChars = 0;
+	while (charsSinceLastSplit != -1) {
+		charsSinceLastSplit = obscuredText.indexOf(spaceDelimiter, totalChars + charsSinceLastSplit);
+		charsSinceLastSplit -= totalChars;
+		if (charsSinceLastSplit >= 10) {
+			lineBroken.push(obscuredText.substring(totalChars, totalChars + charsSinceLastSplit);
+			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will split.');
+			totalChars = totalChars + charsSinceLastSplit;
+			charsSinceLastSplit = 0;
+		}
+		else {
+			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will not split.');
+		}
+	}
+	lineBroken.push(obscuredText.substring(totalChars, obscuredText.length);
+	
 	return text;
 }
 
