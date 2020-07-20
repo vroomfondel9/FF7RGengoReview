@@ -833,6 +833,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						easeParams: [ 1.5, 0.5 ],
 						onStart: function() {
 							enemy.setText(enemy.plainSentence);
+							ui.status.limit.enemydefeated();
 						}
 					},
 					{
@@ -850,10 +851,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						},
 						duration: killDuration,
 						delay: 200,
-						ease: 'Linear',
-						onStart: function() {
-							ui.status.limit.enemydefeated();
-						}
+						ease: 'Linear'
 					},
 					{
 						targets: enemy,
