@@ -660,7 +660,7 @@ function createEnemies(game) {
 // Answers surrounded by asterisks should be obscured
 function preprocessEnemyText(text) {
 	const answerDelimiter = "\uFF0A";
-	const blocker = "\u2589";
+	const blocker = "\u2588";
 	
 	var delimited = text.split(answerDelimiter);
 	if (delimited.length != 3) {
@@ -703,7 +703,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 				return;
 			}
 			
-			var text = videoContents[enemy.index].sentence;
+			enemy.unmaskedSentence = videoContents[enemy.index].sentence;
 			enemy.acceptableAnswers = determineAcceptableAnswers(videoContents[enemy.index]);
 			
 			enemy.animating = true;
@@ -829,7 +829,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 800,
 						delay: 200,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ]
+						easeParams: [ 1.5, 0.5 ],
+						onComplete: function() {
+							enemy.setText(enemy.unmaskedSentence);
+						}
 					},
 					{
 						targets: enemy,
