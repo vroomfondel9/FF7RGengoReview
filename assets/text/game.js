@@ -850,7 +850,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						},
 						duration: killDuration,
 						delay: 200,
-						ease: 'Linear'
+						ease: 'Linear',
+						onComplete: function() {
+							ui.status.limit.enemydefeated();
+						}
 					},
 					{
 						targets: enemy,
@@ -864,7 +867,6 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						onComplete: function() {
 							enemy.setColor(fontColor); 
 							enemy.setStroke(strokeBaseColor, strokeSize); 
-							ui.status.limit.enemydefeated();
 							enemy.animating = false;
 							enemy.anim_appear();
 						}
