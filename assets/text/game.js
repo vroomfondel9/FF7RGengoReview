@@ -675,15 +675,17 @@ function preprocessEnemyText(text) {
 			lineBroken.push(obscuredText.substring(totalChars, totalChars + charsSinceLastSplit));
 			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will split.');
 			totalChars = totalChars + charsSinceLastSplit;
+			totalChars++;
 			charsSinceLastSplit = 0;
 		}
 		else {
 			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will not split.');
+			charsSinceLastSplit++;
 		}
 	}
 	lineBroken.push(obscuredText.substring(totalChars, obscuredText.length));
 	
-	return text;
+	return lineBroken.join("\n");
 }
 
 function determineAcceptableAnswers(curVideoContent) {
