@@ -1,4 +1,4 @@
-var content = [
+var videoContents = [
 	{
 		"sentence": "セット＊完了＊",
 		"answers-kanji": ["完了"],

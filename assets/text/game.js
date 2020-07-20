@@ -678,10 +678,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		{
 			enemy.index++;
 			console.log(enemy.index);
-			console.log(content);
-			console.log(content[enemy.index]);
-			console.log(content[enemy.index].sentence);
-			var text = content[enemy.index].sentence;
+			console.log(videoContents);
+			console.log(videoContents[enemy.index]);
+			console.log(videoContents[enemy.index].sentence);
+			var text = videoContents[enemy.index].sentence;
 			
 			enemy.animating = true;
 			
