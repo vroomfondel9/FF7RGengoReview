@@ -667,9 +667,8 @@ function preprocessEnemyText(text) {
 	
 	var spaceDelimited = obscuredText.split(spaceDelimiter);
 	var lineBroken = [];
-	lineBroken.push(spaceDelimited[spaceDelimited.length - 1]);
-	var totalChars = spaceDelimited[spaceDelimited.length - 1].length;
-	for (var i = spaceDelimited.length - 2; i >= 0; i--) {
+	var totalChars = 0;
+	for (var i = spaceDelimited.length - 1; i >= 0; i--) {
 		console.log(i + ": " + spaceDelimited[i]);
 		lineBroken.push(spaceDelimited[i]);
 		totalChars = totalChars + spaceDelimited[i].length;
