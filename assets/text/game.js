@@ -715,7 +715,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.setX(-7 * enemy.baseX);
 			enemy.setY(enemy.baseY - 200);
 			
-			enemy.setText(preprocessEnemyText(text));
+			enemy.setText(preprocessEnemyText(enemy.unmaskedSentence));
 			enemy.setVisible(true);
 			
 			game.tweens.timeline({
