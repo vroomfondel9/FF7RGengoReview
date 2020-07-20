@@ -101,7 +101,6 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		enemy.anim_appear("なんか面倒くさいだけど。\nありますか？\n異常使える？きまずいよむをきかてこ");
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -646,7 +645,7 @@ function createEnemies(game) {
 	numLines = enemy.getWrappedText(text).length;
 	enemy.setOrigin(0.5);
 	enemy.animating = false;
-	enemy.index = 0;
+	enemy.index = -1;
 	
 	var floatHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
@@ -657,7 +656,7 @@ function createEnemies(game) {
 	
 	// Animations
 	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
-	enemy.anim_appear("うかつ！足が挟まって");
+	enemy.anim_appear();
 }
 
 function preprocessEnemyText(text) {
@@ -674,9 +673,12 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
 
 	// Full Animations
-	enemy.anim_appear = function(text) {
+	enemy.anim_appear = function() {
 		if (!enemy.animating)
 		{
+			enemy.index++;
+			var text = content[enemy.index];
+			
 			enemy.animating = true;
 			
 			if (enemy.tween_idle) {
