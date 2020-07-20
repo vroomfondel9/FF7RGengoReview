@@ -639,7 +639,6 @@ function createEnemies(game) {
 	const wrapWidth = 500;
 	const lineHeight = fontSize + strokeSize;
 
-	// TODO placeholder text
 	text = '';
 
 	enemy = game.add.text(300, 275, text, {fontSize: fontSize + 'px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
@@ -647,6 +646,7 @@ function createEnemies(game) {
 	numLines = enemy.getWrappedText(text).length;
 	enemy.setOrigin(0.5);
 	enemy.animating = false;
+	enemy.index = 0;
 	
 	var floatHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;

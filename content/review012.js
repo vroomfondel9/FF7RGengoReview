@@ -1,4 +1,4 @@
-var enemies = [
+var content = [
 	{
 		"sentence": "セット＊完了＊",
 		"answers-kanji": ["完了"],
