@@ -22,15 +22,11 @@ var config = {
 
 var lang = content.JAPANESE;
 
+var env;
+var ui;
 var player;
-
 var enemy;
 
-var ui;
-
-var ground;
-var foreground;
-var cursors;
 var controls;
 var gameOver = false;
 
@@ -116,14 +112,16 @@ function update (game)
 }
 
 function createEnvironment(game) {
+	env = {};
+	
 	// Cosmetic background
-    game.add.image(400, 200, 'background');
+    env.background = game.add.image(400, 200, 'background');
 	
 	// Grouping of physics bodies
-    ground = game.physics.add.staticGroup();
+    env.ground = game.physics.add.staticGroup();
 
-	game.add.image(400, 329, 'groundback').setScale(2);
-    foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
+	env.ground.background = game.add.image(400, 329, 'groundback').setScale(2);
+    env.ground.foreground = ground.create(400, 394, 'groundfore').setScale(2).refreshBody();
 }
 
 function createUI(game) {
@@ -521,7 +519,7 @@ function createAnswerSubMenuBehaviors(game) {
 }
 
 function createPlayer(game) {
-	var surfaceHeight = foreground.getBounds().y - (foreground.getBounds().height / 2)
+	var surfaceHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2)
 
 	player = game.physics.add.sprite(600, surfaceHeight, 'player-idle');
 	player.setScale(3);
@@ -537,7 +535,7 @@ function createPlayer(game) {
 	player.setBounce(0.5);
 	player.setDrag(1000, 0);
 	player.body.setAllowDrag(false);
-	game.physics.add.collider(player, ground);
+	game.physics.add.collider(player, env.ground);
 	
 	player.anims.play('player-idle', true);
 }
@@ -650,7 +648,7 @@ function createEnemies(game) {
 	enemy.setOrigin(0.5);
 	enemy.animating = false;
 	
-	var floatHeight = foreground.getBounds().y - (foreground.getBounds().height / 2) - 25;
+	var floatHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
 	
