@@ -669,7 +669,7 @@ function preprocessEnemyText(text) {
 	var charsSinceLastSplit = 0;
 	var totalChars = 0;
 	while (charsSinceLastSplit != -1) {
-		charsSinceLastSplit = obscuredText.indexOf(spaceDelimiter, totalChars + charsSinceLastSplit);
+		charsSinceLastSplit = obscuredText.indexOf(spaceDelimiter, totalChars + charsSinceLastSplit + 1);
 		charsSinceLastSplit -= totalChars;
 		if (charsSinceLastSplit >= 10) {
 			lineBroken.push(obscuredText.substring(totalChars, totalChars + charsSinceLastSplit));
@@ -680,7 +680,6 @@ function preprocessEnemyText(text) {
 		}
 		else {
 			console.log('found space at position ' + totalChars + '/' + charsSinceLastSplit + '. Will not split.');
-			charsSinceLastSplit++;
 		}
 	}
 	lineBroken.push(obscuredText.substring(totalChars, obscuredText.length));
