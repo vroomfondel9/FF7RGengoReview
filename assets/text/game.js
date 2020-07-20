@@ -683,6 +683,14 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		if (!enemy.animating)
 		{
 			enemy.index++;
+			
+			if (enemy.index >= videoContents.length) {
+				//TODO actual game over behavior
+				gameOver = true;
+				alert("Game Over!");
+				return;
+			}
+			
 			var text = videoContents[enemy.index].sentence;
 			enemy.acceptableAnswers = determineAcceptableAnswers(videoContents[enemy.index]);
 			
@@ -841,6 +849,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 							enemy.setColor(fontColor); 
 							enemy.setStroke(strokeBaseColor, strokeSize); 
 							enemy.animating = false;
+							enemy.anim_appear();
 						}
 					}
 				]
