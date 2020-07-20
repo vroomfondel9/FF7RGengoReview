@@ -665,9 +665,10 @@ function preprocessEnemyText(text) {
 	
 	var obscuredText = text;
 	
-	var lineBroken = [];
 	var spaceDelimited = obscuredText.split(spaceDelimiter);
-	var totalChars = 0;
+	var lineBroken = [];
+	lineBroken.push(spaceDelimited[spaceDelimited.length - 1]);
+	var totalChars = spaceDelimited[spaceDelimited.length - 1].length;
 	for (var i = spaceDelimited.length - 2; i >= 0; i--) {
 		console.log(i + ": " + spaceDelimited[i]);
 		lineBroken.push(spaceDelimited[i]);
@@ -680,7 +681,6 @@ function preprocessEnemyText(text) {
 			lineBroken.push(spaceDelimiter);
 		}
 	}
-	lineBroken.push(spaceDelimited[spaceDelimited.length - 1]);
 	console.log("Pre-reverse: " + lineBroken);
 	lineBroken = lineBroken.reverse();
 	
