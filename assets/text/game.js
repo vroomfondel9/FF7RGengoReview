@@ -645,6 +645,10 @@ function createEnemies(game) {
 	enemy.animating = false;
 	enemy.index = -1;
 	
+	enemy.damage = game.add.text(enemy.x, enemy.y, '', {fontSize: '10px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
+	enemy.damage.setStroke(strokeBaseColor, 2);
+	enemy.damage.setOrigin(0.5);
+	
 	var floatHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
 	enemy.setY(enemy.getBounds().y  - (textbottom - floatHeight));
