@@ -852,8 +852,6 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			var tiltX = 35 + 35 * Math.random();
 			var tiltY = 15 + 15 * Math.random();
 			
-			enemy.damage.anim_appear(Math.round(2000 + 2000 * Math.random()));
-			
 			game.tweens.timeline({
 				tweens: [
 					{
@@ -867,6 +865,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						easeParams: [ 1.5, 0.5 ],
 						onStart: function() {
 							enemy.setText(enemy.plainSentence);
+							enemy.damage.anim_appear(Math.round(2000 + 2000 * Math.random()));
 						}
 					},
 					{
