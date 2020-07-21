@@ -645,10 +645,10 @@ function createEnemies(game) {
 	enemy.animating = false;
 	enemy.index = -1;
 	
-	enemy.damage = game.add.text(enemy.x, enemy.y, 'Miss', {fontSize: '32px', fill: '#FFF'});
-	enemy.damage.setStroke('#000', 2);
+	enemy.damage = game.add.text(enemy.x, enemy.y, 'Miss', {fontSize: '24px', fill: '#FFF'});
+	enemy.damage.setStroke('#000', 8);
 	enemy.damage.setOrigin(0.5);
-	console.log('omg1');
+	console.log('omg2');
 	
 	var floatHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
