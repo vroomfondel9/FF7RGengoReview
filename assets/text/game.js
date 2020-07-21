@@ -102,7 +102,6 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		enemy.damage.anim_appear();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -803,6 +802,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 				enemy.tween_idle.stop();
 			}
 			
+			enemy.damage.anim_appear();
+			
 			game.tweens.timeline({
 				tweens: [
 					{
@@ -849,6 +850,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			
 			var tiltX = 35 + 35 * Math.random();
 			var tiltY = 15 + 15 * Math.random();
+			
+			enemy.damage.anim_appear(2000 + 2000 * Math.random());
 			
 			game.tweens.timeline({
 				tweens: [
