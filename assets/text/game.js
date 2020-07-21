@@ -102,6 +102,7 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
+		enemy.damage.anim_appear();
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -648,7 +649,7 @@ function createEnemies(game) {
 	enemy.damage = game.add.text(enemy.x, enemy.y, 'Miss', {fontSize: '20px', fill: '#FFF'});
 	enemy.damage.setStroke('#000', 8);
 	enemy.damage.setOrigin(0.5);
-	console.log('omg3');
+	enemy.damage.setAlpha(0.0);
 	
 	var floatHeight = env.ground.foreground.getBounds().y - (env.ground.foreground.getBounds().height / 2) - 25;
 	var textbottom = enemy.getBounds().y + (numLines - 1) * lineHeight;
@@ -694,6 +695,30 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 	const col_font_killed = Phaser.Display.Color.HexStringToColor(fontColorKilled);
 	const col_stroke_alive = Phaser.Display.Color.HexStringToColor(strokeBaseColor);
 	const col_stroke_killed = Phaser.Display.Color.HexStringToColor(strokeHitColor);
+	
+	enemy.damage.anim_appear = function(amount) {
+		if (amount) {
+			enemy.damage.setText(amount);
+		} else {
+			enemy.damage.setText("Miss");
+		}
+		
+		enemy.damage.setX(enemy.x);
+		enemy.damage.setY(enemy.y);
+		enemy.damage.setAlpha(1.0);
+		
+		game.tweens.timeline({
+			tweens: [
+				{
+					targets: enemy.damage,
+					y: enemy.damage.y - 50,
+					alpha: 0,
+					duration: 1200,
+					ease: 'Linear'
+				}
+			]
+		});
+	}
 
 	// Full Animations
 	enemy.anim_appear = function() {
