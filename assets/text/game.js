@@ -645,7 +645,7 @@ function createEnemies(game) {
 	enemy.animating = false;
 	enemy.index = -1;
 	
-	enemy.damage = game.add.text(300, 275, 'Miss', {fontSize: '18px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
+	enemy.damage = game.add.text(enemy.x, enemy.y, 'Miss', {fontSize: '26px', fill: fontColor,  wordWrap: {width: wrapWidth, useAdvancedWrap: true}});
 	enemy.damage.setStroke('#000', 2);
 	enemy.damage.setOrigin(0.5);
 	
