@@ -30,6 +30,7 @@ var enemy;
 
 var controls;
 var gameOver = false;
+var paused = false;
 
 var game = new Phaser.Game(config);
 
@@ -78,6 +79,12 @@ function update (time, delta)
         return;
     }
 	
+	if (paused && !this.scene.isPaused("default")) {
+		this.scene.pause("default");
+	}
+	else if (!paused && this.scene.isPaused("default")) {
+		this.scene.resume("default");
+	}
 	
 	if (ui.controlledobject != null) {
 		if (Phaser.Input.Keyboard.JustDown(controls.UP))
@@ -102,13 +109,11 @@ function update (time, delta)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		this.scene.resume("default");
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
-		this.scene.pause("default");
 	}
 }
 
