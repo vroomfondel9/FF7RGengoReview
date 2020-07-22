@@ -102,12 +102,13 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
+		game.scene.resume("default");
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
-		enemy.anim_idle();
+		game.scene.pause("default");
 	}
 }
 
