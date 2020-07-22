@@ -110,7 +110,7 @@ function update (time, delta)
 		//ui.status.time.resume();
 		console.log("time: " + time);
 		console.log("delta: " + delta);
-		console.log(scene.scene.get("default"));
+		console.log(this);
 		//game.pause("default");
 	}
 }
