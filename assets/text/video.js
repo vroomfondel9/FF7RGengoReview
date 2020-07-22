@@ -48,7 +48,10 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
 	if (event.data == YT.PlayerState.PLAYING) {
-		paused = false;
+		if (paused) {
+			paused = false;
+			update();
+		}
 	}
 	else if (event.data == YT.PlayerState.PAUSED) {
 		paused = true;
