@@ -1,3 +1,6 @@
+var videoId = "GI0YrbYyWcw";
+var videoStartTime = 40 * 60 + 02;
+
 var videoContents = [
 	{
 		"sentence": "セット＊完了＊",
