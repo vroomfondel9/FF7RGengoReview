@@ -30,7 +30,6 @@ var enemy;
 
 var controls;
 var gameOver = false;
-var paused = false;
 
 var game = new Phaser.Game(config);
 
@@ -929,4 +928,22 @@ function createControls(game) {
 	
 	controls.ENTER = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 	controls.ESCAPE = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+}
+
+function getScene() {
+	return game.scenes[0].scene;
+}
+
+function pauseGame() {
+	var scene = getScene();
+	if (!scene.isPaused()) {
+		scene.pause();
+	}
+}
+
+function resumeGame() {
+	var scene = getScene();
+	if (scene.isPaused()) {
+		scene.resume();
+	}
 }

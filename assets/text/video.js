@@ -48,13 +48,10 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
 	if (event.data == YT.PlayerState.PLAYING) {
-		if (paused) {
-			paused = false;
-			update();
-		}
+		resumeGame();
 	}
 	else if (event.data == YT.PlayerState.PAUSED) {
-		paused = true;
+		pauseGame();
 	}
 }
 function unmuteVideo() {
