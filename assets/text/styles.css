@@ -6,16 +6,16 @@
 	min-height: 200px;
 	padding: 10px;
 }
-#video-container {
+#game-container {
 	float:left; 
 	width: 800px;
 }
-#game-container { 
+#video-container { 
 	padding: 0;
 }
 
 @media screen and (max-width: 400px) {
-	#video-container { 
+	#game-container { 
 		float: none;
 		margin-right:0;
 		width:auto;  
