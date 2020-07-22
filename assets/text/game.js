@@ -108,6 +108,7 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
+		console.log(game);
 		game.pause("default");
 	}
 }
