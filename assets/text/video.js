@@ -9,6 +9,17 @@ firstScriptTag.parentNode.insertBefore(iframe_api_tag, firstScriptTag);
 // Called when Async Youtube Iframes API load complete
 function onYouTubeIframeAPIReady() {
 	videoPlayer = new YT.Player('video-container', {
+		height: '390',
+        width: '640',
+        videoId: 'M7lc1UVf-VE',
+		playerVars: {
+			'enablejsapi': 1, 
+			'origin': 'https://vroomfondel9.github.io',
+			'controls': 0,
+			'disablekb': 1,
+			'fs': 0,
+			'iv_load_policy': 3
+		}
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
