@@ -11,9 +11,10 @@ function onYouTubeIframeAPIReady() {
 	videoPlayer = new YT.Player('video-container', {
 		height: '390',
         width: '640',
-        videoId: 'M7lc1UVf-VE',
+        videoId: 'GI0YrbYyWcw',
 		playerVars: {
 			'enablejsapi': 1, 
+			'origin': 'https://vroomfondel9.github.io',
 			'controls': 0,
 			'disablekb': 1,
 			'fs': 0,
