@@ -924,7 +924,7 @@ function createControls(game) {
 }
 
 function getScene() {
-	return game.scenes[0].scene;
+	return game.scene.scenes[0].scene;
 }
 
 function pauseGame() {
