@@ -11,7 +11,7 @@
   width: 800px;
 }
 #game-container { 
-  
+  padding: 0;
 }
 
 @media screen and (max-width: 400px) {
