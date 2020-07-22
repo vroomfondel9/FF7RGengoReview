@@ -1,23 +1,29 @@
 .wrapper { 
-  overflow:hidden;
+	overflow:hidden;
+	width: 1600px; 
+	margin: auto;
 }
 
 .wrapper div {
-   min-height: 200px;
-   padding: 10px;
+	min-height: 200px;
+	padding: 10px;
 }
 #video-container {
-  float:left; 
-  width: 800px;
+	float:left; 
+	width: 800px;
 }
 #game-container { 
-  padding: 0;
+	padding: 0;
 }
 
 @media screen and (max-width: 400px) {
-   #video-container { 
-    float: none;
-    margin-right:0;
-    width:auto;  
-  }
+	.wrapper { 
+		width: 800px; 
+	}
+	
+	#video-container { 
+		float: none;
+		margin-right:0;
+		width:auto;  
+	}
 }
