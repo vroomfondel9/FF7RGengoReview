@@ -19,7 +19,7 @@ function onYouTubeIframeAPIReady() {
 			'disablekb': 1,
 			'fs': 0,
 			'iv_load_policy': 3
-		}
+		},
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
