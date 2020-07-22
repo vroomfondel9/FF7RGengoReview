@@ -71,7 +71,7 @@ function create ()
 	ui.status.time.resume();
 }
 
-function update (game)
+function update (time, delta)
 {
     if (gameOver)
     {
@@ -102,14 +102,15 @@ function update (game)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		game.resume("default");
+		//game.resume("default");
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
-		console.log(game);
-		game.pause("default");
+		console.log("time: " + time);
+		console.log("delta: " + delta);
+		//game.pause("default");
 	}
 }
 
