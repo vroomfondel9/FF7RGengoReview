@@ -734,7 +734,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			}
 			
 			enemy.rawSentence = videoContents[enemy.index].sentence;
-			enemy.plainSentence = enemy.rawSentence.replaceAll("\uFF0A", "");
+			enemy.plainSentence = enemy.rawSentence.replace(/\uFF0A/g, "");
 			enemy.acceptableAnswers = determineAcceptableAnswers(videoContents[enemy.index]);
 			
 			enemy.animating = true;
