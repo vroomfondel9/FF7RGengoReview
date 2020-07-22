@@ -1,4 +1,4 @@
-var player;
+var videoPlayer;
 
 // Async load of Youtube Iframes API
 var iframe_api_tag = document.createElement('script');
@@ -9,15 +9,12 @@ firstScriptTag.parentNode.insertBefore(iframe_api_tag, firstScriptTag);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 function onYouTubeIframeAPIReady() {
-player = new YT.Player('player', {
-  height: '390',
-  width: '640',
-  videoId: 'M7lc1UVf-VE',
-  events: {
-	'onReady': onPlayerReady,
-	'onStateChange': onPlayerStateChange
-  }
-});
+	videoPlayer = new YT.Player('video-container', {
+	  events: {
+		'onReady': onPlayerReady,
+		'onStateChange': onPlayerStateChange
+	  }
+	});
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -38,5 +35,5 @@ if (event.data == YT.PlayerState.PLAYING && !done) {
 }
 }
 function stopVideo() {
-	player.stopVideo();
+	videoPlayer.stopVideo();
 }
