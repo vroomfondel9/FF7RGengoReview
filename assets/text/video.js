@@ -14,11 +14,11 @@ function onYouTubeIframeAPIReady() {
         videoId: 'M7lc1UVf-VE',
 		playerVars: {
 			'enablejsapi': 1, 
-			'origin': 'https://vroomfondel9.github.io',
 			'controls': 0,
 			'disablekb': 1,
 			'fs': 0,
-			'iv_load_policy': 3
+			'iv_load_policy': 3,
+			'rel': 0
 		},
 		events: {
 			'onReady': onPlayerReady,
