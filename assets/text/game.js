@@ -174,7 +174,7 @@ function createPauseDisplay(game) {
 	ui.pause.background.setDepth(2000);
 	ui.pause.background.visible = false;
 	
-	ui.pause.label = game.add.text(400, 200, "Paused", {fontSize: '24px', fill: '#FFF'});
+	ui.pause.label = game.add.text(400, 225, "Paused", {fontSize: '24px', fill: '#FFF'});
 	ui.pause.label.setStroke('#BBB', 2);
 	ui.pause.label.setOrigin(0.5);
 	ui.pause.label.setDepth(2010);
