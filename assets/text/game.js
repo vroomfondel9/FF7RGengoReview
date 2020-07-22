@@ -456,7 +456,7 @@ function createAnswerSubCommandMenu(game) {
 	ui.sub.answer.label.setVisible(false);
 	
 	// Input Box
-	ui.sub.answer.htmlcontainer = game.add.dom(175, labelY + labelFontSize + 30).createFromCache('ui-answerform');
+	ui.sub.answer.htmlcontainer = game.add.dom(175, labelY + labelFontSize + 100).createFromCache('ui-answerform');
 	ui.sub.answer.htmlcontainer.setDepth(72);
 	ui.sub.answer.htmlcontainer.setVisible(false);
 	ui.sub.answer.input = ui.sub.answer.htmlcontainer.getChildByName('answerField');
