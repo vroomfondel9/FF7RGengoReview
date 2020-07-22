@@ -31,10 +31,14 @@ var done = false;
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
 if (event.data == YT.PlayerState.PLAYING && !done) {
-  setTimeout(stopVideo, 6000);
+  setTimeout(unmuteVideo, 6000);
   done = true;
 }
 }
+function unmuteVideo() {
+	videoPlayer.unmute();
+}
+
 function stopVideo() {
 	videoPlayer.stopVideo();
 }
