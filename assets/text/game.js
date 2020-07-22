@@ -923,6 +923,7 @@ function createControls(game) {
 	controls.ESCAPE = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 }
 
+// Descriptive naming! Thanks, Phaser!
 function getScene() {
 	return game.scene.scenes[0].scene;
 }
