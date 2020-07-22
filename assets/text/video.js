@@ -19,8 +19,8 @@ function onYouTubeIframeAPIReady() {
 // Called when video ready to play
 function onPlayerReady(event) {
 	console.log('on ready called');
-	event.target.mute();
-	event.target.playVideo();
+	//event.target.mute();
+	//event.target.playVideo();
 }
 
 // Status key:
@@ -33,6 +33,7 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
 	if (event.data == YT.PlayerState.PLAYING) {
+		event.target.mute();
 		setTimeout(unmuteVideo, 6000);
 	}
 }
