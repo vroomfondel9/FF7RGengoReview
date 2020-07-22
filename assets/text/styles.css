@@ -9,9 +9,9 @@
 #game-container {
 	float:left; 
 	width: 800px;
+	padding: 0;
 }
 #video-container { 
-	padding: 0;
 }
 
 @media screen and (max-width: 400px) {
