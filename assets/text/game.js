@@ -78,13 +78,6 @@ function update (time, delta)
         return;
     }
 	
-	if (paused && !this.scene.isPaused("default")) {
-		this.scene.pause("default");
-	}
-	else if (!paused && this.scene.isPaused("default")) {
-		this.scene.resume("default");
-	}
-	
 	if (ui.controlledobject != null) {
 		if (Phaser.Input.Keyboard.JustDown(controls.UP))
 		{
