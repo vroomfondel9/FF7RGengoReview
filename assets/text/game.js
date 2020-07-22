@@ -102,7 +102,7 @@ function update (time, delta)
 	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 	{
 		//ui.status.time.pause();
-		//game.resume("default");
+		//this.scene.resume("default");
 	}
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
@@ -111,7 +111,7 @@ function update (time, delta)
 		console.log("time: " + time);
 		console.log("delta: " + delta);
 		console.log(this);
-		//game.pause("default");
+		//this.scene.pause("default");
 	}
 }
 
