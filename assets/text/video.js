@@ -42,6 +42,8 @@ function onPlayerReady(event) {
 //  2: Paused		YT.PlayerState.PAUSED
 //  3: Buffering	YT.PlayerState.BUFFERING
 //  5: Cued			YT.PlayerState.CUED
+
+// Note user can still manually pause by clicking video. Need to account for this.
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
 	if (event.data == YT.PlayerState.PLAYING) {
