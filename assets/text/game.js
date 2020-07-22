@@ -114,6 +114,8 @@ function update (time, delta)
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
 		//ui.status.time.resume();
+		console.log(this);
+		console.log(game);
 	}
 }
 
