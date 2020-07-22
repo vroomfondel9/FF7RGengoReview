@@ -47,6 +47,7 @@ function preload ()
 	this.load.spritesheet('player-land', 'assets/images/sprites/player/player-land3.png', { frameWidth: 96, frameHeight: 104});
 	
 	// UI
+	this.load.image('ui-pause-background', 'assets/images/ui/pause-background.png');
 	this.load.image('ui-bottom-foreground', 'assets/images/ui/menu-bottom-foreground6.png');
 	this.load.image('ui-bottom-background', 'assets/images/ui/menu-bottom-background1.png');
 	this.load.image('ui-bottom-gauge-single-green', 'assets/images/ui/single-gauge-green.png');
@@ -128,6 +129,7 @@ function createUI(game) {
 	// Create UI parent container
 	ui = {};
 	
+	createPauseDisplay(game);
 	createUIStatusDisplay(game);
 	createUIMoveName(game);
 	
@@ -163,6 +165,19 @@ function createUIMoveName(game) {
 		ui.movename.label.visible = false;
 		ui.movename.background.visible = false;
 	}
+}
+
+function createPauseDisplay(game) {
+	ui.pause = {};
+	
+	ui.pause.background = game.add.image(400, 300, 'ui-pause-background');
+	ui.pause.background.setDepth(2000);
+	ui.pause.background.visible = false;
+	
+	ui.pause.label = game.add.text(400, 300, "", {fontSize: '24px', fill: '#FFF'});
+	ui.pause.label.setStroke('#BBB', 2);
+	ui.pause.label.setDepth(2010);
+	ui.pause.label.visible = false;
 }
 
 function createUIStatusDisplay(game) {
@@ -929,6 +944,9 @@ function getScene() {
 }
 
 function pauseGame() {
+	ui.pause.background.visible = true;
+	ui.pause.label.visible = true;
+	
 	var scene = getScene();
 	if (!scene.isPaused()) {
 		scene.pause();
@@ -936,6 +954,9 @@ function pauseGame() {
 }
 
 function resumeGame() {
+	ui.pause.background.visible = false;
+	ui.pause.label.visible = false;
+	
 	var scene = getScene();
 	if (scene.isPaused()) {
 		scene.resume();
