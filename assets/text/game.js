@@ -83,6 +83,7 @@ function update (time, delta)
 		if (battleEvents.length > 0) {
 			// TODO process battle event
 		} else if (!ui.status.time.tween || !ui.status.time.tween.isPlaying()) {
+			console.log('needs to play');
 			ui.status.time.resume();
 		}
 	}
