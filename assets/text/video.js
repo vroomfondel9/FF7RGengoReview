@@ -58,11 +58,11 @@ function onPlayerStateChange(event) {
 }
 
 function playVideo() {
-	videoPlayer.playVideo();
+	videoPlayer.play();
 }
 
 function pauseVideo() {
-	videoPlayer.pauseVideo();
+	videoPlayer.pause();
 }
 
 function unmuteVideo() {
