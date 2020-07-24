@@ -1,4 +1,5 @@
 var videoPlayer;
+var videoReady = false;
 
 // Async load of Youtube Iframes API
 var iframe_api_tag = document.createElement('script');
@@ -8,6 +9,7 @@ firstScriptTag.parentNode.insertBefore(iframe_api_tag, firstScriptTag);
 
 // Called when Async Youtube Iframes API load complete
 function onYouTubeIframeAPIReady() {
+	videoReady = true;
 	videoPlayer = new YT.Player('video-container', {
         width: '800',
 		height: '600',

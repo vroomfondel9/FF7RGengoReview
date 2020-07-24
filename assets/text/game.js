@@ -74,59 +74,61 @@ function create ()
 
 function update (time, delta)
 {
-    if (gameOver)
-    {
-        return;
-    }
-	
-	if (!player.animating && !enemy.animating) {
-		if (battleEvents.length > 0) {
-			console.log('stopping time');
-			ui.status.time.pause();
-			pauseVideo();
-			
-			var battleEvent = battleEvents.shift();
-			battleEvent.evnt(battleEvent.params);
-			
-			if (battleEvent.playerAction) {
-				ui.status.timefilled.hide();
+	if (videoReady) {
+		if (gameOver)
+		{
+			return;
+		}
+		
+		if (!player.animating && !enemy.animating) {
+			if (battleEvents.length > 0) {
+				console.log('stopping time');
+				ui.status.time.pause();
+				pauseVideo();
+				
+				var battleEvent = battleEvents.shift();
+				battleEvent.evnt(battleEvent.params);
+				
+				if (battleEvent.playerAction) {
+					ui.status.timefilled.hide();
+				}
+			} else if (!ui.status.time.flowing) {
+				console.log('resuming time');
+				ui.status.time.resume();
+				playVideo();
 			}
-		} else if (!ui.status.time.flowing) {
-			console.log('resuming time');
-			ui.status.time.resume();
-			playVideo();
 		}
-	}
-	
-	if (ui.controlledobject != null) {
-		if (Phaser.Input.Keyboard.JustDown(controls.UP))
+		
+		if (ui.controlledobject != null) {
+			if (Phaser.Input.Keyboard.JustDown(controls.UP))
+			{
+				ui.controlledobject.next();
+			}
+			if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
+			{
+				ui.controlledobject.previous();
+			}
+			if (Phaser.Input.Keyboard.JustDown(controls.ENTER))
+			{
+				ui.controlledobject.confirm();
+			}
+			if (Phaser.Input.Keyboard.JustDown(controls.ESCAPE))
+			{
+				ui.controlledobject.cancel();
+			}
+		}
+		
+		// TODO only for test purposes
+		if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
 		{
-			ui.controlledobject.next();
+			//ui.status.time.pause();
 		}
-		if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
+		
+		if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 		{
-			ui.controlledobject.previous();
+			console.log(this);
+			console.log(game);
 		}
-		if (Phaser.Input.Keyboard.JustDown(controls.ENTER))
-		{
-			ui.controlledobject.confirm();
-		}
-		if (Phaser.Input.Keyboard.JustDown(controls.ESCAPE))
-		{
-			ui.controlledobject.cancel();
-		}
-	}
-	
-	// TODO only for test purposes
-	if (Phaser.Input.Keyboard.JustDown(controls.RIGHT))
-	{
-		//ui.status.time.pause();
-	}
-	
-	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
-	{
-		console.log(this);
-		console.log(game);
 	}
 }
 
