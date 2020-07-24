@@ -86,6 +86,10 @@ function update (time, delta)
 			
 			var battleEvent = battleEvents.shift();
 			battleEvent.evnt(battleEvent.params);
+			
+			if (battleEvent.playerAction) {
+				ui.status.timefilled.hide();
+			}
 		} else if (!ui.status.time.flowing) {
 			console.log('resuming time');
 			ui.status.time.resume();
@@ -545,8 +549,7 @@ function createAnswerSubMenuBehaviors(game) {
 	ui.sub.answer.confirm = function() {
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
-		battleEvents.push({evnt: player.anim_attack, params: [providedAnswer]});
-		ui.status.timefilled.hide();
+		battleEvents.push({evnt: player.anim_attack, params: [providedAnswer], playerAction: true});
 		ui.command.hide();
 	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
@@ -702,7 +705,7 @@ function createEnemies(game) {
 	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
 	
 	// Make first enemy appear
-	battleEvents.push({evnt: enemy.anim_appear, params: []});
+	battleEvents.push({evnt: enemy.anim_appear, params: [], playerAction: false});
 }
 
 // Answers surrounded by asterisks should be obscured
