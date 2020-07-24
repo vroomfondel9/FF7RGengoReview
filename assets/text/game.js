@@ -20,9 +20,12 @@ var config = {
     }
 };
 
+// Game Options
 var lang = content.LANG_JAPANESE;
 var mode = content.MODE_KANJI;
 
+// Fundemental variables
+var battleEvents = [];
 var env;
 var ui;
 var player;
@@ -67,9 +70,6 @@ function create ()
 	createEnemies(this);
 	createUI(this);
 	createControls(this);
-	
-	//TODO bootstart game
-	ui.status.time.resume();
 }
 
 function update (time, delta)
@@ -78,6 +78,14 @@ function update (time, delta)
     {
         return;
     }
+	
+	if (!player.animating && !enemy.animating) {
+		if (battleEvents.length > 0) {
+			// TODO process battle event
+		} else if (!ui.status.time.tween || !ui.status.time.tween.isPlaying()) {
+			ui.status.time.resume();
+		}
+	}
 	
 	if (ui.controlledobject != null) {
 		if (Phaser.Input.Keyboard.JustDown(controls.UP))
@@ -106,7 +114,6 @@ function update (time, delta)
 	
 	if (Phaser.Input.Keyboard.JustDown(controls.LEFT))
 	{
-		//ui.status.time.resume();
 		console.log(this);
 		console.log(game);
 	}
@@ -634,7 +641,6 @@ function createPlayerAnimations(game) {
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
-							ui.status.time.resume();
 						}
 					}
 				]
