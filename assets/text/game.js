@@ -83,6 +83,7 @@ function update (time, delta)
 		if (battleEvents.length > 0) {
 			console.log('stopping time');
 			ui.status.time.pause();
+			pauseVideo();
 			
 			var battleEvent = battleEvents.shift();
 			battleEvent.evnt(battleEvent.params);
@@ -93,13 +94,14 @@ function update (time, delta)
 		} else if (!ui.status.time.flowing) {
 			console.log('resuming time');
 			ui.status.time.resume();
+			playVideo();
 		}
 	}
 	
 	if (ui.controlledobject != null) {
 		if (Phaser.Input.Keyboard.JustDown(controls.UP))
 		{
-			ui.controlledobject.previous();
+			ui.controlledobject.next();
 		}
 		if (Phaser.Input.Keyboard.JustDown(controls.DOWN))
 		{
@@ -269,7 +271,6 @@ function createUIStatusDisplayBehavior(game) {
 		ui.status.time.flowing = false;
 		if (ui.status.time.tween != null) {
 			if (!ui.status.timefilled.visible) {
-				console.log(ui.status.timefilled.visible + ' added2: ' + ui.status.time.tween.elapsed);
 				ui.status.time.elapsed += ui.status.time.tween.elapsed;
 				ui.status.time.tween.stop();
 			}
