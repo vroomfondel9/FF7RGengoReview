@@ -234,7 +234,7 @@ function createUIStatusDisplayBehavior(game) {
 	ui.status.time.resume = function() {
 		ui.status.time.flowing = true;
 		
-		if (!ui.status.timefilled.visible) {
+		if (!ui.status.timefilled.isVisible()) {
 			ui.status.time.tween = game.tweens.timeline({
 				tweens: [
 					{
@@ -264,8 +264,8 @@ function createUIStatusDisplayBehavior(game) {
 	ui.status.time.pause = function() {
 		ui.status.time.flowing = false;
 		if (ui.status.time.tween != null) {
-			if (!ui.status.timefilled.visible) {
-				console.log('added2: ' + ui.status.time.tween.elapsed);
+			if (!ui.status.timefilled.isVisible()) {
+				console.log('added3: ' + ui.status.time.tween.elapsed);
 				ui.status.time.elapsed += ui.status.time.tween.elapsed;
 				ui.status.time.tween.stop();
 			}
