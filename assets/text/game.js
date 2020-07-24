@@ -247,6 +247,7 @@ function createUIStatusDisplayBehavior(game) {
 						callbackScope   : ui.status.time,
 						onComplete: function() {
 							ui.status.time.setScale(0, 1);
+							console.log('elapsed reset');
 							ui.status.time.elapsed = 0;
 							ui.status.timefilled.show();
 							
