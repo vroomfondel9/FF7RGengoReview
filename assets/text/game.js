@@ -81,9 +81,13 @@ function update (time, delta)
 	
 	if (!player.animating && !enemy.animating) {
 		if (battleEvents.length > 0) {
-			// TODO process battle event
+			console.log('stopping time');
+			ui.status.time.pause();
+			
+			var battleEvent = battleEvents.shift();
+			battleEvent.evnt(battleEvent.params);
 		} else if (!ui.status.time.flowing) {
-			console.log('needs to play');
+			console.log('resuming time');
 			ui.status.time.resume();
 		}
 	}
@@ -686,7 +690,9 @@ function createEnemies(game) {
 	
 	// Animations
 	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
-	enemy.anim_appear();
+	
+	// Make first enemy appear
+	battleEvents.push({evnt: enemy.anim_appear, params: []});
 }
 
 // Answers surrounded by asterisks should be obscured
