@@ -248,8 +248,10 @@ function createUIStatusDisplayBehavior(game) {
 						ui.status.time.elapsed = 0;
 						ui.status.timefilled.show();
 						
-						ui.command.show();
-						ui.controlledobject = ui.command;
+						if (ui.controlledobject == null) {
+							ui.command.show();
+							ui.controlledobject = ui.command;
+						}
 					}
 				},
 			]
@@ -537,7 +539,7 @@ function createAnswerSubMenuBehaviors(game) {
 	ui.sub.answer.confirm = function() {
 		var providedAnswer = ui.sub.answer.showOrHide(false);
 		
-		player.anim_attack(providedAnswer, enemy.acceptableAnswers);
+		battleEvents.push({evnt: player.anim_attack, params: [providedAnswer]});
 		ui.status.timefilled.hide();
 		ui.command.hide();
 	};
@@ -594,9 +596,11 @@ function createPlayerAnimations(game) {
     });
 	
 	// Full Animations
-	player.anim_attack = function(playerAnswer, acceptableAnswers) {
+	player.anim_attack = function(params) {
 		if (!player.animating)
 		{
+			var playerAnswer = params[0];
+			
 			player.animating = true;
 			ui.movename.show(playerAnswer);
 			
@@ -619,7 +623,7 @@ function createPlayerAnimations(game) {
 							player.setVelocityX(360);
 							player.setVelocityY(-160);
 							
-							if (acceptableAnswers.indexOf(playerAnswer) != -1)
+							if (enemy.acceptableAnswers.indexOf(playerAnswer) != -1)
 							{
 								enemy.anim_get_hit_and_die();
 							}
