@@ -233,29 +233,32 @@ function createUIStatusDisplay(game) {
 function createUIStatusDisplayBehavior(game) {
 	ui.status.time.resume = function() {
 		ui.status.time.flowing = true;
-		ui.status.time.tween = game.tweens.timeline({
-			tweens: [
-				{
-					targets     : [ ui.status.time ],
-					scaleX: 1,
-					ease        : 'Linear',
-					duration    : ui.status.time.fillTime - ui.status.time.elapsed,
-					yoyo        : false,
-					repeat      : 0,
-					callbackScope   : ui.status.time,
-					onComplete: function() {
-						ui.status.time.setScale(0, 1);
-						ui.status.time.elapsed = 0;
-						ui.status.timefilled.show();
-						
-						if (ui.controlledobject == null) {
-							ui.command.show();
-							ui.controlledobject = ui.command;
+		
+		if (!ui.status.timefilled.visible) {
+			ui.status.time.tween = game.tweens.timeline({
+				tweens: [
+					{
+						targets     : [ ui.status.time ],
+						scaleX: 1,
+						ease        : 'Linear',
+						duration    : ui.status.time.fillTime - ui.status.time.elapsed,
+						yoyo        : false,
+						repeat      : 0,
+						callbackScope   : ui.status.time,
+						onComplete: function() {
+							ui.status.time.setScale(0, 1);
+							ui.status.time.elapsed = 0;
+							ui.status.timefilled.show();
+							
+							if (ui.controlledobject == null) {
+								ui.command.show();
+								ui.controlledobject = ui.command;
+							}
 						}
-					}
-				},
-			]
-		});
+					},
+				]
+			});
+		}
 	};
 	
 	ui.status.time.pause = function() {
