@@ -82,7 +82,7 @@ function update (time, delta)
 	if (!player.animating && !enemy.animating) {
 		if (battleEvents.length > 0) {
 			// TODO process battle event
-		} else if (!ui.status.time.tween || !ui.status.time.tween.isPlaying()) {
+		} else if (!ui.status.time.flowing) {
 			console.log('needs to play');
 			ui.status.time.resume();
 		}
@@ -208,6 +208,7 @@ function createUIStatusDisplay(game) {
 	ui.status.time.fillTime = 1000;
 	ui.status.time.elapsed = 0;
 	ui.status.time.setScale(0, 1);
+	ui.status.time.flowing = false;
 	
 	ui.status.timefilled = game.add.image(700, 474, 'ui-bottom-gauge-single-yellow');
 	ui.status.timefilled.setDepth(15);
@@ -227,6 +228,7 @@ function createUIStatusDisplay(game) {
 
 function createUIStatusDisplayBehavior(game) {
 	ui.status.time.resume = function() {
+		ui.status.time.flowing = true;
 		ui.status.time.tween = game.tweens.timeline({
 			tweens: [
 				{
@@ -251,6 +253,7 @@ function createUIStatusDisplayBehavior(game) {
 	};
 	
 	ui.status.time.pause = function() {
+		ui.status.time.flowing = false;
 		if (ui.status.time.tween != null) {
 			ui.status.time.elapsed += ui.status.time.tween.elapsed;
 			ui.status.time.tween.stop();
