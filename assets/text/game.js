@@ -265,7 +265,7 @@ function createUIStatusDisplayBehavior(game) {
 		ui.status.time.flowing = false;
 		if (ui.status.time.tween != null) {
 			if (!ui.status.timefilled.visible) {
-				console.log('added: ' + ui.status.time.tween.elapsed);
+				console.log('added2: ' + ui.status.time.tween.elapsed);
 				ui.status.time.elapsed += ui.status.time.tween.elapsed;
 				ui.status.time.tween.stop();
 			}
