@@ -1,5 +1,6 @@
 var videoPlayer;
 var videoReady = false;
+var videoAuthorized = false;
 
 // Async load of Youtube Iframes API
 var iframe_api_tag = document.createElement('script');
@@ -50,6 +51,7 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
 	if (event.data == YT.PlayerState.PLAYING) {
+		videoAuthorized = true;
 		//resumeGame();
 	}
 	else if (event.data == YT.PlayerState.PAUSED) {

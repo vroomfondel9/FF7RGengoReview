@@ -74,7 +74,7 @@ function create ()
 
 function update (time, delta)
 {
-	if (videoReady) {
+	if (videoAuthorized) {
 		if (gameOver)
 		{
 			return;
