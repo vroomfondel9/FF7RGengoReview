@@ -14,7 +14,7 @@ function onYouTubeIframeAPIReady() {
 	videoPlayer = new YT.Player('video-container', {
         width: '800',
 		height: '600',
-        videoId: videoId,
+        videoId: videoDetails.id,
 		playerVars: {
 			'enablejsapi': 1, 
 			'origin': 'https://vroomfondel9.github.io',
@@ -23,7 +23,7 @@ function onYouTubeIframeAPIReady() {
 			'fs': 0,
 			'iv_load_policy': 3,
 			'rel': 0,
-			'start': videoStartTime
+			'start': videoDetails.start
 		},
 		events: {
 			'onReady': onPlayerReady,

@@ -211,7 +211,7 @@ function createUIStatusDisplay(game) {
 	ui.status.limit.setDepth(14);
 	ui.status.limit.setOrigin(0);
 	//TODO base on # of enemies
-	ui.status.limit.incrementAmount = 1.0 / (videoContents.length - 1);
+	ui.status.limit.incrementAmount = 1.0 / (videoDetails.questions.length - 1);
 	ui.status.limit.setScale(0, 1);
 	
 	ui.status.time = game.add.image(700, 474, 'ui-bottom-gauge-single-green');
@@ -774,16 +774,16 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 		{
 			enemy.index++;
 			
-			if (enemy.index >= videoContents.length) {
+			if (enemy.index >= videoDetails.questions.length) {
 				//TODO actual game over behavior
 				gameOver = true;
 				alert("Game Over!");
 				return;
 			}
 			
-			enemy.rawSentence = videoContents[enemy.index].sentence;
+			enemy.rawSentence = videoDetails.questions[enemy.index].sentence;
 			enemy.plainSentence = enemy.rawSentence.replace(/\uFF0A/g, "");
-			enemy.acceptableAnswers = determineAcceptableAnswers(videoContents[enemy.index]);
+			enemy.acceptableAnswers = determineAcceptableAnswers(videoDetails.questions[enemy.index]);
 			
 			enemy.animating = true;
 			
