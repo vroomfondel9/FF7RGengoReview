@@ -52,7 +52,7 @@ function onPlayerReady(event) {
 	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
 	videoPlayer.timelineBasedEvent = null;
 	
-	addTimelineBasedEvent(2411, testFunction, ["hello", "world"]);
+	addTimelineBasedEvent(2411, testFunction);
 }
 
 // Status key:
@@ -86,18 +86,25 @@ function onPlayerProgress(time) {
 		if (time >= videoPlayer.timelineBasedEvent.time) {
 			var callback = videoPlayer.timelineBasedEvent.callback;
 			var params = videoPlayer.timelineBasedEvent.params;
-			clearTimelineBasedEvent();
+			
+			if (!videoPlayer.timelineBasedEvent.keepEvent) {
+				clearTimelineBasedEvent();
+			}
 			
 			callback(params);
 		}
 	}
 }
 
-function addTimelineBasedEvent(time, callback, params) {
+function addTimelineBasedEvent(time, callback, params, keepEvent) {
+	var initParams = params ? params : [];
+	var initKeepEvent = keepEvent ? true : false;
+	
 	videoPlayer.timelineBasedEvent = {
 		"time": time,
 		"callback": callback,
-		"params": params
+		"params": initParams,
+		"keepEvent": initKeepEvent
 	};
 }
 
