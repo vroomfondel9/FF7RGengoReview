@@ -1,4 +1,8 @@
 var videoPlayer;
+
+var previousVideoTime = 0;
+var currentVideoTime = 0;
+
 var videoReady = false;
 var videoAuthorized = false;
 
@@ -34,9 +38,17 @@ function onYouTubeIframeAPIReady() {
 
 // Called when video ready to play
 function onPlayerReady(event) {
-	console.log('on ready called');
-	//event.target.mute();
-	//event.target.playVideo();
+	// This ugly hack must be done because the Youtube API doesn't include events for timeline progress. Oh well!
+	function updateTime() {
+		previousVideoTime = currentVideoTime;
+		if (videoPlayer && videoPlayer.getCurrentTime) {
+			currentVideoTime = videoPlayer.getCurrentTime();
+		}
+		if (currentVideoTime > previousVideoTime) {
+			onPlayerProgress(currentVideoTime);
+		}
+	}
+	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
 }
 
 // Status key:
@@ -57,6 +69,10 @@ function onPlayerStateChange(event) {
 	else if (event.data == YT.PlayerState.PAUSED) {
 		//pauseGame();
 	}
+}
+
+function onPlayerProgress(time) {
+	console.log("Progress: " + time);
 }
 
 function playVideo() {

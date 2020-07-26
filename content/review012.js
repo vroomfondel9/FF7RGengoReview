@@ -1,7 +1,7 @@
 var videoDetails = {
 	"id": "GI0YrbYyWcw",
 	"intro": {
-		"start": 40 * 60 + 00,
+		"start": 40 * 60 + 01,
 		"encounter": 40 * 60 + 02
 	},
 	"questions": [
