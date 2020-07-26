@@ -988,7 +988,6 @@ function getScene() {
 function resetEnemyATB() {
 	var startTime = videoDetails.questions[enemy.index].startTimer;
 	seekTo(startTime);
-	playVideo();
 }
 
 // "API" functions (to be called by video, etc)
