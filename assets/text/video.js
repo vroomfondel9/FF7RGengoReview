@@ -23,7 +23,7 @@ function onYouTubeIframeAPIReady() {
 			'fs': 0,
 			'iv_load_policy': 3,
 			'rel': 0,
-			'start': videoDetails.start
+			'start': videoDetails.intro.start
 		},
 		events: {
 			'onReady': onPlayerReady,
