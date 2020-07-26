@@ -21,8 +21,8 @@ var config = {
 };
 
 // Game Options
-var lang = content.LANG_JAPANESE;
-var mode = content.MODE_KANJI;
+var lang = CONSTANTS.LANG.JPN;
+var mode = CONSTANTS.MODE.KANJI;
 
 // Fundemental variables
 var battleEvents = [];
@@ -234,7 +234,7 @@ function createUIStatusDisplay(game) {
 	ui.status.foreground = game.add.image(400, 520, 'ui-bottom-foreground');
 	ui.status.foreground.setDepth(20);
 	
-	ui.status.playername = game.add.text(15, 475, content["status-player-name"][lang], {fontSize: '24px', fill: '#FFF'});
+	ui.status.playername = game.add.text(15, 475, content.status.playerName[lang], {fontSize: '24px', fill: '#FFF'});
 	ui.status.playername.setStroke('#BBB', 2);
 	ui.status.playername.setOrigin(0);
 	ui.status.playername.setDepth(22);
@@ -356,10 +356,10 @@ function createCommandMenu(game) {
 	ui.command = {};
 	
 	const optionsRaw = [
-		content["command-options-answer"][lang], 
-		//content["command-options-magic"][lang], 
-		content["command-options-sense"][lang],  
-		//content["command-options-item"][lang], 
+		content.status.command.options.answer[lang], 
+		//content.status.command.options.magic[lang], 
+		content.status.command.options.sense[lang],  
+		//content.status.command.options.item[lang], 
 	];
 	
 	ui.command.numOptions = optionsRaw.length;
@@ -380,8 +380,8 @@ function createCommandMenu(game) {
 		ui.command.options[i].text.setOrigin(0);
 		ui.command.options[i].text.setDepth(52);
 		
-		ui.command.options[i].hasSubMenu = optionsRaw[i] != content["command-options-sense"][lang];
-		ui.command.options[i].freeEntrySubmenu = optionsRaw[i] == content["command-options-answer"][lang];
+		ui.command.options[i].hasSubMenu = optionsRaw[i] != content.status.command.options.sense[lang];
+		ui.command.options[i].freeEntrySubmenu = optionsRaw[i] == content.status.command.options.answer[lang];
 		ui.command.options[i].alliesSelectableDefault = false;
 		ui.command.options[i].enemiesSelectableDefault = true;
 		
@@ -446,10 +446,10 @@ function createCommandCursor(game, commandFontSize) {
 }
 
 function createCommandSubBehaviors(game, curOption, parentMenuName) {
-	if (content["command-options-answer"][lang] == parentMenuName) {
+	if (content.status.command.options.answer[lang] == parentMenuName) {
 		curOption.selectCallback = function() {ui.sub.answer.show();};
 	}
-	else if (content["command-options-sense"][lang] == parentMenuName) {
+	else if (content.status.command.options.sense[lang] == parentMenuName) {
 		curOption.selectCallback = function() {console.log('TODO Sense Functionality Placeholder'); ui.command.cursor.anim_deselect();};
 	}
 }
@@ -499,7 +499,7 @@ function createAnswerSubCommandMenu(game) {
 	// Input Label
 	const labelFontSize = 24;
 	const labelY = 530 - (ui.sub.answer.background.height / 2) + (labelFontSize + 0);
-	ui.sub.answer.label = game.add.text(175, labelY, content["sub-answer-recall-label"][lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
+	ui.sub.answer.label = game.add.text(175, labelY, content.status.command.sub.answer.recallLabel[lang], {fontSize: labelFontSize + 'px', fill: '#FFF'});
 	ui.sub.answer.label.setStroke('#BBB', 2);
 	ui.sub.answer.label.setOrigin(0.5);
 	ui.sub.answer.label.setDepth(72);
@@ -737,8 +737,8 @@ function preprocessEnemyText(text) {
 
 function determineAcceptableAnswers(curVideoContent) {
 	var acceptableAnswers = [].concat(curVideoContent.answersKanji);
-	acceptableAnswers = (mode >= content.MODE_KANA) ? acceptableAnswers.concat(curVideoContent.answersKana) : acceptableAnswers;
-	acceptableAnswers = (mode >= content.MODE_ROMAJI) ? acceptableAnswers.concat(curVideoContent.answersRomaji) : acceptableAnswers;
+	acceptableAnswers = (mode >= CONSTANTS.MODE.KANA) ? acceptableAnswers.concat(curVideoContent.answersKana) : acceptableAnswers;
+	acceptableAnswers = (mode >= CONSTANTS.MODE.ROMAJI) ? acceptableAnswers.concat(curVideoContent.answersRomaji) : acceptableAnswers;
 	
 	return acceptableAnswers;
 }
