@@ -51,8 +51,6 @@ function onPlayerReady(event) {
 	}
 	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
 	videoPlayer.timelineBasedEvent = null;
-	
-	addTimelineBasedEvent(2411, testFunction);
 }
 
 // Status key:
@@ -114,8 +112,16 @@ function clearTimelineBasedEvent() {
 
 // "API" functions (to be called by the game, etc)
 
-function testFunction(whatever) {
-	console.log("Test function called! " + whatever);
+function videoQuestionStartCallback(question) {
+	addTimelineBasedEvent(question.endTimer, questionTimerExpired, [], true);
+}
+
+function videoQuestionEndCallback(question) {
+	clearTimelineBasedEvent();
+}
+
+function seekTo(time) {
+	videoPlayer.seekTo(time);
 }
 
 function playVideo() {
