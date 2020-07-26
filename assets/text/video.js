@@ -50,6 +50,9 @@ function onPlayerReady(event) {
 		}
 	}
 	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
+	videoPlayer.timelineBasedEvent = null;
+	
+	addTimelineBasedEvent(2411, testFunction, ["hello", "world"]);
 }
 
 // Status key:
@@ -63,6 +66,8 @@ function onPlayerReady(event) {
 // Note user can still manually pause by clicking video. Need to account for this.
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
+	
+	// Used for user-initiated events
 	if (!systemEvent) {
 		if (event.data == YT.PlayerState.PLAYING) {
 			videoAuthorized = true;
@@ -72,11 +77,38 @@ function onPlayerStateChange(event) {
 			pauseGame();
 		}
 	}
+	
 	systemEvent = false;
 }
 
 function onPlayerProgress(time) {
-	console.log("Progress: " + time);
+	if (videoPlayer.timelineBasedEvent) {
+		if (time >= videoPlayer.timelineBasedEvent.time) {
+			var callback = videoPlayer.timelineBasedEvent.callback;
+			var params = videoPlayer.timelineBasedEvent.params;
+			clearTimelineBasedEvent();
+			
+			callback(params);
+		}
+	}
+}
+
+function addTimelineBasedEvent(time, callback, params) {
+	videoPlayer.timelineBasedEvent = {
+		"time": time,
+		"callback": callback,
+		"params": params
+	};
+}
+
+function clearTimelineBasedEvent() {
+	videoPlayer.timelineBasedEvent = null;
+}
+
+// "API" functions (to be called by the game, etc)
+
+function testFunction(whatever) {
+	console.log("Test function called! " + whatever);
 }
 
 function playVideo() {
@@ -87,12 +119,4 @@ function playVideo() {
 function pauseVideo() {
 	systemEvent = true;
 	videoPlayer.pauseVideo();
-}
-
-function unmuteVideo() {
-	videoPlayer.unMute();
-}
-
-function stopVideo() {
-	videoPlayer.stopVideo();
 }
