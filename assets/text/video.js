@@ -3,6 +3,7 @@ var videoPlayer;
 var previousVideoTime = 0;
 var currentVideoTime = 0;
 
+var systemEvent = false;
 var videoReady = false;
 var videoAuthorized = false;
 
@@ -62,13 +63,16 @@ function onPlayerReady(event) {
 // Note user can still manually pause by clicking video. Need to account for this.
 function onPlayerStateChange(event) {
 	console.log('on state change called: ' + event.data);
-	if (event.data == YT.PlayerState.PLAYING) {
-		videoAuthorized = true;
-		//resumeGame();
+	if (!systemEvent) {
+		if (event.data == YT.PlayerState.PLAYING) {
+			videoAuthorized = true;
+			resumeGame();
+		}
+		else if (event.data == YT.PlayerState.PAUSED) {
+			pauseGame();
+		}
 	}
-	else if (event.data == YT.PlayerState.PAUSED) {
-		//pauseGame();
-	}
+	systemEvent = false;
 }
 
 function onPlayerProgress(time) {
@@ -76,10 +80,12 @@ function onPlayerProgress(time) {
 }
 
 function playVideo() {
+	systemEvent = true;
 	videoPlayer.playVideo();
 }
 
 function pauseVideo() {
+	systemEvent = true;
 	videoPlayer.pauseVideo();
 }
 
