@@ -105,7 +105,7 @@ var videoDetails = {
 			"endTimer": 43 * 60 + 05,
 			"kill": 43 * 60 + 07
 		},
-	]
+	],
 	"outro": {
 		"fanfare": 43 * 60 + 15,
 		"exp": 43 * 60 + 19,
