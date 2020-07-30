@@ -15,7 +15,6 @@ firstScriptTag.parentNode.insertBefore(iframe_api_tag, firstScriptTag);
 
 // Called when Async Youtube Iframes API load complete
 function onYouTubeIframeAPIReady() {
-	videoReady = true;
 	videoPlayer = new YT.Player('video-container', {
         width: '800',
 		height: '600',
@@ -35,6 +34,7 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange': onPlayerStateChange
 		}
 	});
+	addTimelineBasedEvent(videoDetails.intro.end, setVideoReady, [true], false);
 }
 
 // Called when video ready to play
@@ -51,6 +51,10 @@ function onPlayerReady(event) {
 	}
 	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
 	videoPlayer.timelineBasedEvent = null;
+}
+
+function setVideoReady(params) {
+	videoReady = params[0];
 }
 
 // Status key:
