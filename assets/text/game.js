@@ -32,7 +32,7 @@ var player;
 var enemy;
 
 var controls;
-var gameOver = false;
+var gamestate;
 
 var game = new Phaser.Game(config);
 
@@ -65,6 +65,7 @@ function preload ()
 
 function create ()
 {
+	initializeGameState();
 	createEnvironment(this);
 	createPlayer(this);
 	createEnemies(this);
@@ -72,34 +73,43 @@ function create ()
 	createControls(this);
 }
 
+function initializeGameState() {
+	gamestate = {};
+	
+	gamestate.battleInProgress = false;
+	gamestate.gameOver = false;
+}
+
 function update (time, delta)
 {
 	if (videoAuthorized) {
-		if (gameOver)
+		if (gamestate.gameOver)
 		{
 			return;
 		}
 		
-		if (!player.animating && !enemy.animating) {
-			if (battleEvents.length > 0) {
-				console.log('stopping time');
-				ui.status.time.pause();
-				pauseVideo();
-				
-				var battleEvent = battleEvents.shift();
-				battleEvent.evnt(battleEvent.params);
-				
-				if (battleEvent.playerAction) {
-					ui.status.timefilled.hide();
+		if (gamestate.battleInProgress) {
+			if (!player.animating && !enemy.animating) {
+				if (battleEvents.length > 0) {
+					console.log('stopping time');
+					ui.status.time.pause();
+					pauseVideo();
+					
+					var battleEvent = battleEvents.shift();
+					battleEvent.evnt(battleEvent.params);
+					
+					if (battleEvent.playerAction) {
+						ui.status.timefilled.hide();
+					}
+					
+					if (battleEvent.enemyAction) {
+						resetEnemyATB();
+					}
+				} else if (!ui.status.time.flowing) {
+					console.log('resuming time');
+					ui.status.time.resume();
+					playVideo();
 				}
-				
-				if (battleEvent.enemyAction) {
-					resetEnemyATB();
-				}
-			} else if (!ui.status.time.flowing) {
-				console.log('resuming time');
-				ui.status.time.resume();
-				playVideo();
 			}
 		}
 		
@@ -781,7 +791,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			
 			if (enemy.index >= videoDetails.questions.length) {
 				//TODO actual game over behavior
-				gameOver = true;
+				gamestate.gameOver = true;
 				alert("Game Over!");
 				return;
 			}
@@ -993,6 +1003,8 @@ function resetEnemyATB() {
 // "API" functions (to be called by video, etc)
 
 function startFighting() {
+	// Transition to battle game state
+	gamestate.battleInProgress = true;
 	// Make first enemy appear
 	battleEvents.push({evnt: enemy.anim_appear, params: [], playerAction: false});
 }
