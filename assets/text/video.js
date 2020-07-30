@@ -34,7 +34,7 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange': onPlayerStateChange
 		}
 	});
-	addTimelineBasedEvent(videoDetails.intro.end, setVideoReady, [true], false);
+	videoReady = true;
 }
 
 // Called when video ready to play
@@ -51,11 +51,8 @@ function onPlayerReady(event) {
 	}
 	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
 	videoPlayer.timelineBasedEvent = null;
-}
-
-function setVideoReady(params) {
-	console.log('called set video ready');
-	videoReady = params[0];
+	
+	addTimelineBasedEvent(videoDetails.intro.start, startFighting, [], false);
 }
 
 // Status key:

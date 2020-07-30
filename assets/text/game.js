@@ -714,9 +714,6 @@ function createEnemies(game) {
 	
 	// Animations
 	createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize);
-	
-	// Make first enemy appear
-	battleEvents.push({evnt: enemy.anim_appear, params: [], playerAction: false});
 }
 
 // Answers surrounded by asterisks should be obscured
@@ -991,6 +988,11 @@ function resetEnemyATB() {
 }
 
 // "API" functions (to be called by video, etc)
+
+function startFighting() {
+	// Make first enemy appear
+	battleEvents.push({evnt: enemy.anim_appear, params: [], playerAction: false});
+}
 
 function questionTimerExpired() {
 	pauseVideo();
