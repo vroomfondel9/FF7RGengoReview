@@ -811,7 +811,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						x: enemy.baseX,
 						y: enemy.baseY,
 						//duration: 1200,
-						duration: curQuestion.startTimer - curQuestion.intro,
+						duration: (curQuestion.startTimer - curQuestion.intro) * 1000,
 						ease: 'Quint',
 						onComplete: function() {
 							//enemy.animating = false;
