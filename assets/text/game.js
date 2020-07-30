@@ -786,9 +786,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 				return;
 			}
 			
-			enemy.rawSentence = videoDetails.questions[enemy.index].sentence;
+			var curQuestion = videoDetails.questions[enemy.index];
+			enemy.rawSentence = curQuestion.sentence;
 			enemy.plainSentence = enemy.rawSentence.replace(/\uFF0A/g, "");
-			enemy.acceptableAnswers = determineAcceptableAnswers(videoDetails.questions[enemy.index]);
+			enemy.acceptableAnswers = determineAcceptableAnswers(curQuestion);
 			
 			// Appear animation should not stop ATB/video
 			//enemy.animating = true;
@@ -809,11 +810,12 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						targets: enemy,
 						x: enemy.baseX,
 						y: enemy.baseY,
-						duration: 1200,
+						//duration: 1200,
+						duration: curQuestion.startTimer - curQuestion.intro,
 						ease: 'Quint',
 						onComplete: function() {
 							//enemy.animating = false;
-							videoQuestionStartCallback(videoDetails.questions[enemy.index]);
+							videoQuestionStartCallback(curQuestion);
 							window.setTimeout(function ()
 							{
 								enemy.anim_idle();
