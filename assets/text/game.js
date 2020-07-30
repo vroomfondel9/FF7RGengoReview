@@ -627,6 +627,7 @@ function createPlayerAnimations(game) {
 		{
 			var playerAnswer = params[0];
 			var enemyAnimation;
+			var curQuestion = videoDetails.questions[enemy.index];
 			
 			if (enemy.acceptableAnswers.indexOf(playerAnswer) != -1)
 			{
