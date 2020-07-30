@@ -56,19 +56,19 @@ function validateVideoDetails() {
 			for (var i = 0; i < videoDetails.questions.length; i++) {
 				curQuestion = videoDetails.questions[i];
 				if (curQuestion) {
-					if (curQuestion.intro) {
+					if (!curQuestion.intro) {
 						console.error("Video details question " + i + " has no intro time defined. Check content file.");
 					}
 					
-					if (curQuestion.startTimer) {
+					if (!curQuestion.startTimer) {
 						console.error("Video details question " + i + " has no question start time defined. Check content file.");
 					}
 					
-					if (curQuestion.endTimer) {
+					if (!curQuestion.endTimer) {
 						console.error("Video details question " + i + " has no question end time defined. Check content file.");
 					}
 					
-					if (curQuestion.kill) {
+					if (!curQuestion.kill) {
 						console.error("Video details question " + i + " has no question kill sfx start time defined. Check content file.");
 					}
 				} else {
