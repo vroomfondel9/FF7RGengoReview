@@ -52,7 +52,7 @@ function onPlayerReady(event) {
 	videoPlayer.timelineMonitor = setInterval(updateTime, 100);
 	videoPlayer.timelineBasedEvent = null;
 	
-	addTimelineBasedEvent(videoDetails.intro.start, startFighting, [], false);
+	addTimelineBasedEvent(videoDetails.intro.end, startFighting, [], false);
 }
 
 // Status key:
