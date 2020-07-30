@@ -68,7 +68,7 @@ function setVideoReady(params) {
 
 // Note user can still manually pause by clicking video. Need to account for this.
 function onPlayerStateChange(event) {
-	console.log('on state change called: ' + event.data);
+	//console.log('on state change called: ' + event.data);
 	
 	// Used for user-initiated events
 	if (!systemEvent) {
