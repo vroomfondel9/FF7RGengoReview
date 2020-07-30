@@ -790,7 +790,8 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			enemy.plainSentence = enemy.rawSentence.replace(/\uFF0A/g, "");
 			enemy.acceptableAnswers = determineAcceptableAnswers(videoDetails.questions[enemy.index]);
 			
-			enemy.animating = true;
+			// Appear animation should not stop ATB/video
+			//enemy.animating = true;
 			
 			if (enemy.tween_idle) {
 				enemy.tween_idle.stop();
@@ -811,7 +812,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 1200,
 						ease: 'Quint',
 						onComplete: function() {
-							enemy.animating = false;
+							//enemy.animating = false;
 							videoQuestionStartCallback(videoDetails.questions[enemy.index]);
 							window.setTimeout(function ()
 							{
