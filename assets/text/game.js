@@ -824,8 +824,6 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: (curQuestion.startTimer - curQuestion.intro) * 1000,
 						ease: 'Quint',
 						onComplete: function() {
-							// Transition to battle game state (if not already)
-							gamestate.battleInProgress = true;
 							//enemy.animating = false;
 							videoQuestionStartCallback(curQuestion);
 							window.setTimeout(function ()
@@ -1005,6 +1003,8 @@ function resetEnemyATB() {
 // "API" functions (to be called by video, etc)
 
 function startFighting() {
+	// Transition to battle game state
+	gamestate.battleInProgress = true;
 	// Make first enemy appear
 	battleEvents.push({evnt: enemy.anim_appear, params: [], playerAction: false});
 }
