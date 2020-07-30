@@ -13,7 +13,7 @@ var videoDetails = {
 			"intro": 40 * 60 + 05,
 			"startTimer": 40 * 60 + 08,
 			"endTimer": 40 * 60 + 18,
-			"kill": 40 * 60 + 21
+			"kill": 40 * 60 + 22
 		},
 		{
 			"sentence": "＊緊急事態＊発生　こちらは神羅カンパニー危機対策本部です",
