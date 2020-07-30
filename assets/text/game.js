@@ -990,6 +990,7 @@ function resetEnemyATB() {
 // "API" functions (to be called by video, etc)
 
 function startFighting() {
+	console.log("WTF");
 	// Make first enemy appear
 	battleEvents.push({evnt: enemy.anim_appear, params: [], playerAction: false});
 }
