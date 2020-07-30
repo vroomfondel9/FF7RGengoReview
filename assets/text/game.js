@@ -632,6 +632,9 @@ function createPlayerAnimations(game) {
 			{
 				videoQuestionEndCallback(videoDetails.questions[enemy.index]);
 				enemyAnimation = enemy.anim_get_hit_and_die;
+				
+				seekTo(curQuestion.kill);
+				playVideo();
 			}
 			else
 			{
@@ -935,8 +938,6 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						onStart: function() {
 							enemy.setText(enemy.plainSentence);
 							enemy.damage.anim_appear(Math.round(2000 + 2000 * Math.random()));
-							seekTo(curQuestion.kill);
-							playVideo();
 						}
 					},
 					{
