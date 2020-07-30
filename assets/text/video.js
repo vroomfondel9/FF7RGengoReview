@@ -54,6 +54,7 @@ function onPlayerReady(event) {
 }
 
 function setVideoReady(params) {
+	console.log('called set video ready');
 	videoReady = params[0];
 }
 
