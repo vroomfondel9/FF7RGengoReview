@@ -630,14 +630,12 @@ function createPlayerAnimations(game) {
 			var curQuestion = videoDetails.questions[enemy.index];
 			var hit = enemy.acceptableAnswers.indexOf(playerAnswer) != -1;
 			
-			var preAttackTime = getVideoTime();
-			seekTo(curQuestion.kill);
-			playVideo();
-			
 			if (hit)
 			{
 				videoQuestionEndCallback(videoDetails.questions[enemy.index]);
 				enemyAnimation = enemy.anim_get_hit_and_die;
+				seekTo(curQuestion.kill);
+				playVideo();
 			}
 			else
 			{
@@ -669,11 +667,6 @@ function createPlayerAnimations(game) {
 							enemyAnimation();
 							
 							player.anims.play('player-attack', true);
-							
-							if (!hit) {
-								seekTo(preAttackTime);
-								pauseVideo();
-							}
 						}
 					},
 					{
