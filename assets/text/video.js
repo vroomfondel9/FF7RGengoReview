@@ -122,6 +122,10 @@ function videoQuestionEndCallback(question) {
 	clearTimelineBasedEvent();
 }
 
+function getVideoTime() {
+	return videoPlayer.getCurrentTime();
+}
+
 function seekTo(time) {
 	videoPlayer.seekTo(time);
 }
