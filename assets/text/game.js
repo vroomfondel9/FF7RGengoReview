@@ -30,6 +30,7 @@ var env;
 var ui;
 var player;
 var enemy;
+var sfx;
 
 var controls;
 var gamestate;
@@ -61,6 +62,9 @@ function preload ()
 	this.load.image('ui-move-name', 'assets/images/ui/move-name-label3.png');
 	this.load.image('ui-cursor', 'assets/images/ui/cursor.png');
 	this.load.html('ui-answerform', 'assets/text/answerform.html');
+	
+	// Audio
+	this.load.audio('sfx-player-dash', 'assets/audio/sfx/player_dash.wav');
 }
 
 function create ()
@@ -70,6 +74,7 @@ function create ()
 	createPlayer(this);
 	createEnemies(this);
 	createUI(this);
+	createAudio(this);
 	createControls(this);
 }
 
@@ -656,6 +661,7 @@ function createPlayerAnimations(game) {
 						onComplete: function() {
 							player.setVelocityX(-420);
 							player.anims.play('player-run', true);
+							sfx.player.dash.play();
 						}
 					},
 					{
@@ -985,6 +991,14 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			});
 		}
 	};
+}
+
+function createAudio(game) {
+	sfx = {};
+	sfx.player = {};
+	sfx.enemy = {};
+	
+	sfx.player.dash = game.add.audio('sfx-player-dash');
 }
 
 function createControls(game) {
