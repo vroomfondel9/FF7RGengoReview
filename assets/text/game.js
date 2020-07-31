@@ -91,7 +91,7 @@ function update (time, delta)
 		if (gamestate.battleInProgress) {
 			if (!player.animating && !enemy.animating) {
 				if (battleEvents.length > 0) {
-					console.log('stopping time');
+					//console.log('stopping time');
 					ui.status.time.pause();
 					pauseVideo();
 					
@@ -106,7 +106,7 @@ function update (time, delta)
 						resetEnemyATB();
 					}
 				} else if (!ui.status.time.flowing) {
-					console.log('resuming time');
+					//console.log('resuming time');
 					ui.status.time.resume();
 					playVideo();
 				}
