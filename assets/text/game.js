@@ -998,7 +998,7 @@ function createAudio(game) {
 	sfx.player = {};
 	sfx.enemy = {};
 	
-	sfx.player.dash = game.add.audio('sfx-player-dash');
+	sfx.player.dash = game.sound.add('sfx-player-dash');
 }
 
 function createControls(game) {
