@@ -70,11 +70,11 @@ function preload ()
 function create ()
 {
 	initializeGameState();
+	createAudio(this);
 	createEnvironment(this);
 	createPlayer(this);
 	createEnemies(this);
 	createUI(this);
-	createAudio(this);
 	createControls(this);
 }
 
@@ -83,6 +83,14 @@ function initializeGameState() {
 	
 	gamestate.battleInProgress = false;
 	gamestate.gameOver = false;
+}
+
+function createAudio(game) {
+	sfx = {};
+	sfx.player = {};
+	sfx.enemy = {};
+	
+	sfx.player.dash = game.sound.add('sfx-player-dash');
 }
 
 function update (time, delta)
@@ -991,14 +999,6 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 			});
 		}
 	};
-}
-
-function createAudio(game) {
-	sfx = {};
-	sfx.player = {};
-	sfx.enemy = {};
-	
-	sfx.player.dash = game.sound.add('sfx-player-dash');
 }
 
 function createControls(game) {
