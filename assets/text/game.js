@@ -656,11 +656,6 @@ function createPlayerAnimations(game) {
 						onComplete: function() {
 							player.setVelocityX(-420);
 							player.anims.play('player-run', true);
-							
-							if (!hit) {
-								seekTo(preAttackTime);
-								pauseVideo();
-							}
 						}
 					},
 					{
@@ -674,6 +669,11 @@ function createPlayerAnimations(game) {
 							enemyAnimation();
 							
 							player.anims.play('player-attack', true);
+							
+							if (!hit) {
+								seekTo(preAttackTime);
+								pauseVideo();
+							}
 						}
 					},
 					{
