@@ -6,9 +6,6 @@ var config = {
 	dom: {
         createContainer: true
     },
-	audio: {
-        disableWebAudio: true
-    },
     physics: {
         default: 'arcade',
         arcade: {
