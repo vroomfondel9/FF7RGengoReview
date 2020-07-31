@@ -64,7 +64,7 @@ function preload ()
 	this.load.html('ui-answerform', 'assets/text/answerform.html');
 	
 	// Audio
-	this.load.audio('sfx-player-dash', 'assets/audio/sfx/player_dash.wav');
+	this.load.audio('sfx-player-dash', ['assets/audio/sfx/player_dash.wav']);
 }
 
 function create ()
