@@ -139,3 +139,11 @@ function pauseVideo() {
 	systemEvent = true;
 	videoPlayer.pauseVideo();
 }
+
+function muteVideo() {
+	videoPlayer.mute();
+}
+
+function unmuteVideo() {
+	videoPlayer.unMute();
+}

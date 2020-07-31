@@ -630,6 +630,8 @@ function createPlayerAnimations(game) {
 			var curQuestion = videoDetails.questions[enemy.index];
 			var hit = enemy.acceptableAnswers.indexOf(playerAnswer) != -1;
 			
+			muteVideo();
+			
 			if (hit)
 			{
 				videoQuestionEndCallback(videoDetails.questions[enemy.index]);
@@ -687,6 +689,8 @@ function createPlayerAnimations(game) {
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
+							
+							unmuteVideo();
 						}
 					}
 				]
