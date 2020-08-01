@@ -1,0 +1,4 @@
+-Youtube's IFrames API doesn't allow precise enough time targetting (sub-second)
+	-Cannot match battle sounds to animations precisely. Feels bad if sound unmuted.
+	-Generating sounds from game and muting video stops voice line for correct answer. No way to differentiate.
+-No way to use in-video dash sound with miss because it reveals answer.
