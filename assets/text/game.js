@@ -523,7 +523,7 @@ function createCommandBehaviors(game) {
 		
 		if (ui.sub) {
 			for (var i = 0; i < ui.sub.types.length; i++) {
-				ui.sub.types[i].cancel();
+				//ui.sub.types[i].cancel();
 			}
 		}
 	};
