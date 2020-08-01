@@ -64,6 +64,9 @@ function preload ()
 	this.load.html('ui-answerform', 'assets/text/answerform.html');
 	
 	// Audio
+	this.load.audio('sfx-ui-select', 'assets/audio/sfx/ui-select.mp3');
+	this.load.audio('sfx-ui-cancel', 'assets/audio/sfx/ui-cancel.mp3');
+	this.load.audio('sfx-ui-atb-filled', 'assets/audio/sfx/ui-atb-filled.mp3');
 	this.load.audio('sfx-enemy-attack-hit', 'assets/audio/sfx/enemy_attack_hit_single1.mp3');
 	this.load.audio('sfx-enemy-attack-shoot', 'assets/audio/sfx/enemy_attack_hit_single3.mp3');
 	this.load.audio('sfx-enemy-die-normal', 'assets/audio/sfx/enemy_die_normal.mp3');
@@ -95,8 +98,13 @@ function initializeGameState() {
 
 function createAudio(game) {
 	sfx = {};
+	sfx.ui = {};
 	sfx.player = {};
 	sfx.enemy = {};
+	
+	sfx.ui.select = game.sound.add('sfx-ui-select');
+	sfx.ui.cancel = game.sound.add('sfx-ui-select');
+	sfx.ui.commandOpen = game.sound.add('sfx-ui-atb-filled');
 	
 	sfx.enemy.attackHit = game.sound.add('sfx-enemy-attack-hit');
 	sfx.enemy.attackShoot = game.sound.add('sfx-enemy-attack-shoot');
@@ -479,6 +487,7 @@ function createCommandCursor(game, commandFontSize) {
 		ui.command.current = (index >= ui.command.numOptions) ? 0 : ((index < 0) ? ui.command.numOptions - 1 : index);
 		ui.command.cursor.x = ui.command.options[ui.command.current].text.x;
 		ui.command.cursor.y = ui.command.options[ui.command.current].text.y + cursorYOffset;
+		sfx.ui.select.play();
 	};
 	
 	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1);};
@@ -520,7 +529,7 @@ function createCommandBehaviors(game) {
 		}
 	};
 	ui.command.hide = function () {ui.command.toggle(false);};
-	ui.command.show = function () {ui.command.toggle(true);};
+	ui.command.show = function () {ui.command.toggle(true); sfx.ui.commandOpen.play();};
 }
 
 function createAnswerSubCommandMenu(game) {
@@ -598,8 +607,9 @@ function createAnswerSubMenuBehaviors(game) {
 		
 		battleEvents.push({evnt: player.anim_attack, params: [providedAnswer], playerAction: true});
 		ui.command.hide();
+		sfx.ui.select.play();
 	};
-	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false);};
+	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false); sfx.ui.cancel.play();};
 	ui.sub.answer.next = function () {};
 	ui.sub.answer.previous = function () {};
 }
