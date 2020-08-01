@@ -717,6 +717,7 @@ function createPlayerAnimations(game) {
 						onComplete: function() {
 							player.body.setAllowDrag(true);
 							player.anims.play('player-land', true);
+							sfx.player.land.play();
 						}
 					},
 					{
@@ -728,7 +729,6 @@ function createPlayerAnimations(game) {
 							player.body.setAllowDrag(false);
 							player.anims.play('player-idle', true);
 							player.animating = false;
-							sfx.player.land.play();
 							
 							unmuteVideo();
 						}
