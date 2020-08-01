@@ -64,7 +64,16 @@ function preload ()
 	this.load.html('ui-answerform', 'assets/text/answerform.html');
 	
 	// Audio
+	this.load.audio('sfx-enemy-attack-hit', 'assets/audio/sfx/enemy_attack_hit_single1.mp3');
+	this.load.audio('sfx-enemy-attack-shoot', 'assets/audio/sfx/enemy_attack_hit_single3.mp3');
+	this.load.audio('sfx-enemy-die-normal', 'assets/audio/sfx/enemy_die_normal.mp3');
+	this.load.audio('sfx-enemy-dodge', 'assets/audio/sfx/enemy_dodge.mp3');
+	this.load.audio('sfx-player-attack-hit', 'assets/audio/sfx/player_attack_hit.mp3');
+	this.load.audio('sfx-player-attack-miss', 'assets/audio/sfx/player_attack_miss.mp3');
 	this.load.audio('sfx-player-dash', 'assets/audio/sfx/player_dash.mp3');
+	this.load.audio('sfx-player-jump-back', 'assets/audio/sfx/player_jump_back.mp3');
+	this.load.audio('sfx-player-land', 'assets/audio/sfx/player_land.mp3');
+	this.load.audio('sfx-player-limit', 'assets/audio/sfx/player_limit_charge.mp3');
 }
 
 function create ()
@@ -90,7 +99,17 @@ function createAudio(game) {
 	sfx.player = {};
 	sfx.enemy = {};
 	
+	sfx.enemy.attackHit = game.sound.add('sfx-enemy-attack-hit');
+	sfx.enemy.attackShoot = game.sound.add('sfx-enemy-attack-shoot');
+	sfx.enemy.dieNormal = game.sound.add('sfx-enemy-die-normal');
+	sfx.enemy.dodge = game.sound.add('sfx-enemy-dodge');
+	
+	sfx.player.attackHit = game.sound.add('sfx-player-attack-hit');
+	sfx.player.attackMiss = game.sound.add('sfx-player-attack-miss');
 	sfx.player.dash = game.sound.add('sfx-player-dash');
+	sfx.player.jumpBack = game.sound.add('sfx-player-jump-back');
+	sfx.player.land = game.sound.add('sfx-player-land');
+	sfx.player.limitCharge = game.sound.add('sfx-player-limit');
 }
 
 function update (time, delta)
@@ -640,6 +659,7 @@ function createPlayerAnimations(game) {
 		{
 			var playerAnswer = params[0];
 			var enemyAnimation;
+			var attackSound;
 			var curQuestion = videoDetails.questions[enemy.index];
 			var hit = enemy.acceptableAnswers.indexOf(playerAnswer) != -1;
 			
@@ -649,12 +669,15 @@ function createPlayerAnimations(game) {
 			{
 				videoQuestionEndCallback(videoDetails.questions[enemy.index]);
 				enemyAnimation = enemy.anim_get_hit_and_die;
+				attackSound = sfx.player.attackHit;
+				
 				seekTo(curQuestion.kill);
 				playVideo();
 			}
 			else
 			{
 				enemyAnimation = enemy.anim_dodge;
+				attackSound = sfx.player.attackMiss;
 			}
 			
 			player.animating = true;
@@ -683,6 +706,8 @@ function createPlayerAnimations(game) {
 							enemyAnimation();
 							
 							player.anims.play('player-attack', true);
+							attackSound.play();
+							sfx.player.jumpBack.play();
 						}
 					},
 					{
@@ -692,6 +717,7 @@ function createPlayerAnimations(game) {
 						onComplete: function() {
 							player.body.setAllowDrag(true);
 							player.anims.play('player-land', true);
+							sfx.player.land.play();
 						}
 					},
 					{
@@ -903,7 +929,10 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						angle: -10 - 15 * Math.random(),
 						duration: 800,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ]
+						easeParams: [ 1.5, 0.5 ],
+						onComplete: function() {
+							sfx.enemy.dodge.play();
+						}
 					},
 					{
 						targets: enemy,
@@ -977,6 +1006,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						ease: 'Linear',
 						onStart: function() {
 							ui.status.limit.enemydefeated();
+							sfx.enemy.dieNormal.play();
 						}
 					},
 					{
