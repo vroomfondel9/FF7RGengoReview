@@ -930,7 +930,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						duration: 800,
 						ease: 'Elastic',
 						easeParams: [ 1.5, 0.5 ],
-						onComplete: function() {
+						onStart: function() {
 							sfx.enemy.dodge.play();
 						}
 					},
