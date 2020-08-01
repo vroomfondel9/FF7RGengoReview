@@ -599,7 +599,7 @@ function createAnswerSubMenuBehaviors(game) {
 		
 		return value;
 	};
-	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true); sfx.ui.select.play();};
+	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true); /*sfx.ui.select.play();*/};
 	
 	// Standard Behaviors
 	ui.sub.answer.confirm = function() {
