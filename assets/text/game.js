@@ -103,7 +103,7 @@ function createAudio(game) {
 	sfx.enemy = {};
 	
 	sfx.ui.select = game.sound.add('sfx-ui-select');
-	sfx.ui.cancel = game.sound.add('sfx-ui-select');
+	sfx.ui.cancel = game.sound.add('sfx-ui-cancel');
 	sfx.ui.commandOpen = game.sound.add('sfx-ui-atb-filled');
 	
 	sfx.enemy.attackHit = game.sound.add('sfx-enemy-attack-hit');
@@ -599,7 +599,7 @@ function createAnswerSubMenuBehaviors(game) {
 		
 		return value;
 	};
-	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true);};
+	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true); sfx.ui.select.play();};
 	
 	// Standard Behaviors
 	ui.sub.answer.confirm = function() {
@@ -607,7 +607,6 @@ function createAnswerSubMenuBehaviors(game) {
 		
 		battleEvents.push({evnt: player.anim_attack, params: [providedAnswer], playerAction: true});
 		ui.command.hide();
-		sfx.ui.select.play();
 	};
 	ui.sub.answer.cancel = function() {ui.sub.answer.showOrHide(false); sfx.ui.cancel.play();};
 	ui.sub.answer.next = function () {};
