@@ -487,11 +487,10 @@ function createCommandCursor(game, commandFontSize) {
 		ui.command.current = (index >= ui.command.numOptions) ? 0 : ((index < 0) ? ui.command.numOptions - 1 : index);
 		ui.command.cursor.x = ui.command.options[ui.command.current].text.x;
 		ui.command.cursor.y = ui.command.options[ui.command.current].text.y + cursorYOffset;
-		//sfx.ui.select.play();
 	};
 	
-	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1);};
-	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1);};
+	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1); sfx.ui.select.play();};
+	ui.command.cursor.prev = function() {ui.command.cursor.advance(ui.command.current - 1); sfx.ui.select.play();};
 }
 
 function createCommandSubBehaviors(game, curOption, parentMenuName) {
