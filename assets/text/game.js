@@ -67,7 +67,6 @@ function preload ()
 	this.load.audio('sfx-enemy-attack-hit', 'assets/audio/sfx/enemy_attack_hit_single1.mp3');
 	this.load.audio('sfx-enemy-attack-shoot', 'assets/audio/sfx/enemy_attack_hit_single3.mp3');
 	this.load.audio('sfx-enemy-die-normal', 'assets/audio/sfx/enemy_die_normal.mp3');
-	this.load.audio('sfx-enemy-dodge', 'assets/audio/sfx/enemy_dodge.mp3');
 	this.load.audio('sfx-player-attack-hit', 'assets/audio/sfx/player_attack_hit.mp3');
 	this.load.audio('sfx-player-attack-miss', 'assets/audio/sfx/player_attack_miss.mp3');
 	this.load.audio('sfx-player-dash', 'assets/audio/sfx/player_dash.mp3');
@@ -102,7 +101,6 @@ function createAudio(game) {
 	sfx.enemy.attackHit = game.sound.add('sfx-enemy-attack-hit');
 	sfx.enemy.attackShoot = game.sound.add('sfx-enemy-attack-shoot');
 	sfx.enemy.dieNormal = game.sound.add('sfx-enemy-die-normal');
-	sfx.enemy.dodge = game.sound.add('sfx-enemy-dodge');
 	
 	sfx.player.attackHit = game.sound.add('sfx-player-attack-hit');
 	sfx.player.attackMiss = game.sound.add('sfx-player-attack-miss');
@@ -929,10 +927,7 @@ function createEnemyAnimations(game, fontColor, strokeBaseColor, strokeSize) {
 						angle: -10 - 15 * Math.random(),
 						duration: 800,
 						ease: 'Elastic',
-						easeParams: [ 1.5, 0.5 ],
-						onStart: function() {
-							sfx.enemy.dodge.play();
-						}
+						easeParams: [ 1.5, 0.5 ]
 					},
 					{
 						targets: enemy,
