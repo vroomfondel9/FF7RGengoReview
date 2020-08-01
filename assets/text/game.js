@@ -487,7 +487,7 @@ function createCommandCursor(game, commandFontSize) {
 		ui.command.current = (index >= ui.command.numOptions) ? 0 : ((index < 0) ? ui.command.numOptions - 1 : index);
 		ui.command.cursor.x = ui.command.options[ui.command.current].text.x;
 		ui.command.cursor.y = ui.command.options[ui.command.current].text.y + cursorYOffset;
-		sfx.ui.select.play();
+		//sfx.ui.select.play();
 	};
 	
 	ui.command.cursor.next = function() {ui.command.cursor.advance(ui.command.current + 1);};
@@ -599,7 +599,7 @@ function createAnswerSubMenuBehaviors(game) {
 		
 		return value;
 	};
-	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true); /*sfx.ui.select.play();*/};
+	ui.sub.answer.show = function() {ui.sub.answer.showOrHide(true); sfx.ui.select.play();};
 	
 	// Standard Behaviors
 	ui.sub.answer.confirm = function() {
